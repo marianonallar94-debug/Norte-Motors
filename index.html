@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norte Motors | Carros Usados en Hollywood, FL</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C9110E;
+    --red-dark:#8f0c0a;
+    --black:#141414;
+    --charcoal:#1f1f1f;
+    --off:#F6F4F0;
+    --gray:#5b5b5b;
+    --gray-line:#e4e1da;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--black);
+    background:var(--off);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.headline{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:1.05;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    border-radius:3px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dark);}
+  .btn-outline{background:transparent;border-color:#fff;color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,.12);}
+  .btn-black{background:var(--black);color:#fff;}
+  .btn-black:hover{background:#000;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--black);
+    border-bottom:3px solid var(--red);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 24px;
+    max-width:1180px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{height:52px;width:auto;}
+  .brand-name{font-family:'Oswald',sans-serif;color:#fff;font-size:20px;letter-spacing:.04em;text-transform:uppercase;}
+  .brand-name span{color:var(--red);}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav ul a{
+    color:#fff;font-size:14px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+    font-family:'Oswald',sans-serif;
+    padding-bottom:4px;border-bottom:2px solid transparent;
+    transition:border-color .15s;
+  }
+  nav ul a:hover{border-color:var(--red);}
+  .nav-actions{display:flex;align-items:center;gap:14px;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .burger{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
+
+  @media(max-width:860px){
+    .nav-links{
+      position:fixed;top:78px;left:0;right:0;
+      background:var(--black);
+      flex-direction:column;align-items:flex-start;
+      padding:18px 24px 26px;
+      gap:16px;
+      transform:translateY(-130%);
+      transition:transform .25s ease;
+      border-bottom:3px solid var(--red);
+    }
+    .nav-links.open{transform:translateY(0);}
+    .burger{display:block;}
+    nav ul{flex-direction:column;gap:14px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(115deg, var(--black) 0%, var(--black) 52%, var(--red) 52%, var(--red-dark) 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1180px;margin:0 auto;padding:78px 24px 96px;
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:center;
+  }
+  .hero-eyebrow{
+    color:#ffb3b1;font-family:'Oswald',sans-serif;font-weight:600;
+    font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;
+  }
+  .hero h1{font-size:clamp(34px,5vw,58px);margin-bottom:18px;}
+  .hero p.lead{font-size:17px;color:#e7e2e2;max-width:46ch;margin-bottom:32px;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
+  .hero-badge{
+    justify-self:center;
+    width:100%;max-width:340px;
+    filter:drop-shadow(0 18px 34px rgba(0,0,0,.45));
+  }
+  @media(max-width:860px){
+    .hero-inner{grid-template-columns:1fr;text-align:left;padding-top:44px;}
+    .hero-badge{max-width:220px;margin-top:8px;}
+  }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{
+    background:var(--charcoal);
+    color:#fff;
+  }
+  .trust .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    padding:26px 24px;
+  }
+  .trust-item{
+    display:flex;align-items:center;gap:12px;
+    padding:10px 18px;
+    border-left:1px solid #3a3a3a;
+    font-size:14px;color:#d9d9d9;
+  }
+  .trust-item:first-child{border-left:none;}
+  .trust-item strong{display:block;color:#fff;font-family:'Oswald',sans-serif;font-size:15px;text-transform:uppercase;letter-spacing:.02em;}
+  @media(max-width:860px){
+    .trust .wrap{grid-template-columns:1fr 1fr;gap:14px;}
+    .trust-item{border-left:none;padding:6px 4px;}
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{padding:76px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:20px;margin-bottom:38px;flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(28px,3.6vw,40px);}
+  .section-head .stripe{
+    display:inline-block;width:46px;height:6px;background:var(--red);margin-bottom:14px;
+  }
+  .section-head p{color:var(--gray);max-width:52ch;}
+
+  /* ---------- INVENTORY ---------- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+  .filter-btn{
+    font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    padding:9px 18px;border-radius:999px;border:1.5px solid var(--black);
+    background:transparent;cursor:pointer;transition:all .15s;
+  }
+  .filter-btn.active,.filter-btn:hover{background:var(--black);color:#fff;}
+
+  .grid-cars{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  @media(max-width:960px){.grid-cars{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){.grid-cars{grid-template-columns:1fr;}}
+
+  .car-card{
+    background:#fff;border:1px solid var(--gray-line);border-radius:4px;overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .car-card:hover{box-shadow:0 14px 30px rgba(0,0,0,.1);transform:translateY(-3px);}
+  .car-photo{
+    aspect-ratio:4/3;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#232323,#3a3a3a);
+  }
+  .car-photo svg{width:62%;height:62%;opacity:.92;}
+  .car-tag{
+    position:absolute;top:12px;left:12px;
+    background:var(--red);color:#fff;font-family:'Oswald',sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    padding:5px 10px;border-radius:2px;
+  }
+  .car-body{padding:18px 18px 20px;flex:1;display:flex;flex-direction:column;}
+  .car-body h3{font-size:19px;margin-bottom:4px;}
+  .car-sub{color:var(--gray);font-size:13px;margin-bottom:14px;}
+  .car-specs{
+    display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--gray);
+    margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--gray-line);
+  }
+  .car-specs span{display:flex;align-items:center;gap:5px;}
+  .car-price-row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
+  .car-price{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--red);}
+  .car-cta{
+    font-family:'Oswald',sans-serif;font-size:12.5px;font-weight:600;text-transform:uppercase;
+    letter-spacing:.03em;color:#fff;background:var(--black);
+    padding:10px 14px;border-radius:3px;
+  }
+  .car-cta:hover{background:var(--red);}
+
+  .inventory-note{
+    margin-top:30px;padding:16px 20px;border-left:4px solid var(--red);
+    background:#fff;font-size:14px;color:var(--gray);
+  }
+  .inventory-note strong{color:var(--black);}
+
+  /* ---------- WHY US ---------- */
+  .why{background:var(--black);color:#fff;}
+  .why .section-head p{color:#c9c9c9;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  @media(max-width:860px){.why-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{padding:22px;border:1px solid #313131;border-radius:4px;}
+  .why-card .num{font-family:'Oswald',sans-serif;color:var(--red);font-size:26px;font-weight:700;margin-bottom:10px;}
+  .why-card h3{font-size:16px;margin-bottom:8px;}
+  .why-card p{font-size:13.5px;color:#b8b8b8;}
+
+  /* ---------- FINANCING BANNER ---------- */
+  .financing{
+    background:linear-gradient(100deg,var(--red) 0%,var(--red-dark) 100%);
+    color:#fff;
+  }
+  .financing .wrap{
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:44px 24px;flex-wrap:wrap;
+  }
+  .financing h2{font-size:clamp(22px,3vw,30px);max-width:20ch;}
+  .financing p{color:#ffdede;margin-top:6px;font-size:14.5px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch;
+  }
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-card{
+    background:#fff;border:1px solid var(--gray-line);border-radius:4px;padding:32px;
+  }
+  .contact-row{display:flex;gap:14px;margin-bottom:22px;align-items:flex-start;}
+  .contact-row .ic{
+    width:38px;height:38px;flex:none;border-radius:50%;background:var(--off);
+    display:flex;align-items:center;justify-content:center;color:var(--red);
+  }
+  .contact-row h4{font-family:'Oswald',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;}
+  .contact-row p{color:var(--gray);font-size:14.5px;}
+  .map-frame{border:1px solid var(--gray-line);border-radius:4px;overflow:hidden;min-height:320px;}
+  .map-frame iframe{width:100%;height:100%;min-height:320px;border:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--black);color:#9c9c9c;padding:40px 0 26px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid #2a2a2a;margin-bottom:20px;}
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-brand img{height:40px;}
+  .footer-brand span{font-family:'Oswald',sans-serif;color:#fff;letter-spacing:.03em;}
+  footer .foot-links{display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px;}
+  .foot-bottom{display:flex;justify-content:space-between;font-size:12.5px;flex-wrap:wrap;gap:8px;}
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    background:#25D366;color:#fff;
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.3);
+  }
+  .wa-float svg{width:28px;height:28px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Norte Motors">
+      <div class="brand-name">Norte <span>Motors</span></div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú">&#9776;</button>
+    <div class="nav-links" id="navLinks">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#inventario">Inventario</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-red" href="https://wa.me/15714246410" target="_blank" style="display:none" id="navWaBtn">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Hollywood, Florida</div>
+      <h1>Carros usados que puedes manejar con confianza</h1>
+      <p class="lead">En Norte Motors encuentras pickups, SUVs y sedanes revisados, con precios claros y financiamiento a tu alcance. Atención en español, de principio a fin.</p>
+      <div class="hero-ctas">
+        <a href="#inventario" class="btn btn-red">Ver Inventario</a>
+        <a href="https://wa.me/15714246410" target="_blank" class="btn btn-outline">Escríbenos por WhatsApp</a>
+      </div>
+    </div>
+    <img class="hero-badge" src="assets/logo.png" alt="Escudo Norte Motors">
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-item"><strong>Financiamiento</strong>Opciones para todo tipo de crédito</div>
+    <div class="trust-item"><strong>Se habla Español</strong>Todo el proceso en tu idioma</div>
+    <div class="trust-item"><strong>Vehículos Revisados</strong>Pickups, SUVs y sedanes</div>
+    <div class="trust-item"><strong>Hollywood, FL</strong>5647 Funston St</div>
+  </div>
+</section>
+
+<section class="section" id="inventario">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="stripe"></span>
+        <h2>Nuestro Inventario</h2>
+        <p>Este es un ejemplo de cómo se verán tus carros. Reemplaza cada tarjeta con tus vehículos reales, fotos y precios.</p>
+      </div>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="pickup">Pickups</button>
+      <button class="filter-btn" data-filter="suv">SUVs</button>
+      <button class="filter-btn" data-filter="sedan">Sedanes</button>
+      <button class="filter-btn" data-filter="minivan">Minivans</button>
+    </div>
+
+    <div class="grid-cars" id="carsGrid"></div>
+
+    <div class="inventory-note">
+      <strong>Nota para Mariano:</strong> ya van 7 carros reales cargados (Tacoma, Santa Fe, Highlander, Sienna, Palisade, Suburban y Tucson). Sigue mandándome fotos y datos y los voy agregando aquí mismo.
+    </div>
+  </div>
+</section>
+
+<section class="why" id="nosotros">
+  <div class="wrap section">
+    <div class="section-head">
+      <div>
+        <span class="stripe"></span>
+        <h2>Por qué comprar en Norte Motors</h2>
+        <p>Un lote familiar en Hollywood, enfocado en la comunidad hispana del sur de la Florida.</p>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="num">01</div>
+        <h3>Precios claros</h3>
+        <p>Sin letras pequeñas ni sorpresas: el precio que ves es el precio del que hablamos.</p>
+      </div>
+      <div class="why-card">
+        <div class="num">02</div>
+        <h3>Financiamiento flexible</h3>
+        <p>Trabajamos opciones de pago inicial y financiamiento adaptadas a tu situación.</p>
+      </div>
+      <div class="why-card">
+        <div class="num">03</div>
+        <h3>Inventario variado</h3>
+        <p>Pickups, SUVs y sedanes de las marcas más confiables, siempre entrando inventario nuevo.</p>
+      </div>
+      <div class="why-card">
+        <div class="num">04</div>
+        <h3>Trato directo</h3>
+        <p>Habla directo con nosotros por WhatsApp, sin vueltas ni intermediarios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="financing">
+  <div class="wrap">
+    <div>
+      <h2>¿Tienes un carro en mente? Pregúntanos por financiamiento hoy mismo</h2>
+      <p>Respuesta rápida por WhatsApp, en español.</p>
+    </div>
+    <a href="https://wa.me/15714246410" target="_blank" class="btn btn-black">Escríbenos ahora</a>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="stripe"></span>
+        <h2>Visítanos o escríbenos</h2>
+        <p>Estamos en Hollywood, Florida — te esperamos en el lote o te atendemos por WhatsApp.</p>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-row">
+          <div class="ic">📍</div>
+          <div>
+            <h4>Dirección</h4>
+            <p>5647 Funston St, Hollywood, FL</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic">📱</div>
+          <div>
+            <h4>Teléfono / WhatsApp</h4>
+            <p>+1 (571) 424-6410</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic">🕒</div>
+          <div>
+            <h4>Horario</h4>
+            <p>Lunes a Sábado — edita este horario con tus horas reales</p>
+          </div>
+        </div>
+        <a href="https://wa.me/15714246410" target="_blank" class="btn btn-red" style="width:100%;justify-content:center;margin-top:10px;">Chatear por WhatsApp</a>
+      </div>
+      <div class="map-frame">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=5647+Funston+St,+Hollywood,+FL&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Norte Motors">
+        <span>NORTE MOTORS</span>
+      </div>
+      <div class="foot-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#inventario">Inventario</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Norte Motors — Hollywood, FL</span>
+      <span>5647 Funston St · +1 (571) 424-6410</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/15714246410" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h0a7.94 7.94 0 0 0 5.55-13.58zM12.05 18.4a6.55 6.55 0 0 1-3.35-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.58 3.1zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.37.1-.12.13-.2.2-.35a.4.4 0 0 0 0-.37c-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.34h-.38a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.89.8 2.02s1.37 2.1 3.33 2.94a11 11 0 0 0 1.11.41 2.68 2.68 0 0 0 1.23.08c.38-.06 1.17-.48 1.33-.94s.16-.86.11-.94-.18-.13-.38-.23z"/></svg>
+</a>
+
+<script>
+  // Menú móvil
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* =========================================================
+     INVENTARIO — edita esta lista con tus carros reales.
+     type: "pickup" | "suv" | "sedan"
+     photo: pon aquí el nombre del archivo de la foto (ej: "assets/carros/ram-1500.jpg")
+            si lo dejas en null, se muestra un ícono de silueta.
+     ========================================================= */
+  const vehicles = [
+    { year:2021, make:"Toyota", model:"Tacoma TRD Off Road 4x4", type:"pickup", miles:"69,000", trans:"3.5L V6 · 4WD · 278hp", price:"17,999", priceNote:"Monto a financiar desde", photo:"assets/carros/tacoma-2021-1.jpg" },
+    { year:2023, make:"Hyundai", model:"Santa Fe Calligraphy", type:"suv", miles:"36,000", trans:"2.5T · AWD", price:"14,999", priceNote:"Monto a financiar desde", photo:"assets/carros/santafe-2023-1.jpg" },
+    { year:2019, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"109,000", trans:"Automática · AWD", price:"10,999", priceNote:"Monto a financiar desde", photo:"assets/carros/highlander-2019-1.jpg" },
+    { year:2021, make:"Toyota", model:"Sienna XLE Hybrid", type:"minivan", miles:"99,000", trans:"Híbrida · AWD", price:"18,999", priceNote:"Monto a financiar desde", photo:"assets/carros/sienna-2021-1.jpg" },
+    { year:2022, make:"Hyundai", model:"Palisade Calligraphy", type:"suv", miles:"65,000", trans:"Automática", price:"13,999", priceNote:"Monto a financiar desde", photo:"assets/carros/palisade-2022-1.jpg" },
+    { year:2022, make:"Chevrolet", model:"Suburban Premier", type:"suv", miles:"106,000", trans:"Automática", price:"19,999", priceNote:"Monto a financiar desde", photo:"assets/carros/suburban-2022-1.jpg" },
+    { year:2025, make:"Hyundai", model:"Tucson", type:"suv", miles:"35,000", trans:"Automática", price:"13,999", priceNote:"Monto a financiar desde", photo:"assets/carros/tucson-2025-1.jpg" },
+  ];
+
+  const icons = {
+    pickup: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M2 26h4l4-10h14v10h4V10h10l8 8v8h4v4H2z" opacity="0"/><path d="M4 27c0-1.5 1-3 3-3h2l3-9c1-2.6 3-4 6-4h9v13h4l3-3h9c2 0 4 1.4 5 3.4l2 4.6h1c1.5 0 3 1.5 3 3v1H4z" /><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
+    suv: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M6 26c-2 0-3-1.6-3-3.4 0-1.6 1-2.9 2.6-3.3l3-8.6C9.4 8.4 11.6 7 14 7h30c2.6 0 5 1.6 6 4l3 8c2 .3 3.2 1.7 3.2 3.6 0 2-1.6 3.4-3.6 3.4H6z"/><circle cx="17" cy="30" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="30" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
+    sedan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M5 27c-2 0-3-1.5-3-3.2 0-1.6 1.1-2.9 2.7-3.2l2.6-6C8.6 11.4 11 9.5 14 9.5h9l5-4h8l4 4h6c3 0 5.6 2 6.6 4.9l2 5.2c1.6.3 2.7 1.6 2.7 3.2 0 1.7-1 3.2-3 3.2H5z"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
+    minivan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M4 27c-2 0-3-1.6-3-3.4 0-1.6 1-2.9 2.6-3.3l1-6.6C5.2 10.4 8 8 11.5 8h32c3.6 0 6.7 2.5 7.4 6l1.3 6.3c1.7.3 2.8 1.7 2.8 3.3 0 1.9-1.4 3.4-3.4 3.4H4z"/><rect x="14" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="27" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="40" y="12" width="9" height="8" rx="1" fill="var(--charcoal)"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`
+  };
+  const typeLabel = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan" };
+
+  const grid = document.getElementById('carsGrid');
+
+  function render(filter){
+    grid.innerHTML = "";
+    vehicles
+      .filter(v => filter === "all" || v.type === filter)
+      .forEach(v => {
+        const card = document.createElement('div');
+        card.className = "car-card";
+        card.innerHTML = `
+          <div class="car-photo">
+            ${!v.photo ? `<span class="car-tag">Ejemplo</span>` : ``}
+            ${v.photo ? `<img src="${v.photo}" alt="${v.make} ${v.model}" style="width:100%;height:100%;object-fit:cover;">` : icons[v.type]}
+          </div>
+          <div class="car-body">
+            <h3>${v.year} ${v.make} ${v.model}</h3>
+            <div class="car-sub">${typeLabel[v.type]}</div>
+            <div class="car-specs">
+              <span>🛣️ ${v.miles} mi</span>
+              <span>⚙️ ${v.trans}</span>
+            </div>
+            <div class="car-price-row">
+              <div>
+                ${v.priceNote ? `<div style="font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;">${v.priceNote}</div>` : ``}
+                <div class="car-price">$${v.price}</div>
+              </div>
+              <a class="car-cta" target="_blank" href="https://wa.me/15714246410?text=${encodeURIComponent('Hola, me interesa el '+v.year+' '+v.make+' '+v.model)}">Preguntar</a>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+  }
+  render("all");
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(btn.dataset.filter);
+    });
+  });
+</script>
+
+</body>
+</html>
