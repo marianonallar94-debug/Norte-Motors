@@ -594,9 +594,9 @@
 
   /* =========================================================
      INVENTARIO — edita esta lista con tus carros reales.
-     type: "pickup" | "suv" | "sedan"
+     type: "pickup" | "suv" | "sedan" | "minivan"
      photo: pon aquí el nombre del archivo de la foto (ej: "assets/carros/ram-1500.jpg")
-            si lo dejas en null, se muestra un ícono de silueta.
+            si lo dejas en null, se muestra un ícono de silueta con "Foto próximamente".
      ========================================================= */
   const vehicles = [
     { year:2021, make:"Toyota", model:"Tacoma TRD Off Road 4x4", type:"pickup", miles:"69,000", trans:"3.5L V6 · 4WD · 278hp", price:"17,999", priceNote:"Monto a financiar desde", photo:"assets/carros/tacoma-2021-1.jpg" },
@@ -608,6 +608,21 @@
     { year:2025, make:"Hyundai", model:"Tucson", type:"suv", miles:"35,000", trans:"Automática", price:"13,999", priceNote:"Monto a financiar desde", photo:"assets/carros/tucson-2025-1.jpg" },
     { year:2021, make:"Toyota", model:"Highlander Limited", type:"suv", miles:"103,020", trans:"Automática", price:"15,999", priceNote:"Monto a financiar desde", photo:"assets/carros/highlander-2021-1.jpg" },
     { year:2024, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"11,400", trans:"Automática", price:"11,999", priceNote:"Monto a financiar desde", photo:"assets/carros/corolla-2024-2.jpg" },
+    { year:2026, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"22,935", trans:"Gasolina · Automática", price:"17,100", priceNote:"Monto a financiar desde", totalPrice:"28,550", photo:null },
+    { year:2024, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"34,536", trans:"Gasolina · Automática", price:"19,550", priceNote:"Monto a financiar desde", totalPrice:"32,650", photo:null },
+    { year:2023, make:"Hyundai", model:"Tucson Limited", type:"suv", miles:"76,092", trans:"Gasolina · Automática", price:"16,050", priceNote:"Monto a financiar desde", totalPrice:"26,750", photo:null },
+    { year:2018, make:"Toyota", model:"RAV4 SE", type:"suv", miles:"136,922", trans:"Gasolina · Automática", price:"11,100", priceNote:"Monto a financiar desde", totalPrice:"18,550", photo:null },
+    { year:2024, make:"Hyundai", model:"Palisade SEL", type:"suv", miles:"68,199", trans:"Gasolina · Automática", price:"20,900", priceNote:"Monto a financiar desde", totalPrice:"34,850", photo:null },
+    { year:2020, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"102,588", trans:"Gasolina · Automática", price:"9,450", priceNote:"Monto a financiar desde", totalPrice:"15,800", photo:null },
+    { year:2022, make:"Chevrolet", model:"Silverado High Country", type:"pickup", miles:"74,993", trans:"Gasolina · Automática", price:"25,350", priceNote:"Monto a financiar desde", totalPrice:"42,300", photo:null },
+    { year:2019, make:"Ford", model:"F-150 Lariat", type:"pickup", miles:"155,131", trans:"Diesel · Automática", price:"15,400", priceNote:"Monto a financiar desde", totalPrice:"25,700", photo:null },
+    { year:2020, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"95,030", trans:"Gasolina · Automática", price:"11,100", priceNote:"Monto a financiar desde", totalPrice:"18,500", photo:null },
+    { year:2018, make:"Hyundai", model:"Tucson SE", type:"suv", miles:"90,681", trans:"Gasolina · Automática", price:"9,150", priceNote:"Monto a financiar desde", totalPrice:"15,250", photo:null },
+    { year:2018, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"124,540", trans:"Gasolina · Automática", price:"8,400", priceNote:"Monto a financiar desde", totalPrice:"14,000", photo:null },
+    { year:2020, make:"Chevrolet", model:"Tahoe LT", type:"suv", miles:"122,058", trans:"Gasolina · Automática", price:"16,200", priceNote:"Monto a financiar desde", totalPrice:"27,000", photo:null },
+    { year:2023, make:"RAM", model:"1500 SLT", type:"pickup", miles:"84,768", trans:"Gasolina · Automática", price:"19,500", priceNote:"Monto a financiar desde", totalPrice:"32,550", photo:null },
+    { year:2022, make:"GMC", model:"Sierra Limited AT4", type:"pickup", miles:"127,130", trans:"Gasolina · Automática", price:"23,700", priceNote:"Monto a financiar desde", totalPrice:"39,550", photo:null },
+    { year:2020, make:"Chevrolet", model:"Tahoe LT", type:"suv", miles:"105,687", trans:"Gasolina · Automática", price:"20,100", priceNote:"Monto a financiar desde", totalPrice:"33,550", photo:null },
   ];
 
   const icons = {
@@ -629,7 +644,7 @@
         card.className = "car-card";
         card.innerHTML = `
           <div class="car-photo">
-            ${!v.photo ? `<span class="car-tag">Ejemplo</span>` : ``}
+            ${!v.photo ? `<span class="car-tag">Foto próximamente</span>` : ``}
             ${v.photo ? `<img src="${v.photo}" alt="${v.make} ${v.model}" style="width:100%;height:100%;object-fit:cover;">` : icons[v.type]}
           </div>
           <div class="car-body">
