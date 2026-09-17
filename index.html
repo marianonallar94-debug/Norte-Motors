@@ -168,6 +168,15 @@
   }
   .filter-btn.active,.filter-btn:hover{background:var(--black);color:#fff;}
 
+  .filters-extra{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;align-items:center;}
+  .filter-input{
+    font-family:'Inter',sans-serif;font-size:13.5px;color:var(--black);
+    padding:10px 14px;border:1.5px solid var(--gray-line);border-radius:3px;background:#fff;
+  }
+  .filter-input:focus{outline:none;border-color:var(--red);}
+  .filter-input-price{width:120px;}
+  #filterModel{width:180px;}
+
   .grid-cars{
     display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
   }
@@ -384,6 +393,24 @@
       <button class="filter-btn" data-filter="suv">SUVs</button>
       <button class="filter-btn" data-filter="sedan">Sedanes</button>
       <button class="filter-btn" data-filter="minivan">Minivans</button>
+      <button class="filter-btn" data-filter="hatchback">Hatchbacks</button>
+      <button class="filter-btn" data-filter="coupe">Coupés</button>
+      <button class="filter-btn" data-filter="convertible">Convertibles</button>
+    </div>
+
+    <div class="filters-extra">
+      <select id="filterBrand" class="filter-input">
+        <option value="all">Todas las marcas</option>
+      </select>
+      <input type="text" id="filterModel" class="filter-input" placeholder="Buscar modelo...">
+      <input type="number" id="filterMinPrice" class="filter-input filter-input-price" placeholder="Precio mín.">
+      <input type="number" id="filterMaxPrice" class="filter-input filter-input-price" placeholder="Precio máx.">
+      <select id="filterSort" class="filter-input">
+        <option value="default">Ordenar por</option>
+        <option value="price-asc">Precio: menor a mayor</option>
+        <option value="price-desc">Precio: mayor a menor</option>
+      </select>
+      <button type="button" id="filterReset" class="filter-input" style="cursor:pointer;background:var(--off);">Limpiar filtros</button>
     </div>
 
     <div class="grid-cars" id="carsGrid"></div>
@@ -599,30 +626,136 @@
             si lo dejas en null, se muestra un ícono de silueta con "Foto próximamente".
      ========================================================= */
   const vehicles = [
-    { year:2021, make:"Toyota", model:"Tacoma TRD Off Road 4x4", type:"pickup", miles:"69,000", trans:"3.5L V6 · 4WD · 278hp", price:"17,999", priceNote:"Monto a financiar desde", photo:"assets/carros/tacoma-2021-1.jpg" },
-    { year:2023, make:"Hyundai", model:"Santa Fe Calligraphy", type:"suv", miles:"36,000", trans:"2.5T · AWD", price:"14,999", priceNote:"Monto a financiar desde", photo:"assets/carros/santafe-2023-1.jpg" },
-    { year:2019, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"109,000", trans:"Automática · AWD", price:"10,999", priceNote:"Monto a financiar desde", photo:"assets/carros/highlander-2019-1.jpg" },
-    { year:2021, make:"Toyota", model:"Sienna XLE Hybrid", type:"minivan", miles:"99,000", trans:"Híbrida · AWD", price:"18,999", priceNote:"Monto a financiar desde", photo:"assets/carros/sienna-2021-1.jpg" },
-    { year:2022, make:"Hyundai", model:"Palisade Calligraphy", type:"suv", miles:"65,000", trans:"Automática", price:"13,999", priceNote:"Monto a financiar desde", photo:"assets/carros/palisade-2022-1.jpg" },
-    { year:2022, make:"Chevrolet", model:"Suburban Premier", type:"suv", miles:"106,000", trans:"Automática", price:"19,999", priceNote:"Monto a financiar desde", photo:"assets/carros/suburban-2022-1.jpg" },
-    { year:2025, make:"Hyundai", model:"Tucson", type:"suv", miles:"35,000", trans:"Automática", price:"13,999", priceNote:"Monto a financiar desde", photo:"assets/carros/tucson-2025-1.jpg" },
-    { year:2021, make:"Toyota", model:"Highlander Limited", type:"suv", miles:"103,020", trans:"Automática", price:"15,999", priceNote:"Monto a financiar desde", photo:"assets/carros/highlander-2021-1.jpg" },
-    { year:2024, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"11,400", trans:"Automática", price:"11,999", priceNote:"Monto a financiar desde", photo:"assets/carros/corolla-2024-2.jpg" },
-    { year:2026, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"22,935", trans:"Gasolina · Automática", price:"17,100", priceNote:"Monto a financiar desde", totalPrice:"28,550", photo:"assets/carros/corolla-2026-1.jpg" },
-    { year:2024, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"34,536", trans:"Gasolina · Automática", price:"19,550", priceNote:"Monto a financiar desde", totalPrice:"32,650", photo:"assets/carros/rav4-2024-1.jpg" },
-    { year:2023, make:"Hyundai", model:"Tucson Limited", type:"suv", miles:"76,092", trans:"Gasolina · Automática", price:"16,050", priceNote:"Monto a financiar desde", totalPrice:"26,750", photo:"assets/carros/tucson-2023-1.jpg" },
-    { year:2018, make:"Toyota", model:"RAV4 SE", type:"suv", miles:"136,922", trans:"Gasolina · Automática", price:"11,100", priceNote:"Monto a financiar desde", totalPrice:"18,550", photo:"assets/carros/rav4-2018-1.jpg" },
-    { year:2024, make:"Hyundai", model:"Palisade SEL", type:"suv", miles:"68,199", trans:"Gasolina · Automática", price:"20,900", priceNote:"Monto a financiar desde", totalPrice:"34,850", photo:"assets/carros/palisade-2024-1.jpg" },
-    { year:2020, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"102,588", trans:"Gasolina · Automática", price:"9,450", priceNote:"Monto a financiar desde", totalPrice:"15,800", photo:"assets/carros/tucson-2020-1.jpg" },
-    { year:2022, make:"Chevrolet", model:"Silverado High Country", type:"pickup", miles:"74,993", trans:"Gasolina · Automática", price:"25,350", priceNote:"Monto a financiar desde", totalPrice:"42,300", photo:"assets/carros/silverado-2022-1.jpg" },
-    { year:2019, make:"Ford", model:"F-150 Lariat", type:"pickup", miles:"155,131", trans:"Diesel · Automática", price:"15,400", priceNote:"Monto a financiar desde", totalPrice:"25,700", photo:"assets/carros/f150-2019-1.jpg" },
-    { year:2020, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"95,030", trans:"Gasolina · Automática", price:"11,100", priceNote:"Monto a financiar desde", totalPrice:"18,500", photo:"assets/carros/tucson-2020-2.jpg" },
-    { year:2018, make:"Hyundai", model:"Tucson SE", type:"suv", miles:"90,681", trans:"Gasolina · Automática", price:"9,150", priceNote:"Monto a financiar desde", totalPrice:"15,250", photo:"assets/carros/tucson-2018-1.jpg" },
-    { year:2018, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"124,540", trans:"Gasolina · Automática", price:"8,400", priceNote:"Monto a financiar desde", totalPrice:"14,000", photo:"assets/carros/rav4-2018-2.jpg" },
-    { year:2020, make:"Chevrolet", model:"Tahoe LT", type:"suv", miles:"122,058", trans:"Gasolina · Automática", price:"16,200", priceNote:"Monto a financiar desde", totalPrice:"27,000", photo:"assets/carros/tahoe-2020-1.jpg" },
-    { year:2023, make:"RAM", model:"1500 SLT", type:"pickup", miles:"84,768", trans:"Gasolina · Automática", price:"19,500", priceNote:"Monto a financiar desde", totalPrice:"32,550", photo:"assets/carros/ram1500-2023-1.jpg" },
-    { year:2022, make:"GMC", model:"Sierra Limited AT4", type:"pickup", miles:"127,130", trans:"Gasolina · Automática", price:"23,700", priceNote:"Monto a financiar desde", totalPrice:"39,550", photo:"assets/carros/sierra-2022-1.jpg" },
-    { year:2020, make:"Chevrolet", model:"Tahoe LT", type:"suv", miles:"105,687", trans:"Gasolina · Automática", price:"20,100", priceNote:"Monto a financiar desde", totalPrice:"33,550", photo:"assets/carros/tahoe-2020-2.jpg" },
+    { year:2023, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"95,051", trans:"Gasolina · Automática", price:"22,395", priceNote:"Monto a financiar desde", vin:"2T3W1RFV5PC214343", photo:"assets/carros/rav4-2023-1.jpg" },
+    { year:2023, make:"Hyundai", model:"Tucson Limited", type:"suv", miles:"76,092", trans:"Gasolina · Automática", price:"19,810", priceNote:"Monto a financiar desde", vin:"5NMJE3AEXPH203943", photo:"assets/carros/tucson-2023-2.jpg" },
+    { year:2025, make:"Toyota", model:"Camry SE", type:"sedan", miles:"38,887", trans:"Híbrido · Automática", price:"26,095", priceNote:"Monto a financiar desde", vin:"4T1DAACK5SU602823", photo:"assets/carros/camry-2025-1.jpg" },
+    { year:2024, make:"Nissan", model:"Pathfinder SV", type:"suv", miles:"46,109", trans:"Gasolina · Automática", price:"24,630", priceNote:"Monto a financiar desde", vin:"5N1DR3BA3RC296721", photo:"assets/carros/pathfinder-2024-1.jpg" },
+    { year:2023, make:"Honda", model:"CR-V EX-L", type:"suv", miles:"47,819", trans:"Gasolina · Automática", price:"26,500", priceNote:"Monto a financiar desde", vin:"7FARS3H72PE010226", photo:"assets/carros/crv-2023-1.jpg" },
+    { year:2022, make:"Toyota", model:"Tundra SR5", type:"pickup", miles:"107,405", trans:"Gasolina · Automática", price:"28,190", priceNote:"Monto a financiar desde", vin:"5TFLA5EC3NX009445", photo:"assets/carros/tundra-2022-1.jpg" },
+    { year:2023, make:"Toyota", model:"Tundra SR5", type:"pickup", miles:"105,969", trans:"Gasolina · Automática", price:"30,915", priceNote:"Monto a financiar desde", vin:"5TFLA5DB8PX097940", photo:"assets/carros/tundra-2023-1.jpg" },
+    { year:2022, make:"Chevrolet", model:"Silverado High Country", type:"pickup", miles:"74,993", trans:"Gasolina · Automática", price:"31,345", priceNote:"Monto a financiar desde", vin:"3GCPAFED5NG574820", photo:"assets/carros/silverado-2022-2.jpg" },
+    { year:2018, make:"Chevrolet", model:"Suburban Premier", type:"suv", miles:"109,992", trans:"Gasolina · Automática", price:"22,315", priceNote:"Monto a financiar desde", vin:"1GNSKJKC4JR350218", photo:"assets/carros/suburban-2018-1.jpg" },
+    { year:2019, make:"Honda", model:"Odyssey Touring", type:"minivan", miles:"97,775", trans:"Gasolina · Automática", price:"20,850", priceNote:"Monto a financiar desde", vin:"5FNRL6H8XKB000765", photo:"assets/carros/odyssey-2019-1.jpg" },
+    { year:2019, make:"Honda", model:"CR-V EX-L", type:"suv", miles:"110,646", trans:"Gasolina · Automática", price:"17,370", priceNote:"Monto a financiar desde", vin:"2HKRW2H82KH639949", photo:"assets/carros/crv-2019-1.jpg" },
+    { year:2023, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"122,837", trans:"Gasolina · Automática", price:"29,955", priceNote:"Monto a financiar desde", vin:"1FTFW1E8XPFC62354", photo:"assets/carros/f150-2023-1.jpg" },
+    { year:2023, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"90,213", trans:"Gasolina · Automática", price:"28,405", priceNote:"Monto a financiar desde", vin:"5TDKDRAH8PS004410", photo:"assets/carros/highlander-2023-1.jpg" },
+    { year:2016, make:"GMC", model:"Sierra SLT", type:"pickup", miles:"102,524", trans:"Gasolina · Automática", price:"24,496", priceNote:"Monto a financiar desde", vin:"3GTU2NECXGG323232", photo:"assets/carros/sierra-2016-1.jpg" },
+    { year:2025, make:"Honda", model:"Accord SE", type:"sedan", miles:"44,650", trans:"Gasolina · Automática", price:"23,245", priceNote:"Monto a financiar desde", vin:"1HGCY1F45SA055774", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"113,425", trans:"Gasolina · Automática", price:"23,085", priceNote:"Monto a financiar desde", vin:"2T3RWRFV2PW178463", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"107,082", trans:"Híbrido · Automática", price:"21,515", priceNote:"Monto a financiar desde", vin:"JTMMWRFV5PD577729", photo:null },
+    { year:2020, make:"Honda", model:"CR-V Touring", type:"suv", miles:"79,941", trans:"Híbrido · Automática", price:"23,735", priceNote:"Monto a financiar desde", vin:"7FART6H98LE022732", photo:null },
+    { year:2021, make:"Toyota", model:"C-Hr LE", type:"suv", miles:"108,425", trans:"Gasolina · Automática", price:"13,700", priceNote:"Monto a financiar desde", vin:"NMTKHMBX0MR123950", photo:null },
+    { year:2022, make:"Ford", model:"F-150 Lariat", type:"pickup", miles:"119,759", trans:"Gasolina · Automática", price:"29,415", priceNote:"Monto a financiar desde", vin:"1FTEW1EP4NKD52753", photo:null },
+    { year:2021, make:"Chevrolet", model:"Silverado RST", type:"pickup", miles:"109,129", trans:"Gasolina · Automática", price:"31,124", priceNote:"Monto a financiar desde", vin:"1GCUYEED8MZ161409", photo:null },
+    { year:2018, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"93,661", trans:"Diesel · Automática", price:"21,464", priceNote:"Monto a financiar desde", vin:"1C6RR6NM4JS256411", photo:null },
+    { year:2023, make:"Toyota", model:"Camry SE", type:"sedan", miles:"117,989", trans:"Híbrido · Automática", price:"16,875", priceNote:"Monto a financiar desde", vin:"4T1S31AK1PU055139", photo:null },
+    { year:2022, make:"Ford", model:"F-150 XLT", type:"pickup", miles:"89,424", trans:"Gasolina · Automática", price:"25,945", priceNote:"Monto a financiar desde", vin:"1FTEW1CP0NKE42226", photo:null },
+    { year:2022, make:"Honda", model:"Accord EX-L", type:"sedan", miles:"99,913", trans:"Gasolina · Automática", price:"22,165", priceNote:"Monto a financiar desde", vin:"1HGCV1F54NA029608", photo:null },
+    { year:2020, make:"Toyota", model:"RAV4 XLE Premium", type:"suv", miles:"109,362", trans:"Gasolina · Automática", price:"22,475", priceNote:"Monto a financiar desde", vin:"JTMC1RFV4LD046669", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"129,211", trans:"Gasolina · Automática", price:"21,840", priceNote:"Monto a financiar desde", vin:"2T3P1RFV9PW335914", photo:null },
+    { year:2024, make:"Honda", model:"CR-V EX-L", type:"suv", miles:"60,342", trans:"Gasolina · Automática", price:"28,650", priceNote:"Monto a financiar desde", vin:"2HKRS4H74RH471885", photo:null },
+    { year:2020, make:"RAM", model:"1500 Big Horn", type:"pickup", miles:"117,000", trans:"Gasolina · Automática", price:"23,500", priceNote:"Monto a financiar desde", vin:"1C6SRFBT8LN267958", photo:null },
+    { year:2020, make:"RAM", model:"1500 Limited", type:"pickup", miles:"105,000", trans:"Diesel · Automática", price:"29,410", priceNote:"Monto a financiar desde", vin:"1C6RREHM7LN246169", photo:null },
+    { year:2023, make:"Ford", model:"F-150 XLT", type:"pickup", miles:"84,295", trans:"Gasolina · Automática", price:"29,710", priceNote:"Monto a financiar desde", vin:"1FTEW1C81PKD44656", photo:null },
+    { year:2021, make:"Toyota", model:"RAV4 LE Hv", type:"suv", miles:"111,226", trans:"Gasolina · Automática", price:"21,310", priceNote:"Monto a financiar desde", vin:"JTMM6RFV0MD007262", photo:null },
+    { year:2020, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"104,266", trans:"Gasolina · Automática", price:"17,535", priceNote:"Monto a financiar desde", vin:"JTDEPRAE3LJ059915", photo:null },
+    { year:2020, make:"Ford", model:"F-150 Lariat", type:"pickup", miles:"119,965", trans:"Gasolina · Automática", price:"24,190", priceNote:"Monto a financiar desde", vin:"1FTFW1E4XLKD03130", photo:null },
+    { year:2020, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"102,240", trans:"Gasolina · Automática", price:"13,395", priceNote:"Monto a financiar desde", vin:"KM8J3CAL9LU164362", photo:null },
+    { year:2022, make:"Toyota", model:"Camry SE", type:"sedan", miles:"105,369", trans:"Híbrido · Automática", price:"19,010", priceNote:"Monto a financiar desde", vin:"4T1G31AK9NU575897", photo:null },
+    { year:2020, make:"RAM", model:"1500 Big Horn", type:"pickup", miles:"93,466", trans:"Diesel · Automática", price:"25,855", priceNote:"Monto a financiar desde", vin:"1C6SRFFM5LN223838", photo:null },
+    { year:2021, make:"Audi", model:"Q5 Quattro Premium", type:"suv", miles:"76,218", trans:"Gasolina · Automática", price:"17,560", priceNote:"Monto a financiar desde", vin:"WA1AAAFY5M2003162", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 XSE", type:"suv", miles:"128,850", trans:"Gasolina · Automática", price:"25,345", priceNote:"Monto a financiar desde", vin:"4T3E6RFV5PU122869", photo:null },
+    { year:2023, make:"Toyota", model:"Tundra SR5", type:"pickup", miles:"78,014", trans:"Gasolina · Automática", price:"31,720", priceNote:"Monto a financiar desde", vin:"5TFLA5DB7PX100875", photo:null },
+    { year:2023, make:"Audi", model:"Q5 Quattro Premium", type:"suv", miles:"76,134", trans:"Gasolina · Automática", price:"18,020", priceNote:"Monto a financiar desde", vin:"WA1ABAFY5P2002675", photo:null },
+    { year:2025, make:"Hyundai", model:"Tucson SEL", type:"suv", miles:"65,539", trans:"Gasolina · Automática", price:"17,995", priceNote:"Monto a financiar desde", vin:"5NMJB3DE7SH545699", photo:null },
+    { year:2024, make:"Nissan", model:"Rogue SL", type:"suv", miles:"104,918", trans:"Gasolina · Automática", price:"18,007", priceNote:"Monto a financiar desde", vin:"JN8BT3CA0RW356100", photo:null },
+    { year:2022, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"84,642", trans:"Híbrido · Automática", price:"25,705", priceNote:"Monto a financiar desde", vin:"4T3RWRFV9NU071987", photo:null },
+    { year:2021, make:"Ford", model:"Expedition Limited", type:"suv", miles:"93,057", trans:"Gasolina · Automática", price:"28,140", priceNote:"Monto a financiar desde", vin:"1FMJU1KT6MEA53456", photo:null },
+    { year:2018, make:"Ford", model:"F-150 Platinum", type:"pickup", miles:"95,208", trans:"Gasolina · Automática", price:"29,000", priceNote:"Monto a financiar desde", vin:"1FTEW1EG0JFC37327", photo:null },
+    { year:2022, make:"Toyota", model:"Tacoma SR5", type:"pickup", miles:"109,330", trans:"Gasolina · Automática", price:"28,170", priceNote:"Monto a financiar desde", vin:"3TMCZ5AN2NM486292", photo:null },
+    { year:2022, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"119,541", trans:"Gasolina · Automática", price:"26,010", priceNote:"Monto a financiar desde", vin:"5TDHBRCH7NS557169", photo:null },
+    { year:2023, make:"Honda", model:"Accord EX-L", type:"sedan", miles:"102,322", trans:"Híbrido · Automática", price:"20,630", priceNote:"Monto a financiar desde", vin:"1HGCY2F66PA033328", photo:null },
+    { year:2025, make:"Toyota", model:"Corolla SE", type:"sedan", miles:"87,482", trans:"Gasolina · Automática", price:"18,835", priceNote:"Monto a financiar desde", vin:"5YFS4MCE1SP218081", photo:null },
+    { year:2021, make:"Toyota", model:"Sienna XLE Plus Package", type:"minivan", miles:"100,029", trans:"Gasolina · Automática", price:"28,120", priceNote:"Monto a financiar desde", vin:"5TDJSKFC0MS034180", photo:null },
+    { year:2022, make:"Toyota", model:"RAV4 XLE Premium", type:"suv", miles:"93,735", trans:"Gasolina · Automática", price:"24,065", priceNote:"Monto a financiar desde", vin:"2T3C1RFV6NC187458", photo:null },
+    { year:2022, make:"Honda", model:"Pilot SE", type:"suv", miles:"108,831", trans:"Gasolina · Automática", price:"21,035", priceNote:"Monto a financiar desde", vin:"5FNYF6H2XNB003328", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"90,024", trans:"Gasolina · Automática", price:"22,220", priceNote:"Monto a financiar desde", vin:"2T3F1RFVXPW380775", photo:null },
+    { year:2021, make:"Toyota", model:"Sienna Platinum", type:"minivan", miles:"118,346", trans:"Gasolina · Automática", price:"31,470", priceNote:"Monto a financiar desde", vin:"5TDESKFC7MS022769", photo:null },
+    { year:2022, make:"Toyota", model:"RAV4 XLE Premium", type:"suv", miles:"104,799", trans:"Gasolina · Automática", price:"24,065", priceNote:"Monto a financiar desde", vin:"2T3C1RFV7NW192957", photo:null },
+    { year:2023, make:"Audi", model:"Q5 Quattro Premium", type:"suv", miles:"60,624", trans:"Gasolina · Automática", price:"20,600", priceNote:"Monto a financiar desde", vin:"WA1ABAFY0P2031520", photo:null },
+    { year:2019, make:"Chevrolet", model:"Silverado RST", type:"pickup", miles:"119,720", trans:"Gasolina · Automática", price:"22,975", priceNote:"Monto a financiar desde", vin:"3GCPWDED9KG169383", photo:null },
+    { year:2021, make:"Chevrolet", model:"Silverado RST", type:"pickup", miles:"108,742", trans:"Diesel · Automática", price:"22,850", priceNote:"Monto a financiar desde", vin:"3GCUYEET0MG306014", photo:null },
+    { year:2020, make:"Hyundai", model:"Tucson SEL", type:"suv", miles:"44,289", trans:"Gasolina · Automática", price:"13,800", priceNote:"Monto a financiar desde", vin:"KM8J33ALXLU188475", photo:null },
+    { year:2022, make:"Ford", model:"Bronco Sport Outer Banks", type:"suv", miles:"118,416", trans:"Gasolina · Automática", price:"16,075", priceNote:"Monto a financiar desde", vin:"3FMCR9C63NRD16969", photo:null },
+    { year:2018, make:"Chevrolet", model:"Suburban LT", type:"suv", miles:"127,252", trans:"Gasolina · Automática", price:"19,590", priceNote:"Monto a financiar desde", vin:"1GNSKHKC0JR117610", photo:null },
+    { year:2024, make:"Honda", model:"CR-V LX", type:"suv", miles:"115,011", trans:"Gasolina · Automática", price:"22,230", priceNote:"Monto a financiar desde", vin:"5J6RS4H23RL002765", photo:null },
+    { year:2022, make:"Toyota", model:"Camry SE", type:"sedan", miles:"98,067", trans:"Gasolina · Automática", price:"17,245", priceNote:"Monto a financiar desde", vin:"4T1G11AK0NU648287", photo:null },
+    { year:2025, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"83,251", trans:"Gasolina · Automática", price:"26,360", priceNote:"Monto a financiar desde", vin:"2T3P1RFV3SW518492", photo:null },
+    { year:2022, make:"Chevrolet", model:"Silverado LTD LT", type:"pickup", miles:"103,746", trans:"Gasolina · Automática", price:"25,550", priceNote:"Monto a financiar desde", vin:"3GCUYDED5NG164120", photo:null },
+    { year:2019, make:"Audi", model:"Q5 Quattro Premium Plus", type:"suv", miles:"89,662", trans:"Gasolina · Automática", price:"15,310", priceNote:"Monto a financiar desde", vin:"WA1BNAFY8K2068836", photo:null },
+    { year:2019, make:"Honda", model:"CR-V Touring", type:"suv", miles:"122,673", trans:"Gasolina · Automática", price:"23,969", priceNote:"Monto a financiar desde", vin:"7FARW1H98KE012243", photo:null },
+    { year:2018, make:"Toyota", model:"Highlander Limited Platinum", type:"suv", miles:"108,326", trans:"Gasolina · Automática", price:"19,690", priceNote:"Monto a financiar desde", vin:"5TDYZRFHXJS235501", photo:null },
+    { year:2023, make:"Honda", model:"Accord EX-L", type:"sedan", miles:"127,433", trans:"Gasolina · Automática", price:"17,385", priceNote:"Monto a financiar desde", vin:"1HGCY2F69PA013686", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"110,759", trans:"Gasolina · Automática", price:"21,235", priceNote:"Monto a financiar desde", vin:"JTMH1RFV9PD103203", photo:null },
+    { year:2022, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"82,885", trans:"Gasolina · Automática", price:"14,060", priceNote:"Monto a financiar desde", vin:"JTDEPMAE3N3015617", photo:null },
+    { year:2023, make:"Toyota", model:"Highlander LE", type:"suv", miles:"113,333", trans:"Gasolina · Automática", price:"26,370", priceNote:"Monto a financiar desde", vin:"5TDKDRAH2PS023664", photo:null },
+    { year:2023, make:"Nissan", model:"Rogue SL", type:"suv", miles:"68,979", trans:"Gasolina · Automática", price:"20,040", priceNote:"Monto a financiar desde", vin:"JN8BT3CB4PW483230", photo:null },
+    { year:2012, make:"Nissan", model:"Altima Base", type:"sedan", miles:"217,440", trans:"Gasolina · Automática", price:"500", priceNote:"Monto a financiar desde", vin:"1N4AL2AP8CN535125", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"115,853", trans:"Gasolina · Automática", price:"22,730", priceNote:"Monto a financiar desde", vin:"4T3RWRFV9PU091093", photo:null },
+    { year:2023, make:"Nissan", model:"Rogue SL", type:"suv", miles:"41,514", trans:"Gasolina · Automática", price:"22,015", priceNote:"Monto a financiar desde", vin:"5N1BT3CB6PC828136", photo:null },
+    { year:2026, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"22,935", trans:"Gasolina · Automática", price:"21,150", priceNote:"Monto a financiar desde", vin:"JTDB4MEE5T3032616", photo:null },
+    { year:2019, make:"Ford", model:"F-150 Lariat", type:"pickup", miles:"155,131", trans:"Diesel · Automática", price:"19,025", priceNote:"Monto a financiar desde", vin:"1FTFW1E17KFA41290", photo:null },
+    { year:2018, make:"Hyundai", model:"Tucson SE Pop", type:"suv", miles:"90,681", trans:"Gasolina · Automática", price:"11,295", priceNote:"Monto a financiar desde", vin:"KM8J3CA2XJU738665", photo:null },
+    { year:2018, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"124,540", trans:"Gasolina · Automática", price:"10,380", priceNote:"Monto a financiar desde", vin:"2T3ZFREV4JW415334", photo:null },
+    { year:2023, make:"RAM", model:"1500 SLT", type:"pickup", miles:"84,768", trans:"Gasolina · Automática", price:"24,095", priceNote:"Monto a financiar desde", vin:"1C6RR7LG1PS519126", photo:null },
+    { year:2022, make:"GMC", model:"Sierra Limited AT4", type:"pickup", miles:"127,130", trans:"Gasolina · Automática", price:"29,305", priceNote:"Monto a financiar desde", vin:"3GTP9EEL8NG197314", photo:null },
+    { year:2020, make:"Chevrolet", model:"Tahoe LT", type:"suv", miles:"105,687", trans:"Gasolina · Automática", price:"24,850", priceNote:"Monto a financiar desde", vin:"1GNSCBKC6LR101098", photo:null },
+    { year:2020, make:"Honda", model:"Odyssey EX", type:"minivan", miles:"122,681", trans:"Gasolina · Automática", price:"19,915", priceNote:"Monto a financiar desde", vin:"5FNRL6H59LB072645", photo:null },
+    { year:2020, make:"Ford", model:"F-150 Limited", type:"pickup", miles:"115,246", trans:"Gasolina · Automática", price:"25,765", priceNote:"Monto a financiar desde", vin:"1FTEW1EGXLFA81042", photo:null },
+    { year:2023, make:"Hyundai", model:"Tucson SEL Con Convenience Package", type:"suv", miles:"33,226", trans:"Gasolina · Automática", price:"19,840", priceNote:"Monto a financiar desde", vin:"5NMJFCAE4PH279431", photo:null },
+    { year:2022, make:"Chevrolet", model:"Traverse Premier", type:"suv", miles:"100,451", trans:"Gasolina · Automática", price:"20,635", priceNote:"Monto a financiar desde", vin:"1GNERKKW7NJ125725", photo:null },
+    { year:2021, make:"Toyota", model:"Highlander Limited", type:"suv", miles:"103,020", trans:"Gasolina · Automática", price:"24,570", priceNote:"Monto a financiar desde", vin:"5TDYZRAH7MS538019", photo:null },
+    { year:2022, make:"Toyota", model:"Highlander LE", type:"suv", miles:"68,388", trans:"Gasolina · Automática", price:"22,445", priceNote:"Monto a financiar desde", vin:"5TDZZRAH0NS539924", photo:null },
+    { year:2022, make:"Honda", model:"Pilot SE", type:"suv", miles:"111,674", trans:"Gasolina · Automática", price:"22,420", priceNote:"Monto a financiar desde", vin:"5FNYF6H2XNB012904", photo:null },
+    { year:2019, make:"Toyota", model:"Highlander SE", type:"suv", miles:"109,162", trans:"Gasolina · Automática", price:"20,025", priceNote:"Monto a financiar desde", vin:"5TDJZRFHXKS573290", photo:null },
+    { year:2022, make:"Toyota", model:"Tacoma SR5", type:"pickup", miles:"109,099", trans:"Gasolina · Automática", price:"21,840", priceNote:"Monto a financiar desde", vin:"3TMAZ5CN4NM186581", photo:null },
+    { year:2021, make:"Toyota", model:"RAV4 LE Hv", type:"suv", miles:"105,647", trans:"Gasolina · Automática", price:"19,925", priceNote:"Monto a financiar desde", vin:"4T3LWRFV4MU012950", photo:null },
+    { year:2022, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"113,532", trans:"Gasolina · Automática", price:"21,915", priceNote:"Monto a financiar desde", vin:"5TDHZRAH1NS547946", photo:null },
+    { year:2025, make:"Toyota", model:"Camry XSE", type:"sedan", miles:"127,864", trans:"Híbrido · Automática", price:"25,000", priceNote:"Monto a financiar desde", vin:"4T1DAACK7SU024420", photo:null },
+    { year:2023, make:"Chevrolet", model:"Silverado Custom", type:"pickup", miles:"91,654", trans:"Gasolina · Automática", price:"27,420", priceNote:"Monto a financiar desde", vin:"1GCPDBEK2PZ222487", photo:null },
+    { year:2021, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"114,721", trans:"Gasolina · Automática", price:"18,245", priceNote:"Monto a financiar desde", vin:"2T3W1RFV8MC087776", photo:null },
+    { year:2020, make:"Ford", model:"Expedition King Ranch", type:"suv", miles:"124,292", trans:"Gasolina · Automática", price:"25,250", priceNote:"Monto a financiar desde", vin:"1FMJU1NT6LEA85964", photo:null },
+    { year:2021, make:"Honda", model:"Civic Sport", type:"hatchback", miles:"99,517", trans:"Gasolina · Automática", price:"16,540", priceNote:"Monto a financiar desde", vin:"SHHFK7H46MU208314", photo:null },
+    { year:2024, make:"Hyundai", model:"Tucson Limited", type:"suv", miles:"74,811", trans:"Gasolina · Automática", price:"20,815", priceNote:"Monto a financiar desde", vin:"5NMJECDE6RH329778", photo:null },
+    { year:2021, make:"Toyota", model:"Highlander Limited", type:"suv", miles:"99,367", trans:"Gasolina · Automática", price:"26,175", priceNote:"Monto a financiar desde", vin:"5TDDZRBH6MS112996", photo:null },
+    { year:2021, make:"Honda", model:"Civic Sport", type:"sedan", miles:"118,619", trans:"Gasolina · Automática", price:"10,500", priceNote:"Monto a financiar desde", vin:"2HGFC2F80MH518607", photo:null },
+    { year:2024, make:"Hyundai", model:"Tucson SEL", type:"suv", miles:"60,990", trans:"Gasolina · Automática", price:"19,030", priceNote:"Monto a financiar desde", vin:"5NMJB3DE7RH359915", photo:null },
+    { year:2016, make:"Hyundai", model:"Tucson SE Popular", type:"suv", miles:"89,003", trans:"Gasolina · Automática", price:"11,606", priceNote:"Monto a financiar desde", vin:"KM8J33A45GU059641", photo:null },
+    { year:2024, make:"Honda", model:"Accord Sport-L Hybrid", type:"sedan", miles:"61,904", trans:"Gasolina · Automática", price:"24,870", priceNote:"Monto a financiar desde", vin:"1HGCY2F77RA036234", photo:null },
+    { year:2021, make:"Honda", model:"Pilot EXL", type:"suv", miles:"120,886", trans:"Gasolina · Automática", price:"19,045", priceNote:"Monto a financiar desde", vin:"5FNYF6H56MB081985", photo:null },
+    { year:2020, make:"Honda", model:"Odyssey Elite", type:"minivan", miles:"113,259", trans:"Gasolina · Automática", price:"26,326", priceNote:"Monto a financiar desde", vin:"5FNRL6H91LB031011", photo:null },
+    { year:2018, make:"Honda", model:"Odyssey EX-L", type:"minivan", miles:"135,105", trans:"Gasolina · Automática", price:"23,873", priceNote:"Monto a financiar desde", vin:"5FNRL6H72JB092542", photo:null },
+    { year:2019, make:"GMC", model:"Sierra 1500", type:"pickup", miles:"135,847", trans:"Gasolina · Automática", price:"21,246", priceNote:"Monto a financiar desde", vin:"1GTU9AEF6KZ289619", photo:null },
+    { year:2025, make:"Mazda", model:"Cx-5 Preferred", type:"suv", miles:"13,663", trans:"Gasolina · Automática", price:"25,775", priceNote:"Monto a financiar desde", vin:"JM3KFBCL0S0585066", photo:null },
+    { year:2018, make:"GMC", model:"Yukon SLT", type:"suv", miles:"125,331", trans:"Gasolina · Automática", price:"22,470", priceNote:"Monto a financiar desde", vin:"1GKS2BKCXJR148261", photo:null },
+    { year:2024, make:"Toyota", model:"Corolla Cross LE", type:"suv", miles:"63,480", trans:"Gasolina · Automática", price:"22,725", priceNote:"Monto a financiar desde", vin:"7MUBAAAG6RV089435", photo:null },
+    { year:2025, make:"Honda", model:"Civic Sport", type:"sedan", miles:"34,259", trans:"Gasolina · Automática", price:"23,025", priceNote:"Monto a financiar desde", vin:"2HGFE2F56SH521296", photo:null },
+    { year:2025, make:"Mazda", model:"Cx-30 Preferred Package", type:"suv", miles:"20,358", trans:"Gasolina · Automática", price:"23,870", priceNote:"Monto a financiar desde", vin:"3MVDMBCM6SM766121", photo:null },
+    { year:2022, make:"Chevrolet", model:"Silverado Custom", type:"pickup", miles:"62,489", trans:"Gasolina · Automática", price:"28,345", priceNote:"Monto a financiar desde", vin:"1GCPDBEK3NZ537005", photo:null },
+    { year:2021, make:"Toyota", model:"RAV4 LE Hv", type:"suv", miles:"104,992", trans:"Híbrido · Automática", price:"21,335", priceNote:"Monto a financiar desde", vin:"4T3LWRFV5MU037811", photo:null },
+    { year:2007, make:"Saturn", model:"Ion Base", type:"coupe", miles:"197,965", trans:"Gasolina · Automática", price:"500", priceNote:"Monto a financiar desde", vin:"1G8AW18B47Z132323", photo:null },
+    { year:2025, make:"Mazda", model:"Cx-50 Preferred", type:"suv", miles:"26,058", trans:"Gasolina · Automática", price:"23,680", priceNote:"Monto a financiar desde", vin:"7MMVABBM9SN320339", photo:null },
+    { year:2019, make:"Ford", model:"Mustang I4 Convertible", type:"convertible", miles:"69,644", trans:"Gasolina · Automática", price:"14,840", priceNote:"Monto a financiar desde", vin:"1FATP8UH7K5149850", photo:null },
+    { year:2025, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"109,284", trans:"Gasolina · Automática", price:"27,410", priceNote:"Monto a financiar desde", vin:"JTMLWRFV2SD279403", photo:null },
+    { year:2025, make:"Mazda", model:"Cx-5 Preferred", type:"suv", miles:"33,322", trans:"Gasolina · Automática", price:"24,785", priceNote:"Monto a financiar desde", vin:"JM3KFBCL1S0616888", photo:null },
+    { year:2021, make:"Toyota", model:"Camry XSE", type:"sedan", miles:"96,844", trans:"Gasolina · Automática", price:"20,425", priceNote:"Monto a financiar desde", vin:"4T1K61AK6MU544512", photo:null },
+    { year:2025, make:"Toyota", model:"Camry LE", type:"sedan", miles:"116,893", trans:"Gasolina · Automática", price:"17,980", priceNote:"Monto a financiar desde", vin:"4T1DAACK1SU021500", photo:null },
+    { year:2021, make:"Chevrolet", model:"Silverado Ltz", type:"pickup", miles:"92,365", trans:"Gasolina · Automática", price:"29,710", priceNote:"Monto a financiar desde", vin:"1GCUYGED0MZ193508", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"118,658", trans:"Gasolina · Automática", price:"24,845", priceNote:"Monto a financiar desde", vin:"4T3RWRFV1PU087197", photo:null },
+    { year:2022, make:"RAM", model:"1500 Big Horn", type:"pickup", miles:"71,886", trans:"Gasolina · Automática", price:"24,965", priceNote:"Monto a financiar desde", vin:"1C6RREFG6NN201336", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"117,377", trans:"Gasolina · Automática", price:"23,340", priceNote:"Monto a financiar desde", vin:"2T3P1RFV5PW347011", photo:null },
+    { year:2024, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"98,796", trans:"Gasolina · Automática", price:"23,675", priceNote:"Monto a financiar desde", vin:"2T3F1RFV4RC442255", photo:null },
+    { year:2023, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"109,472", trans:"Gasolina · Automática", price:"24,595", priceNote:"Monto a financiar desde", vin:"4T3RWRFV6PU103300", photo:null },
   ];
 
   const icons = {
@@ -631,15 +764,45 @@
     sedan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M5 27c-2 0-3-1.5-3-3.2 0-1.6 1.1-2.9 2.7-3.2l2.6-6C8.6 11.4 11 9.5 14 9.5h9l5-4h8l4 4h6c3 0 5.6 2 6.6 4.9l2 5.2c1.6.3 2.7 1.6 2.7 3.2 0 1.7-1 3.2-3 3.2H5z"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
     minivan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M4 27c-2 0-3-1.6-3-3.4 0-1.6 1-2.9 2.6-3.3l1-6.6C5.2 10.4 8 8 11.5 8h32c3.6 0 6.7 2.5 7.4 6l1.3 6.3c1.7.3 2.8 1.7 2.8 3.3 0 1.9-1.4 3.4-3.4 3.4H4z"/><rect x="14" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="27" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="40" y="12" width="9" height="8" rx="1" fill="var(--charcoal)"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`
   };
-  const typeLabel = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan" };
+  icons.hatchback = icons.sedan;
+  icons.coupe = icons.sedan;
+  icons.convertible = icons.sedan;
+  const typeLabel = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupé", convertible:"Convertible" };
 
   const grid = document.getElementById('carsGrid');
+  let currentTypeFilter = "all";
+  const priceNum = v => parseInt(String(v.price).replace(/,/g, ''), 10) || 0;
 
-  function render(filter){
+  // Poblar el dropdown de marcas con las marcas reales del inventario
+  const brandSelect = document.getElementById('filterBrand');
+  [...new Set(vehicles.map(v => v.make))].sort().forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = b; opt.textContent = b;
+    brandSelect.appendChild(opt);
+  });
+
+  function render(){
     grid.innerHTML = "";
-    vehicles
-      .filter(v => filter === "all" || v.type === filter)
-      .forEach(v => {
+    const brand = brandSelect.value;
+    const modelQuery = document.getElementById('filterModel').value.trim().toLowerCase();
+    const minP = parseFloat(document.getElementById('filterMinPrice').value);
+    const maxP = parseFloat(document.getElementById('filterMaxPrice').value);
+    const sortBy = document.getElementById('filterSort').value;
+
+    let list = vehicles.filter(v => currentTypeFilter === "all" || v.type === currentTypeFilter);
+    if (brand !== "all") list = list.filter(v => v.make === brand);
+    if (modelQuery) list = list.filter(v => v.model.toLowerCase().includes(modelQuery));
+    if (!isNaN(minP)) list = list.filter(v => priceNum(v) >= minP);
+    if (!isNaN(maxP)) list = list.filter(v => priceNum(v) <= maxP);
+    if (sortBy === "price-asc") list = [...list].sort((a, b) => priceNum(a) - priceNum(b));
+    if (sortBy === "price-desc") list = [...list].sort((a, b) => priceNum(b) - priceNum(a));
+
+    if (list.length === 0) {
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--gray);padding:40px 0;">No hay carros que coincidan con esos filtros.</div>`;
+      return;
+    }
+
+    list.forEach(v => {
         const card = document.createElement('div');
         card.className = "car-card";
         card.innerHTML = `
@@ -650,6 +813,7 @@
           <div class="car-body">
             <h3>${v.year} ${v.make} ${v.model}</h3>
             <div class="car-sub">${typeLabel[v.type]} · Título limpio · Garantía 3 años</div>
+            ${v.vin ? `<div style="font-size:11px;color:var(--gray);margin-top:-10px;margin-bottom:14px;">VIN: ${v.vin}</div>` : ``}
             <div class="car-specs">
               <span>🛣️ ${v.miles} mi</span>
               <span>⚙️ ${v.trans}</span>
@@ -668,14 +832,31 @@
         grid.appendChild(card);
       });
   }
-  render("all");
+  render();
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      render(btn.dataset.filter);
+      currentTypeFilter = btn.dataset.filter;
+      render();
     });
+  });
+
+  ['filterBrand','filterModel','filterMinPrice','filterMaxPrice','filterSort'].forEach(id => {
+    document.getElementById(id).addEventListener('input', render);
+  });
+
+  document.getElementById('filterReset').addEventListener('click', () => {
+    brandSelect.value = "all";
+    document.getElementById('filterModel').value = "";
+    document.getElementById('filterMinPrice').value = "";
+    document.getElementById('filterMaxPrice').value = "";
+    document.getElementById('filterSort').value = "default";
+    currentTypeFilter = "all";
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+    render();
   });
 
   /* =========================================================
