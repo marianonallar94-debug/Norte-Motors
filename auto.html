@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palm Tree Motors | Detalle del vehículo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E2401F;
+    --red-dark:#a12c14;
+    --black:#141414;
+    --charcoal:#1f1f1f;
+    --off:#F6F4F0;
+    --gray:#5b5b5b;
+    --gray-line:#e4e1da;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--black);
+    background:var(--off);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:1.1;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    border-radius:3px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dark);}
+  .btn-black{background:var(--black);color:#fff;}
+  .btn-black:hover{background:#000;}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--black);
+    border-bottom:3px solid var(--red);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+    max-width:900px;margin:0 auto;
+  }
+  .back-link{
+    color:#fff;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;
+    letter-spacing:.03em;text-transform:uppercase;display:flex;align-items:center;gap:6px;
+  }
+  .back-link:hover{color:var(--red);}
+  .brand-mini{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;}
+  .brand-mini span{color:var(--red);}
+
+  .section{padding:36px 0 76px;}
+
+  .car-photo-big{
+    aspect-ratio:4/3;border-radius:4px;overflow:hidden;
+    background:linear-gradient(135deg,#232323,#3a3a3a);
+    display:flex;align-items:center;justify-content:center;margin-bottom:24px;
+    position:relative;
+  }
+  .car-photo-big img{width:100%;height:100%;object-fit:cover;}
+  .car-photo-big svg{width:40%;height:40%;opacity:.9;}
+  .car-tag{
+    position:absolute;top:14px;left:14px;
+    background:var(--red);color:#fff;font-family:'Oswald',sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    padding:6px 12px;border-radius:2px;
+  }
+
+  .car-title{font-size:clamp(24px,4vw,34px);margin-bottom:6px;}
+  .car-sub{color:var(--gray);font-size:14.5px;margin-bottom:4px;}
+  .car-vin{color:var(--gray);font-size:12.5px;margin-bottom:22px;}
+
+  .spec-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    margin-bottom:26px;padding:20px;background:#fff;border:1px solid var(--gray-line);border-radius:4px;
+  }
+  .spec-item{font-size:14px;}
+  .spec-item strong{display:block;font-family:'Oswald',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--gray);margin-bottom:3px;}
+
+  .price-box{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    padding:20px;background:#fff;border:1px solid var(--gray-line);border-radius:4px;margin-bottom:26px;
+  }
+  .price-note{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
+  .price-amount{font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:var(--red);}
+  .action-row{display:flex;gap:12px;flex-wrap:wrap;}
+
+  .section-head{margin:36px 0 20px;}
+  .section-head .stripe{display:inline-block;width:40px;height:5px;background:var(--red);margin-bottom:12px;}
+  .section-head h2{font-size:22px;}
+
+  .credit-form{background:#fff;border:1px solid var(--gray-line);border-radius:4px;padding:28px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:8px;}
+  .form-field-full{grid-column:1 / -1;}
+  @media(max-width:640px){.form-grid{grid-template-columns:1fr;}}
+  .form-field label{display:block;font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--gray);margin-bottom:6px;}
+  .form-field input,.form-field select,.form-field textarea{
+    width:100%;padding:12px 14px;border:1.5px solid var(--gray-line);border-radius:3px;
+    font-family:'Inter',sans-serif;font-size:14.5px;color:var(--black);background:#fff;
+  }
+  .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--red);}
+  .form-field textarea{resize:vertical;}
+  .form-disclaimer{font-size:12px;color:var(--gray);margin:16px 0 18px;padding:12px 14px;background:var(--off);border-radius:3px;}
+
+  .not-found{padding:80px 24px;text-align:center;}
+
+  footer{background:var(--black);color:#9c9c9c;padding:30px 0;text-align:center;font-size:12.5px;}
+
+  .wa-float{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    background:#25D366;color:#fff;
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.3);
+  }
+  .wa-float svg{width:28px;height:28px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html#inventario" class="back-link">&larr; Volver al inventario</a>
+    <a href="index.html" class="brand-mini">PALM TREE <span>MOTORS</span></a>
+  </div>
+</header>
+
+<div id="notFound" class="not-found" style="display:none;">
+  <h1 style="font-size:24px;margin-bottom:14px;">No encontramos ese vehículo</h1>
+  <p style="color:var(--gray);margin-bottom:20px;">Puede que ya se haya vendido o el enlace esté incompleto.</p>
+  <a href="index.html#inventario" class="btn btn-red">Ver inventario completo</a>
+</div>
+
+<div id="carDetail" class="section" style="display:none;">
+  <div class="wrap">
+
+    <div class="car-photo-big" id="carPhotoBox"></div>
+
+    <h1 class="car-title" id="carTitle"></h1>
+    <div class="car-sub" id="carSub"></div>
+    <div class="car-vin" id="carVin"></div>
+
+    <div class="spec-grid">
+      <div class="spec-item"><strong>Millaje</strong><span id="specMiles"></span></div>
+      <div class="spec-item"><strong>Motor / Transmisión</strong><span id="specTrans"></span></div>
+      <div class="spec-item"><strong>Título</strong><span>Limpio, verificado</span></div>
+      <div class="spec-item"><strong>Garantía</strong><span>3 años bumper to bumper</span></div>
+    </div>
+
+    <div class="price-box">
+      <div>
+        <div class="price-note" id="priceNoteLabel"></div>
+        <div class="price-amount" id="priceAmount"></div>
+      </div>
+      <div class="action-row">
+        <a id="waBtn" class="btn btn-black" target="_blank">Preguntar por WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <span class="stripe"></span>
+      <h2>Aplica para financiamiento de este vehículo</h2>
+    </div>
+
+    <form id="creditForm" class="credit-form">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="cf-name">Nombre completo *</label>
+          <input type="text" id="cf-name" required placeholder="Ej: Juan Pérez">
+        </div>
+        <div class="form-field">
+          <label for="cf-phone">Teléfono *</label>
+          <input type="tel" id="cf-phone" required placeholder="(305) 000-0000">
+        </div>
+        <div class="form-field">
+          <label for="cf-email">Correo electrónico</label>
+          <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.com">
+        </div>
+        <div class="form-field">
+          <label>Carro de interés</label>
+          <input type="text" id="cf-car" disabled style="background:var(--off);color:var(--black);">
+        </div>
+        <div class="form-field">
+          <label for="cf-down">Down payment aproximado</label>
+          <select id="cf-down">
+            <option value="">Selecciona un rango</option>
+            <option>$0 - $999</option>
+            <option>$1,000 - $1,999</option>
+            <option>$2,000 - $3,999</option>
+            <option>$4,000 o más</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="cf-income">Ingreso mensual aproximado</label>
+          <select id="cf-income">
+            <option value="">Selecciona un rango</option>
+            <option>Menos de $2,000</option>
+            <option>$2,000 - $3,499</option>
+            <option>$3,500 - $4,999</option>
+            <option>$5,000 o más</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="cf-employed">¿Actualmente empleado?</label>
+          <select id="cf-employed">
+            <option value="">Selecciona una opción</option>
+            <option>Sí, empleado</option>
+            <option>Sí, trabajo por mi cuenta</option>
+            <option>No actualmente</option>
+          </select>
+        </div>
+        <div class="form-field form-field-full">
+          <label for="cf-notes">Comentario adicional</label>
+          <textarea id="cf-notes" rows="3" placeholder="Cuéntanos algo más si quieres"></textarea>
+        </div>
+      </div>
+
+      <p class="form-disclaimer">No pedimos número de seguro social, información bancaria ni documentos de identidad en este formulario. Ese paso lo completamos de forma segura por teléfono o en persona.</p>
+
+      <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;">Enviar solicitud por WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<a class="wa-float" href="https://wa.me/15714246410" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h0a7.94 7.94 0 0 0 5.55-13.58zM12.05 18.4a6.55 6.55 0 0 1-3.35-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.58 3.1zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.37.1-.12.13-.2.2-.35a.4.4 0 0 0 0-.37c-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.34h-.38a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.89.8 2.02s1.37 2.1 3.33 2.94a11 11 0 0 0 1.11.41 2.68 2.68 0 0 0 1.23.08c.38-.06 1.17-.48 1.33-.94s.16-.86.11-.94-.18-.13-.38-.23z"/></svg>
+</a>
+
+<footer>
+  <div class="wrap">© 2026 Palm Tree Motors — Hollywood, FL · +1 (571) 424-6410</div>
+</footer>
+
+<script src="assets/js/vehicles.js"></script>
+<script>
+  const icons = {
+    pickup: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M4 27c0-1.5 1-3 3-3h2l3-9c1-2.6 3-4 6-4h9v13h4l3-3h9c2 0 4 1.4 5 3.4l2 4.6h1c1.5 0 3 1.5 3 3v1H4z" /><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
+    suv: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M6 26c-2 0-3-1.6-3-3.4 0-1.6 1-2.9 2.6-3.3l3-8.6C9.4 8.4 11.6 7 14 7h30c2.6 0 5 1.6 6 4l3 8c2 .3 3.2 1.7 3.2 3.6 0 2-1.6 3.4-3.6 3.4H6z"/><circle cx="17" cy="30" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="30" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
+    sedan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M5 27c-2 0-3-1.5-3-3.2 0-1.6 1.1-2.9 2.7-3.2l2.6-6C8.6 11.4 11 9.5 14 9.5h9l5-4h8l4 4h6c3 0 5.6 2 6.6 4.9l2 5.2c1.6.3 2.7 1.6 2.7 3.2 0 1.7-1 3.2-3 3.2H5z"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
+    minivan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M4 27c-2 0-3-1.6-3-3.4 0-1.6 1-2.9 2.6-3.3l1-6.6C5.2 10.4 8 8 11.5 8h32c3.6 0 6.7 2.5 7.4 6l1.3 6.3c1.7.3 2.8 1.7 2.8 3.3 0 1.9-1.4 3.4-3.4 3.4H4z"/><rect x="14" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="27" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="40" y="12" width="9" height="8" rx="1" fill="var(--charcoal)"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`
+  };
+  icons.hatchback = icons.sedan;
+  icons.coupe = icons.sedan;
+  icons.convertible = icons.sedan;
+  const typeLabel = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupé", convertible:"Convertible" };
+
+  function vehicleId(v){
+    return v.vin || (v.year+'-'+v.make+'-'+v.model).replace(/\s+/g,'-');
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const v = vehicles.find(x => vehicleId(x) === id);
+
+  if (!v) {
+    document.getElementById('notFound').style.display = 'block';
+  } else {
+    document.getElementById('carDetail').style.display = 'block';
+    document.title = `${v.year} ${v.make} ${v.model} | Palm Tree Motors`;
+
+    const photoBox = document.getElementById('carPhotoBox');
+    if (v.photo) {
+      photoBox.innerHTML = `<img src="${v.photo}" alt="${v.make} ${v.model}">`;
+    } else {
+      photoBox.innerHTML = `<span class="car-tag">Foto próximamente</span>${icons[v.type]}`;
+    }
+
+    document.getElementById('carTitle').textContent = `${v.year} ${v.make} ${v.model}`;
+    document.getElementById('carSub').textContent = `${typeLabel[v.type]} · Título limpio · Garantía 3 años`;
+    document.getElementById('carVin').textContent = v.vin ? `VIN: ${v.vin}` : '';
+    document.getElementById('specMiles').textContent = `${v.miles} mi`;
+    document.getElementById('specTrans').textContent = v.trans;
+    document.getElementById('priceNoteLabel').textContent = v.priceNote || 'Monto a financiar desde';
+    document.getElementById('priceAmount').textContent = `$${v.price}`;
+
+    const carLabel = `${v.year} ${v.make} ${v.model}`;
+    document.getElementById('cf-car').value = carLabel;
+    document.getElementById('waBtn').href = `https://wa.me/15714246410?text=${encodeURIComponent('Hola, me interesa el '+carLabel)}`;
+
+    document.getElementById('creditForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('cf-name').value.trim();
+      const phone = document.getElementById('cf-phone').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const down = document.getElementById('cf-down').value;
+      const income = document.getElementById('cf-income').value;
+      const employed = document.getElementById('cf-employed').value;
+      const notes = document.getElementById('cf-notes').value.trim();
+
+      let msg = `Hola, quiero aplicar para financiamiento.\n\nNombre: ${name}\nTeléfono: ${phone}`;
+      if (email) msg += `\nCorreo: ${email}`;
+      msg += `\nCarro de interés: ${carLabel}`;
+      if (down) msg += `\nDown payment aproximado: ${down}`;
+      if (income) msg += `\nIngreso mensual aproximado: ${income}`;
+      if (employed) msg += `\nEmpleo: ${employed}`;
+      if (notes) msg += `\nComentario: ${notes}`;
+
+      window.open(`https://wa.me/15714246410?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+  }
+</script>
+
+</body>
+</html>
