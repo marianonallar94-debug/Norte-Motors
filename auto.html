@@ -34,7 +34,7 @@
   }
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
-  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
   .btn{
     display:inline-flex;align-items:center;gap:8px;
     padding:14px 26px;
@@ -62,7 +62,7 @@
   .nav{
     display:flex;align-items:center;justify-content:space-between;
     padding:14px 24px;
-    max-width:900px;margin:0 auto;
+    max-width:1180px;margin:0 auto;
   }
   .back-link{
     color:#fff;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;
@@ -112,6 +112,14 @@
   .section-head .stripe{display:inline-block;width:40px;height:5px;background:var(--red);margin-bottom:12px;}
   .section-head h2{font-size:22px;}
 
+  .detail-grid{display:grid;grid-template-columns:60% 40%;gap:36px;align-items:start;}
+  .info-col .section-head{margin-top:0;}
+  .form-col{position:sticky;top:88px;}
+  @media(max-width:900px){
+    .detail-grid{grid-template-columns:1fr;}
+    .form-col{position:static;}
+  }
+
   .credit-form{background:#fff;border:1px solid var(--gray-line);border-radius:4px;padding:28px;}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:8px;}
   .form-field-full{grid-column:1 / -1;}
@@ -156,92 +164,99 @@
 
 <div id="carDetail" class="section" style="display:none;">
   <div class="wrap">
+    <div class="detail-grid">
 
-    <div class="car-photo-big" id="carPhotoBox"></div>
+      <div class="info-col">
+        <div class="car-photo-big" id="carPhotoBox"></div>
 
-    <h1 class="car-title" id="carTitle"></h1>
-    <div class="car-sub" id="carSub"></div>
-    <div class="car-vin" id="carVin"></div>
+        <h1 class="car-title" id="carTitle"></h1>
+        <div class="car-sub" id="carSub"></div>
+        <div class="car-vin" id="carVin"></div>
 
-    <div class="spec-grid">
-      <div class="spec-item"><strong>Millaje</strong><span id="specMiles"></span></div>
-      <div class="spec-item"><strong>Motor / Transmisión</strong><span id="specTrans"></span></div>
-      <div class="spec-item"><strong>Título</strong><span>Limpio, verificado</span></div>
-      <div class="spec-item"><strong>Garantía</strong><span>3 años bumper to bumper</span></div>
-    </div>
+        <div class="spec-grid">
+          <div class="spec-item"><strong>Millaje</strong><span id="specMiles"></span></div>
+          <div class="spec-item"><strong>Motor / Transmisión</strong><span id="specTrans"></span></div>
+          <div class="spec-item"><strong>Título</strong><span>Limpio, verificado</span></div>
+          <div class="spec-item"><strong>Garantía</strong><span>3 años bumper to bumper</span></div>
+        </div>
 
-    <div class="price-box">
-      <div>
-        <div class="price-note" id="priceNoteLabel"></div>
-        <div class="price-amount" id="priceAmount"></div>
-      </div>
-      <div class="action-row">
-        <a id="waBtn" class="btn btn-black" target="_blank">Preguntar por WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="section-head">
-      <span class="stripe"></span>
-      <h2>Aplica para financiamiento de este vehículo</h2>
-    </div>
-
-    <form id="creditForm" class="credit-form">
-      <div class="form-grid">
-        <div class="form-field">
-          <label for="cf-name">Nombre completo *</label>
-          <input type="text" id="cf-name" required placeholder="Ej: Juan Pérez">
-        </div>
-        <div class="form-field">
-          <label for="cf-phone">Teléfono *</label>
-          <input type="tel" id="cf-phone" required placeholder="(305) 000-0000">
-        </div>
-        <div class="form-field">
-          <label for="cf-email">Correo electrónico</label>
-          <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.com">
-        </div>
-        <div class="form-field">
-          <label>Carro de interés</label>
-          <input type="text" id="cf-car" disabled style="background:var(--off);color:var(--black);">
-        </div>
-        <div class="form-field">
-          <label for="cf-down">Down payment aproximado</label>
-          <select id="cf-down">
-            <option value="">Selecciona un rango</option>
-            <option>$0 - $999</option>
-            <option>$1,000 - $1,999</option>
-            <option>$2,000 - $3,999</option>
-            <option>$4,000 o más</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="cf-income">Ingreso mensual aproximado</label>
-          <select id="cf-income">
-            <option value="">Selecciona un rango</option>
-            <option>Menos de $2,000</option>
-            <option>$2,000 - $3,499</option>
-            <option>$3,500 - $4,999</option>
-            <option>$5,000 o más</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="cf-employed">¿Actualmente empleado?</label>
-          <select id="cf-employed">
-            <option value="">Selecciona una opción</option>
-            <option>Sí, empleado</option>
-            <option>Sí, trabajo por mi cuenta</option>
-            <option>No actualmente</option>
-          </select>
-        </div>
-        <div class="form-field form-field-full">
-          <label for="cf-notes">Comentario adicional</label>
-          <textarea id="cf-notes" rows="3" placeholder="Cuéntanos algo más si quieres"></textarea>
+        <div class="price-box">
+          <div>
+            <div class="price-note" id="priceNoteLabel"></div>
+            <div class="price-amount" id="priceAmount"></div>
+          </div>
+          <div class="action-row">
+            <a id="waBtn" class="btn btn-black" target="_blank">Preguntar por WhatsApp</a>
+          </div>
         </div>
       </div>
 
-      <p class="form-disclaimer">No pedimos número de seguro social, información bancaria ni documentos de identidad en este formulario. Ese paso lo completamos de forma segura por teléfono o en persona.</p>
+      <div class="form-col">
+        <div class="section-head">
+          <span class="stripe"></span>
+          <h2>Aplica para financiamiento de este vehículo</h2>
+        </div>
 
-      <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;">Enviar solicitud por WhatsApp</button>
-    </form>
+        <form id="creditForm" class="credit-form">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="cf-name">Nombre completo *</label>
+              <input type="text" id="cf-name" required placeholder="Ej: Juan Pérez">
+            </div>
+            <div class="form-field">
+              <label for="cf-phone">Teléfono *</label>
+              <input type="tel" id="cf-phone" required placeholder="(305) 000-0000">
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Correo electrónico</label>
+              <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.com">
+            </div>
+            <div class="form-field">
+              <label>Carro de interés</label>
+              <input type="text" id="cf-car" disabled style="background:var(--off);color:var(--black);">
+            </div>
+            <div class="form-field">
+              <label for="cf-down">Down payment aproximado</label>
+              <select id="cf-down">
+                <option value="">Selecciona un rango</option>
+                <option>$0 - $999</option>
+                <option>$1,000 - $1,999</option>
+                <option>$2,000 - $3,999</option>
+                <option>$4,000 o más</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="cf-income">Ingreso mensual aproximado</label>
+              <select id="cf-income">
+                <option value="">Selecciona un rango</option>
+                <option>Menos de $2,000</option>
+                <option>$2,000 - $3,499</option>
+                <option>$3,500 - $4,999</option>
+                <option>$5,000 o más</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="cf-employed">¿Actualmente empleado?</label>
+              <select id="cf-employed">
+                <option value="">Selecciona una opción</option>
+                <option>Sí, empleado</option>
+                <option>Sí, trabajo por mi cuenta</option>
+                <option>No actualmente</option>
+              </select>
+            </div>
+            <div class="form-field form-field-full">
+              <label for="cf-notes">Comentario adicional</label>
+              <textarea id="cf-notes" rows="3" placeholder="Cuéntanos algo más si quieres"></textarea>
+            </div>
+          </div>
+
+          <p class="form-disclaimer">No pedimos número de seguro social, información bancaria ni documentos de identidad en este formulario. Ese paso lo completamos de forma segura por teléfono o en persona.</p>
+
+          <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;">Enviar solicitud por WhatsApp</button>
+        </form>
+      </div>
+
+    </div>
   </div>
 </div>
 
