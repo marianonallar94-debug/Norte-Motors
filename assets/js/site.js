@@ -7,7 +7,7 @@ const SITE = {
   phonePretty: "+1 (571) 424-6410",
   // Meta Pixel: pegá acá el ID (solo números) cuando lo crees en el Administrador de eventos.
   // Mientras esté vacío, la web no carga el Pixel.
-  metaPixelId: "",
+  metaPixelId: "1105858505482319",
   // Calculadora de cuota (estimado, sujeto a aprobación del banco)
   termDefault: 72,                 // meses
   terms: [48, 60, 72],
