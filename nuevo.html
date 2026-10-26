@@ -80,29 +80,33 @@
   @media(min-width:900px){.subnav-track{justify-content:center;}}
   section[id]{scroll-margin-top:110px;}
 
-  /* ---------- HERO: el auto en el lote ---------- */
-  .hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;color:#fff;background:var(--black);overflow:hidden;isolation:isolate;}
-  .hero-photo{position:absolute;inset:0;z-index:-2;background:#1d1d1d center 62%/cover no-repeat;transform:scale(1.04);}
-  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,20,20,.35) 0%,rgba(20,20,20,.05) 35%,rgba(20,20,20,.75) 72%,var(--black) 100%);}
-  .hero-inner{width:100%;max-width:1240px;margin:0 auto;padding:0 20px 56px;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:end;}
-  .hero h1{color:#fff;font-size:clamp(52px,9.5vw,132px);font-stretch:75%;line-height:.86;letter-spacing:-.02em;margin-bottom:22px;}
-  .hero p{font-size:19px;color:#e9e9e6;max-width:44ch;margin-bottom:28px;}
+  /* ---------- HERO: videos del lote con el mensaje escrito a mano ---------- */
+  .hero{position:relative;background:var(--black);color:#fff;overflow:hidden;}
+  .hero-inner{max-width:1240px;margin:0 auto;padding:56px 20px 64px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  .hero-media{position:relative;justify-self:center;width:min(100%,400px);aspect-ratio:9/16;border-radius:30px;overflow:hidden;background:#1d1d1d;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:rotate(2deg);}
+  .hero-media video{width:100%;height:100%;object-fit:cover;display:block;}
+  .slide-msg{font-family:var(--hand);font-weight:400;font-stretch:normal;color:var(--marker);font-size:clamp(48px,7.2vw,104px);line-height:1;letter-spacing:0;transform:rotate(-3deg);transform-origin:left bottom;min-height:2.1em;display:flex;align-items:flex-end;margin-bottom:10px;text-shadow:0 3px 14px rgba(0,0,0,.55);}
+  .slide-msg.draw{animation:write 1s cubic-bezier(.6,0,.2,1) both;}
+  @keyframes write{from{clip-path:inset(0 100% 0 0);}to{clip-path:inset(0 -5% 0 0);}}
+  .slide-sub{font-family:var(--hand);color:#fff;font-size:22px;transform:rotate(-3deg);margin:0 0 26px 4px;min-height:1.3em;}
+  .hero-lead{font-size:18px;color:#d9d9d4;max-width:46ch;margin-bottom:26px;}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;}
-  .windshield{justify-self:end;align-self:start;margin-top:110px;text-align:center;transform:rotate(-6deg);color:var(--marker);font-family:var(--hand);line-height:1;text-shadow:0 2px 0 rgba(0,0,0,.35);}
-  .windshield .ws-small{font-size:26px;}
-  .windshield .ws-big{font-size:clamp(64px,8vw,104px);display:block;margin:4px 0;}
-  .windshield .ws-car{font-family:var(--body);font-weight:600;font-size:13.5px;color:#fff;text-shadow:none;display:block;margin-top:10px;transform:rotate(6deg);}
-  .windshield .ws-car:hover{text-decoration:underline;}
-  .windshield.draw .ws-big{animation:write 1.1s .3s cubic-bezier(.6,0,.2,1) both;}
-  @keyframes write{from{clip-path:inset(0 100% 0 0);}to{clip-path:inset(0 0 0 0);}}
+  .slide-dots{display:flex;gap:8px;margin-top:34px;}
+  .slide-dots button{width:46px;height:5px;border:0;border-radius:3px;background:#3a3a3a;cursor:pointer;padding:0;position:relative;overflow:hidden;}
+  .slide-dots button::after{content:"";position:absolute;inset:0;background:var(--marker);transform:scaleX(0);transform-origin:left;}
+  .slide-dots button.on::after{animation:fill var(--dur,5.3s) linear forwards;}
+  .slide-dots button.done::after{transform:scaleX(1);}
+  @keyframes fill{to{transform:scaleX(1);}}
   @media(max-width:860px){
-    .hero{min-height:auto;padding-top:300px;}
-    .hero-inner{grid-template-columns:1fr;padding-bottom:40px;}
-    .windshield{position:absolute;top:90px;right:22px;margin:0;}
-    .windshield .ws-big{font-size:58px;}
-    .windshield .ws-small{font-size:19px;}
+    .hero-inner{grid-template-columns:1fr;padding:0;min-height:calc(100svh - 110px);position:relative;}
+    .hero-media{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;border-radius:0;transform:none;box-shadow:none;}
+    .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,.5) 0%,rgba(20,20,20,0) 22%,rgba(20,20,20,.45) 48%,rgba(20,20,20,.95) 78%);}
+    .hero-copy{position:relative;z-index:2;align-self:end;padding:0 20px 30px;}
+    .slide-msg{font-size:clamp(46px,13vw,64px);min-height:2.1em;}
+    .hero-lead{font-size:16px;margin-bottom:20px;}
+    .hero-lead{display:none;}
+    .slide-dots{margin-top:22px;}
   }
-
   /* cinta de recién llegados */
   .ticker{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;border-block:2px solid var(--black);}
   .ticker-track{display:inline-flex;gap:38px;padding:12px 0;animation:tick 55s linear infinite;}
@@ -276,18 +280,21 @@
   </nav>
 </header>
 
-<section class="hero" id="inicio">
-  <div class="hero-photo" id="heroPhoto" role="img" aria-label=""></div>
+<section class="hero" id="inicio" aria-roledescription="carrusel" aria-label="Palm Tree Motors">
   <div class="hero-inner">
-    <div>
-      <h1 data-i18n="hero.title">Tu próximo carro está en este lote.</h1>
-      <p data-i18n="hero.lead">Título limpio verificado y 3 años de garantía bumper to bumper en cada carro. Financiamiento para todo tipo de crédito, en español, y enviamos a todo Estados Unidos.</p>
+    <div class="hero-copy">
+      <h1 class="slide-msg" id="slideMsg" aria-live="polite"></h1>
+      <p class="slide-sub" id="slideSub"></p>
+      <p class="hero-lead" data-i18n="hero.lead">Título limpio verificado y 3 años de garantía bumper to bumper en cada carro. Financiamiento para todo tipo de crédito, en español, y enviamos a todo Estados Unidos.</p>
       <div class="hero-ctas">
         <a href="#inventario" class="btn btn-red" data-i18n="hero.inventory">Ver inventario</a>
         <a href="#financiamiento" class="btn btn-ghost" data-i18n="hero.apply">Aplicar por financiamiento</a>
       </div>
+      <div class="slide-dots" id="slideDots" role="tablist" aria-label="Mensajes"></div>
     </div>
-    <div class="windshield" id="heroWs" aria-live="polite"></div>
+    <div class="hero-media">
+      <video id="heroVideo" muted playsinline preload="auto" poster="assets/video/hero-1.jpg" aria-hidden="true"></video>
+    </div>
   </div>
 </section>
 
@@ -573,23 +580,45 @@
   const perMonth = () => LANG === 'en' ? '/mo' : '/mes';
   const transText = v => LANG === 'en' ? v.trans.replace('Gasolina','Gas').replace('Híbrido','Hybrid').replace('Automática','Automatic') : v.trans;
 
-  /* ---------- Portada: un auto real del lote, distinto en cada visita ---------- */
-  const withPhoto = vehicles.filter(v => v.photo);
-  const hero = withPhoto.length ? withPhoto[Math.floor(Math.random() * withPhoto.length)] : null;
-  function paintHero(){
-    const ws = document.getElementById('heroWs');
-    if (!hero) { ws.style.display = 'none'; return; }
-    const label = `${hero.year} ${hero.make} ${hero.model}`;
-    const hp = document.getElementById('heroPhoto');
-    hp.style.backgroundImage = `url('${hero.photo}')`;
-    hp.setAttribute('aria-label', label);
-    ws.innerHTML = `<span class="ws-small">${LANG === 'en' ? 'from' : 'desde'}</span>
-      <span class="ws-big">${fmt$(estMonthly(priceNum(hero)))}${perMonth()}</span>
-      <span class="ws-small">${LANG === 'en' ? 'subject to approval' : 'sujeto a aprobación'}</span>
-      <a class="ws-car" href="nuevo-auto.html?id=${carId(hero)}">${esc(label)} →</a>`;
+  /* ---------- Portada: videos del lote, cada uno con su mensaje ---------- */
+  const SLIDES = [
+    { video: 'assets/video/hero-1', es: ['Tu próximo carro desde $250/mes', 'sujeto a aprobación'], en: ['Your next car from $250/mo', 'subject to approval'] },
+    { video: 'assets/video/hero-2', es: ['3 años de garantía', 'bumper to bumper, en cada carro'], en: ['3-year warranty', 'bumper to bumper, on every car'] },
+    { video: 'assets/video/hero-3', es: ['Título limpio, siempre', 'verificado antes de la venta'], en: ['Clean title, always', 'verified before the sale'] },
+    { video: 'assets/video/hero-4', es: ['Te lo enviamos a todo EE.UU.', 'firma online y lo recibes en grúa'], en: ['We ship anywhere in the U.S.', 'sign online, delivered by car carrier'] }
+  ];
+  const heroVideo = document.getElementById('heroVideo');
+  const dotsBox = document.getElementById('slideDots');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let slide = 0, slideTimer = null;
+  dotsBox.innerHTML = SLIDES.map((s, i) => `<button type="button" role="tab" aria-label="${i + 1}"></button>`).join('');
+  const dots = [...dotsBox.children];
+  function showSlide(i){
+    slide = (i + SLIDES.length) % SLIDES.length;
+    const s = SLIDES[slide], txt = LANG === 'en' ? s.en : s.es;
+    const msg = document.getElementById('slideMsg');
+    msg.textContent = txt[0];
+    document.getElementById('slideSub').textContent = txt[1];
+    msg.classList.remove('draw'); void msg.offsetWidth; msg.classList.add('draw');
+    dots.forEach((d, k) => { d.classList.toggle('on', k === slide); d.classList.toggle('done', k < slide); d.setAttribute('aria-selected', k === slide); });
+    heroVideo.poster = s.video + '.jpg';
+    clearTimeout(slideTimer);
+    if (reduceMotion) return;
+    heroVideo.src = s.video + '.mp4';
+    heroVideo.play().catch(() => { slideTimer = setTimeout(() => showSlide(slide + 1), 5300); });
+    // precarga el próximo video
+    const nx = SLIDES[(slide + 1) % SLIDES.length].video + '.mp4';
+    if (!document.querySelector(`link[href="${nx}"]`)) { const l = document.createElement('link'); l.rel = 'preload'; l.as = 'video'; l.href = nx; document.head.appendChild(l); }
   }
-  paintHero();
-  requestAnimationFrame(() => document.getElementById('heroWs').classList.add('draw'));
+  heroVideo.addEventListener('ended', () => showSlide(slide + 1));
+  heroVideo.addEventListener('loadedmetadata', () => dotsBox.style.setProperty('--dur', (heroVideo.duration || 5.3) + 's'));
+  dots.forEach((d, k) => d.addEventListener('click', () => showSlide(k)));
+  showSlide(0);
+  document.addEventListener('langchange', () => {
+    const s = SLIDES[slide], txt = LANG === 'en' ? s.en : s.es;
+    document.getElementById('slideMsg').textContent = txt[0];
+    document.getElementById('slideSub').textContent = txt[1];
+  });
 
   /* ---------- Cinta: recién llegados (los últimos agregados con foto) ---------- */
   const palmIcon = `<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#FFD43B"><ellipse cx="50" cy="16" rx="29" ry="7" transform="rotate(-28 50 36)"/><ellipse cx="50" cy="14" rx="30" ry="7" transform="rotate(24 50 36)"/><ellipse cx="50" cy="18" rx="26" ry="7" transform="rotate(70 50 36)"/><path d="M50 38 C 47 56 42 70 33 92 L41 92 C 47 74 51 58 55 42 Z"/></g></svg>`;
@@ -677,7 +706,7 @@
   const reset = () => { shown = PAGE; render(); };
   render();
   moreBtn.addEventListener('click', () => { shown += PAGE; render(); });
-  document.addEventListener('langchange', () => { render(); paintHero(); paintTicker(); });
+  document.addEventListener('langchange', () => { render(); paintTicker(); });
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
