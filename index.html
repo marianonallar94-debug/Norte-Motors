@@ -344,6 +344,16 @@
   .delivery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
   @media(max-width:860px){.delivery-grid{grid-template-columns:repeat(2,1fr);}}
   .delivery-grid img{aspect-ratio:1/1;object-fit:cover;border-radius:4px;width:100%;}
+
+  /* ---------- BARRA DE SECCIONES ---------- */
+  .subnav{background:var(--charcoal);border-top:1px solid #2c2c2c;}
+  .subnav-track{display:flex;gap:8px;overflow-x:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:1180px;margin:0 auto;padding:9px 16px;}
+  .subnav-track::-webkit-scrollbar{display:none;}
+  .subnav a{flex:none;color:#d9d9d9;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:7px 14px;border-radius:999px;border:1.5px solid #3a3a3a;white-space:nowrap;transition:all .15s;}
+  .subnav a:hover{border-color:var(--red);color:#fff;}
+  .subnav a.active{background:var(--red);border-color:var(--red);color:#fff;}
+  section[id]{scroll-margin-top:136px;}
+  @media(min-width:861px){.subnav-track{justify-content:center;}}
 </style>
 </head>
 <body>
@@ -368,21 +378,20 @@
         <text x="104" y="100" font-family="Oswald, sans-serif" font-weight="500" font-size="10" fill="#b8b8b8" letter-spacing="3">DRIVE YOUR FUTURE</text>
       </svg>
     </div>
-    <button class="burger" id="burgerBtn" aria-label="Abrir menú">&#9776;</button>
-    <div class="nav-links" id="navLinks">
-      <ul>
-        <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
-        <li><a href="#inventario" data-i18n="nav.inventory">Inventario</a></li>
-        <li><a href="#financiamiento" data-i18n="nav.financing">Financiamiento</a></li>
-        <li><a href="#otros-estados" data-i18n="nav.outofstate">Otros estados</a></li>
-        <li><a href="#nosotros" data-i18n="nav.about">Nosotros</a></li>
-        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
-      </ul>
-    </div>
     <div class="nav-actions">
       <button type="button" class="lang-toggle" aria-label="Cambiar idioma / Change language">EN</button>
     </div>
   </div>
+  <nav class="subnav" id="subnav" aria-label="Secciones">
+    <div class="subnav-track">
+      <a href="#inventario" data-i18n="nav.inventory">Inventario</a>
+      <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
+      <a href="#otros-estados" data-i18n="nav.outofstate">Otros estados</a>
+      <a href="#resenas" data-i18n="nav.reviews">Reseñas</a>
+      <a href="#financiamiento" data-i18n="nav.financing">Financiamiento</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+    </div>
+  </nav>
 </header>
 
 <section class="hero" id="inicio">
@@ -722,11 +731,21 @@
 <script src="assets/js/vehicles.js"></script>
 <script src="assets/js/reviews.js"></script>
 <script>
-  // Menú móvil
-  const burger = document.getElementById('burgerBtn');
-  const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+    // Barra de secciones: marca la sección en la que está la persona y la mantiene a la vista
+  const subLinks = [...document.querySelectorAll('.subnav a')];
+  const secs = subLinks.map(a => document.querySelector(a.getAttribute('href')));
+  let lastActive = null;
+  function spy(){
+    const y = window.scrollY + 150;
+    let cur = null;
+    let best = -1; secs.forEach((sec, i) => { if (sec && sec.offsetTop <= y && sec.offsetTop > best) { best = sec.offsetTop; cur = subLinks[i]; } });
+    if (cur !== lastActive) {
+      subLinks.forEach(a => a.classList.toggle('active', a === cur));
+      if (cur) { const tr = cur.parentElement; tr.scrollTo({ left: cur.offsetLeft - tr.clientWidth / 2 + cur.clientWidth / 2, behavior: 'smooth' }); }
+      lastActive = cur;
+    }
+  }
+  window.addEventListener('scroll', spy, { passive: true }); spy();
 
   // El inventario se carga desde assets/js/vehicles.js (se actualiza solo todos los días desde DealerNode)
   const icons = {

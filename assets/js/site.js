@@ -17,7 +17,7 @@ const SITE = {
     { key: "fair", es: "Regular (600–659)",     en: "Fair (600–659)",       apr: 12 },
     { key: "build", es: "En construcción / sin crédito", en: "Rebuilding / no credit", apr: 14 }
   ],
-  creditDefault: "fair",           // el que usan las tarjetas y el filtro "hasta $X al mes"
+  creditDefault: "exc",            // el que usan las tarjetas, el filtro "hasta $X al mes" y la calculadora al abrir
   googleReviewsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJF_YCa7Wp2YgROUH7qLLcmc0",
   googleRating: "4.8",
   googleReviewCount: 39
@@ -37,7 +37,7 @@ const fmt$ = n => "$" + Math.round(n).toLocaleString("en-US");
 /* ---------- Idioma (ES / EN) ---------- */
 const I18N = {
   en: {
-    "nav.home":"Home","nav.inventory":"Inventory","nav.financing":"Financing","nav.about":"About","nav.contact":"Contact","nav.outofstate":"Out of state",
+    "nav.home":"Home","nav.inventory":"Inventory","nav.financing":"Financing","nav.about":"About","nav.contact":"Contact","nav.outofstate":"Out of state","nav.reviews":"Reviews",
     "hero.eyebrow":"Hollywood, Florida · Clean title guaranteed",
     "hero.title":"The right used car, with the warranty you deserve",
     "hero.lead":"Pickups, SUVs, sedans and minivans, inspected, with verified clean title and a 3-year bumper to bumper warranty on every unit. Financing for all credit types — we ship nationwide.",
