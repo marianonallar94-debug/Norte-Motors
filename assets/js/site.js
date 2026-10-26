@@ -12,8 +12,8 @@ const SITE = {
   termDefault: 72,                 // meses
   terms: [48, 60, 72],
   credit: [                        // tasa anual (APR) estimada según el crédito
-    { key: "exc", es: "Excelente (720+)",       en: "Excellent (720+)",     apr: 9.9 },
-    { key: "good", es: "Bueno (660–719)",       en: "Good (660–719)",       apr: 13.9 },
+    { key: "exc", es: "Excelente (720+)",       en: "Excellent (720+)",     apr: 4 },
+    { key: "good", es: "Bueno (660–719)",       en: "Good (660–719)",       apr: 9 },
     { key: "fair", es: "Regular (600–659)",     en: "Fair (600–659)",       apr: 18.9 },
     { key: "build", es: "En construcción / sin crédito", en: "Rebuilding / no credit", apr: 22.9 }
   ],
