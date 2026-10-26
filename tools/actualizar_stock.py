@@ -80,6 +80,9 @@ def main(path):
     VFILE.write_text(src, encoding="utf-8")
     total = len(re.findall(r'vin:"', src))
     print(f"Sacados: {removed} | Agregados: {added} | Precios cambiados: {repriced} | Total en la web: {total}")
+    # Regenera las páginas para compartir (autos/<VIN>.html) y el sitemap
+    import subprocess
+    subprocess.run([sys.executable, str(Path(__file__).with_name("generar_paginas.py"))], check=False)
 
 
 if __name__ == "__main__":

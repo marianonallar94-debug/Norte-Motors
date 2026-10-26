@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Palm Tree Motors | Carros Usados en Hollywood, FL</title>
+<title>Palm Tree Motors | Carros Usados en Hollywood, FL · Financiamiento y Garantía</title>
+<meta name="description" content="Carros usados con título limpio y 3 años de garantía bumper to bumper en Hollywood, FL. Financiamiento para todo tipo de crédito, atención en español y envíos a todo Estados Unidos.">
+<link rel="canonical" href="https://palmtreemotors.net/">
+<meta name="theme-color" content="#141414">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Palm Tree Motors">
+<meta property="og:title" content="Palm Tree Motors | Carros usados en Hollywood, FL">
+<meta property="og:description" content="Título limpio, 3 años de garantía y financiamiento para todo tipo de crédito. Enviamos a todo Estados Unidos.">
+<meta property="og:url" content="https://palmtreemotors.net/">
+<meta property="og:image" content="https://palmtreemotors.net/assets/og-palmtree.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoDealer","name":"Palm Tree Motors","url":"https://palmtreemotors.net/","image":"https://palmtreemotors.net/assets/og-palmtree.jpg","telephone":"+1-571-424-6410","address":{"@type":"PostalAddress","streetAddress":"5647 Funston St","addressLocality":"Hollywood","addressRegion":"FL","postalCode":"33023","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":26.0006096,"longitude":-80.200814},"openingHours":"Mo-Su 10:00-19:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"39"},"knowsLanguage":["es"]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -297,6 +313,37 @@
     box-shadow:0 8px 22px rgba(0,0,0,.3);
   }
   .wa-float svg{width:28px;height:28px;}
+
+  /* ---------- NUEVO: idioma, cuota, otros estados, reseñas ---------- */
+  .lang-toggle{background:transparent;border:1.5px solid #555;color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;padding:7px 12px;border-radius:3px;cursor:pointer;}
+  .lang-toggle:hover{border-color:var(--red);}
+  .car-monthly{font-size:13px;color:var(--black);margin-top:3px;}
+  .car-monthly b{font-family:'Oswald',sans-serif;font-size:16px;}
+  .inv-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--gray);margin:-14px 0 22px;}
+  #filterMonthly{width:170px;}
+
+  .oos{background:#fff;border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);}
+  .oos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:30px;}
+  @media(max-width:860px){.oos-grid{grid-template-columns:1fr;}}
+  .oos-step{padding:24px;border:1px solid var(--gray-line);border-radius:4px;background:var(--off);}
+  .oos-step .num{width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .oos-step h3{font-size:17px;margin-bottom:8px;}
+  .oos-step p{font-size:14px;color:var(--gray);}
+
+  .reviews-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:28px;}
+  .rating-big{font-family:'Oswald',sans-serif;font-size:48px;font-weight:700;line-height:1;}
+  .stars{color:#F5A623;font-size:22px;letter-spacing:2px;}
+  .reviews-top small{display:block;color:var(--gray);font-size:13.5px;}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:860px){.review-grid{grid-template-columns:1fr;}}
+  .review-card{background:#fff;border:1px solid var(--gray-line);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:12px;}
+  .review-card p{font-size:14.5px;}
+  .review-card .src{font-size:12px;color:var(--gray);margin-top:auto;}
+  .deliveries{margin-top:34px;}
+  .deliveries h3{font-size:18px;margin-bottom:14px;}
+  .delivery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  @media(max-width:860px){.delivery-grid{grid-template-columns:repeat(2,1fr);}}
+  .delivery-grid img{aspect-ratio:1/1;object-fit:cover;border-radius:4px;width:100%;}
 </style>
 </head>
 <body>
@@ -324,15 +371,16 @@
     <button class="burger" id="burgerBtn" aria-label="Abrir menú">&#9776;</button>
     <div class="nav-links" id="navLinks">
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#inventario">Inventario</a></li>
-        <li><a href="#financiamiento">Financiamiento</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
+        <li><a href="#inventario" data-i18n="nav.inventory">Inventario</a></li>
+        <li><a href="#financiamiento" data-i18n="nav.financing">Financiamiento</a></li>
+        <li><a href="#otros-estados" data-i18n="nav.outofstate">Otros estados</a></li>
+        <li><a href="#nosotros" data-i18n="nav.about">Nosotros</a></li>
+        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
       </ul>
     </div>
     <div class="nav-actions">
-      <a class="btn btn-red" href="https://wa.me/15714246410" target="_blank" style="display:none" id="navWaBtn">WhatsApp</a>
+      <button type="button" class="lang-toggle" aria-label="Cambiar idioma / Change language">EN</button>
     </div>
   </div>
 </header>
@@ -340,12 +388,12 @@
 <section class="hero" id="inicio">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">Hollywood, Florida · Título limpio garantizado</div>
-      <h1>El carro usado correcto, con la garantía que se merece</h1>
-      <p class="lead">Pickups, SUVs, sedanes y minivans inspeccionados, con título limpio verificado y 3 años de garantía bumper to bumper en cada unidad. Financiamiento aprobado para todo tipo de crédito, con atención en español de principio a fin.</p>
+      <div class="hero-eyebrow" data-i18n="hero.eyebrow">Hollywood, Florida · Título limpio garantizado</div>
+      <h1 data-i18n="hero.title">El carro usado correcto, con la garantía que se merece</h1>
+      <p class="lead" data-i18n="hero.lead">Pickups, SUVs, sedanes y minivans inspeccionados, con título limpio verificado y 3 años de garantía bumper to bumper en cada unidad. Financiamiento para todo tipo de crédito, con atención en español — y enviamos a todo Estados Unidos.</p>
       <div class="hero-ctas">
-        <a href="#financiamiento" class="btn btn-red">Aplicar por Financiamiento</a>
-        <a href="#inventario" class="btn btn-outline">Ver Inventario</a>
+        <a href="#financiamiento" class="btn btn-red" data-i18n="hero.apply">Aplicar por Financiamiento</a>
+        <a href="#inventario" class="btn btn-outline" data-i18n="hero.inventory">Ver Inventario</a>
       </div>
     </div>
     <svg class="hero-badge" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Palm Tree Motors">
@@ -370,10 +418,10 @@
 
 <section class="trust">
   <div class="wrap">
-    <div class="trust-item"><strong>Título Limpio Garantizado</strong>Cada carro, verificado antes de la venta</div>
-    <div class="trust-item"><strong>3 Años de Garantía</strong>Cobertura bumper to bumper incluida</div>
-    <div class="trust-item"><strong>Mejor Financiamiento</strong>Aprobación para todo tipo de crédito</div>
-    <div class="trust-item"><strong>Hollywood, FL</strong>Atención 100% en español</div>
+    <div class="trust-item"><div><strong data-i18n="trust.title.t">Título Limpio Garantizado</strong><span data-i18n="trust.title.d">Cada carro, verificado antes de la venta</span></div></div>
+    <div class="trust-item"><div><strong data-i18n="trust.warranty.t">3 Años de Garantía</strong><span data-i18n="trust.warranty.d">Cobertura bumper to bumper incluida</span></div></div>
+    <div class="trust-item"><div><strong data-i18n="trust.fin.t">Mejor Financiamiento</strong><span data-i18n="trust.fin.d">Aprobación para todo tipo de crédito</span></div></div>
+    <div class="trust-item"><div><strong data-i18n="trust.loc.t">Hollywood, FL</strong><span data-i18n="trust.loc.d">Atención en español · Enviamos a todo el país</span></div></div>
   </div>
 </section>
 
@@ -382,36 +430,38 @@
     <div class="section-head">
       <div>
         <span class="stripe"></span>
-        <h2>Nuestro Inventario</h2>
-        <p>Pickups, SUVs, sedanes y minivans — cada uno con título limpio verificado y 3 años de garantía bumper to bumper.</p>
+        <h2 data-i18n="inv.title">Nuestro Inventario</h2>
+        <p data-i18n="inv.lead">Pickups, SUVs, sedanes y minivans — cada uno con título limpio verificado y 3 años de garantía bumper to bumper.</p>
       </div>
     </div>
 
     <div class="filters">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="pickup">Pickups</button>
-      <button class="filter-btn" data-filter="suv">SUVs</button>
-      <button class="filter-btn" data-filter="sedan">Sedanes</button>
-      <button class="filter-btn" data-filter="minivan">Minivans</button>
-      <button class="filter-btn" data-filter="hatchback">Hatchbacks</button>
-      <button class="filter-btn" data-filter="coupe">Coupés</button>
-      <button class="filter-btn" data-filter="convertible">Convertibles</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="f.all">Todos</button>
+      <button class="filter-btn" data-filter="pickup" data-i18n="f.pickup">Pickups</button>
+      <button class="filter-btn" data-filter="suv" data-i18n="f.suv">SUVs</button>
+      <button class="filter-btn" data-filter="sedan" data-i18n="f.sedan">Sedanes</button>
+      <button class="filter-btn" data-filter="minivan" data-i18n="f.minivan">Minivans</button>
+      <button class="filter-btn" data-filter="hatchback" data-i18n="f.hatchback">Hatchbacks</button>
+      <button class="filter-btn" data-filter="coupe" data-i18n="f.coupe">Coupés</button>
+      <button class="filter-btn" data-filter="convertible" data-i18n="f.convertible">Convertibles</button>
     </div>
 
     <div class="filters-extra">
       <select id="filterBrand" class="filter-input">
-        <option value="all">Todas las marcas</option>
+        <option value="all" data-i18n="f.brand">Todas las marcas</option>
       </select>
-      <input type="text" id="filterModel" class="filter-input" placeholder="Buscar modelo...">
-      <input type="number" id="filterMinPrice" class="filter-input filter-input-price" placeholder="Precio mín.">
-      <input type="number" id="filterMaxPrice" class="filter-input filter-input-price" placeholder="Precio máx.">
+      <input type="text" id="filterModel" class="filter-input" placeholder="Buscar modelo..." data-i18n-ph="f.model">
+      <input type="number" id="filterMonthly" class="filter-input" placeholder="Cuota hasta $ al mes" data-i18n-ph="f.monthly" inputmode="numeric">
+      <input type="number" id="filterMinPrice" class="filter-input filter-input-price" placeholder="Precio mín." data-i18n-ph="f.min">
+      <input type="number" id="filterMaxPrice" class="filter-input filter-input-price" placeholder="Precio máx." data-i18n-ph="f.max">
       <select id="filterSort" class="filter-input">
-        <option value="default">Ordenar por</option>
-        <option value="price-asc">Precio: menor a mayor</option>
-        <option value="price-desc">Precio: mayor a menor</option>
+        <option value="default" data-i18n="f.sort">Ordenar por</option>
+        <option value="price-asc" data-i18n="f.priceAsc">Precio: menor a mayor</option>
+        <option value="price-desc" data-i18n="f.priceDesc">Precio: mayor a menor</option>
       </select>
-      <button type="button" id="filterReset" class="filter-input" style="cursor:pointer;background:var(--off);">Limpiar filtros</button>
+      <button type="button" id="filterReset" class="filter-input" style="cursor:pointer;background:var(--off);" data-i18n="f.reset">Limpiar filtros</button>
     </div>
+    <div class="inv-meta"><span id="invCount"></span><span id="invFootnote"></span></div>
 
     <div class="grid-cars" id="carsGrid"></div>
   </div>
@@ -422,31 +472,86 @@
     <div class="section-head">
       <div>
         <span class="stripe"></span>
-        <h2>Por qué comprar en Palm Tree Motors</h2>
-        <p>Un lote familiar en Hollywood, respaldado por garantía real y trato directo con la comunidad hispana del sur de la Florida.</p>
+        <h2 data-i18n="why.title">Por qué comprar en Palm Tree Motors</h2>
+        <p data-i18n="why.lead">Un lote familiar en Hollywood, respaldado por garantía real y trato directo con la comunidad hispana.</p>
       </div>
     </div>
     <div class="why-grid">
       <div class="why-card">
         <div class="num">01</div>
-        <h3>Título limpio garantizado</h3>
-        <p>Cada vehículo pasa por verificación de título antes de llegar a nuestro lote — sin sorpresas, sin letras pequeñas.</p>
+        <h3 data-i18n="why.1t">Título limpio garantizado</h3>
+        <p data-i18n="why.1d">Cada vehículo pasa por verificación de título antes de llegar a nuestro lote — sin sorpresas, sin letras pequeñas.</p>
       </div>
       <div class="why-card">
         <div class="num">02</div>
-        <h3>3 años de garantía bumper to bumper</h3>
-        <p>Todo carro que compras en Palm Tree Motors sale con 3 años de cobertura completa, de parachoques a parachoques.</p>
+        <h3 data-i18n="why.2t">3 años de garantía bumper to bumper</h3>
+        <p data-i18n="why.2d">Todo carro que compras en Palm Tree Motors sale con 3 años de cobertura completa, de parachoques a parachoques.</p>
       </div>
       <div class="why-card">
         <div class="num">03</div>
-        <h3>Las mejores opciones de financiamiento</h3>
-        <p>Trabajamos con múltiples prestamistas para conseguirte la aprobación y el pago mensual que mejor se ajuste a ti.</p>
+        <h3 data-i18n="why.3t">Las mejores opciones de financiamiento</h3>
+        <p data-i18n="why.3d">Trabajamos con múltiples prestamistas para conseguirte la aprobación y el pago mensual que mejor se ajuste a ti.</p>
       </div>
       <div class="why-card">
         <div class="num">04</div>
-        <h3>Trato directo, en español</h3>
-        <p>Habla directo con nosotros por WhatsApp — sin vueltas, sin intermediarios, en tu idioma de principio a fin.</p>
+        <h3 data-i18n="why.4t">Trato directo, en español</h3>
+        <p data-i18n="why.4d">Habla directo con nosotros por WhatsApp — sin vueltas, sin intermediarios, en tu idioma de principio a fin.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section oos" id="otros-estados">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="stripe"></span>
+        <h2 data-i18n="oos.title">Compra desde cualquier estado</h2>
+        <p data-i18n="oos.lead">Vendemos a clientes de todo Estados Unidos. Elige tu carro aquí y nosotros nos encargamos del resto.</p>
+      </div>
+    </div>
+    <div class="oos-grid">
+      <div class="oos-step">
+        <div class="num">1</div>
+        <h3 data-i18n="oos.1t">Elige tu carro</h3>
+        <p data-i18n="oos.1d">Mira el inventario y escríbenos por WhatsApp. Te mandamos más fotos, videos y todos los detalles del carro que te gusta.</p>
+      </div>
+      <div class="oos-step">
+        <div class="num">2</div>
+        <h3 data-i18n="oos.2t">Aprobación a distancia</h3>
+        <p data-i18n="oos.2d">Hacemos el financiamiento contigo por teléfono y WhatsApp. No necesitas venir para que te aprueben.</p>
+      </div>
+      <div class="oos-step">
+        <div class="num">3</div>
+        <h3 data-i18n="oos.3t">Elige cómo recibirlo</h3>
+        <p data-i18n="oos.3d">Vuela a Miami y te lo llevas manejando, o firma todo online y te lo enviamos en grúa hasta tu casa.</p>
+      </div>
+    </div>
+    <a class="btn btn-red" target="_blank" id="oosBtn" data-i18n="oos.cta">Estoy en otro estado — escribir por WhatsApp</a>
+  </div>
+</section>
+
+<section class="section" id="resenas">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="stripe"></span>
+        <h2 data-i18n="rev.title">Lo que dicen nuestros clientes</h2>
+        <p data-i18n="rev.lead">Reseñas reales de clientes que compraron con nosotros.</p>
+      </div>
+    </div>
+    <div class="reviews-top">
+      <div class="rating-big" id="ratingBig"></div>
+      <div>
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <small><span id="ratingCount"></span> <span data-i18n="rev.reviews">reseñas</span> <span data-i18n="rev.on">en Google</span></small>
+      </div>
+      <a class="btn btn-black" id="reviewsLink" target="_blank" rel="noopener" data-i18n="rev.all">Ver todas las reseñas en Google</a>
+    </div>
+    <div class="review-grid" id="reviewGrid"></div>
+    <div class="deliveries" id="deliveries" style="display:none;">
+      <h3 data-i18n="rev.deliveries">Clientes felices</h3>
+      <div class="delivery-grid" id="deliveryGrid"></div>
     </div>
   </div>
 </section>
@@ -454,10 +559,10 @@
 <section class="financing">
   <div class="wrap">
     <div>
-      <h2>Aprobación de financiamiento hoy — sin importar tu historial de crédito</h2>
-      <p>Cada carro incluye título limpio y 3 años de garantía bumper to bumper. Aplica en línea, en 2 minutos.</p>
+      <h2 data-i18n="finb.title">Aprobación de financiamiento hoy — sin importar tu historial de crédito</h2>
+      <p data-i18n="finb.lead">Cada carro incluye título limpio y 3 años de garantía bumper to bumper. Aplica en línea, en 2 minutos.</p>
     </div>
-    <a href="#financiamiento" class="btn btn-black">Aplicar por Financiamiento</a>
+    <a href="#financiamiento" class="btn btn-black" data-i18n="hero.apply">Aplicar por Financiamiento</a>
   </div>
 </section>
 
@@ -466,69 +571,69 @@
     <div class="section-head">
       <div>
         <span class="stripe"></span>
-        <h2>Aplica para Financiamiento</h2>
-        <p>Llena tus datos y te contactamos por WhatsApp para continuar tu aprobación — sin compromiso.</p>
+        <h2 data-i18n="form.title">Aplica para Financiamiento</h2>
+        <p data-i18n="form.lead">Llena tus datos y te contactamos por WhatsApp para continuar tu aprobación — sin compromiso.</p>
       </div>
     </div>
 
     <form id="creditForm" class="credit-form">
       <div class="form-grid">
         <div class="form-field">
-          <label for="cf-name">Nombre completo *</label>
-          <input type="text" id="cf-name" required placeholder="Ej: Juan Pérez">
+          <label for="cf-name" data-i18n="form.name">Nombre completo *</label>
+          <input type="text" id="cf-name" required placeholder="Ej: Juan Pérez" data-i18n-ph="form.namePh">
         </div>
         <div class="form-field">
-          <label for="cf-phone">Teléfono *</label>
+          <label for="cf-phone" data-i18n="form.phone">Teléfono *</label>
           <input type="tel" id="cf-phone" required placeholder="(305) 000-0000">
         </div>
         <div class="form-field">
-          <label for="cf-email">Correo electrónico</label>
-          <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.com">
+          <label for="cf-email" data-i18n="form.email">Correo electrónico</label>
+          <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.com" data-i18n-ph="form.emailPh">
         </div>
         <div class="form-field">
-          <label for="cf-car">Carro de interés</label>
+          <label for="cf-car" data-i18n="form.car">Carro de interés</label>
           <select id="cf-car">
-            <option value="">Selecciona un carro (opcional)</option>
+            <option value="" data-i18n="form.carOpt">Selecciona un carro (opcional)</option>
           </select>
         </div>
         <div class="form-field">
-          <label for="cf-down">Down payment aproximado</label>
+          <label for="cf-down" data-i18n="form.down">Down payment aproximado</label>
           <select id="cf-down">
-            <option value="">Selecciona un rango</option>
+            <option value="" data-i18n="form.range">Selecciona un rango</option>
             <option>$0 - $999</option>
             <option>$1,000 - $1,999</option>
             <option>$2,000 - $3,999</option>
-            <option>$4,000 o más</option>
+            <option value="$4,000+">$4,000+</option>
           </select>
         </div>
         <div class="form-field">
-          <label for="cf-income">Ingreso mensual aproximado</label>
+          <label for="cf-income" data-i18n="form.income">Ingreso mensual aproximado</label>
           <select id="cf-income">
-            <option value="">Selecciona un rango</option>
-            <option>Menos de $2,000</option>
+            <option value="" data-i18n="form.range">Selecciona un rango</option>
+            <option value="< $2,000">&lt; $2,000</option>
             <option>$2,000 - $3,499</option>
             <option>$3,500 - $4,999</option>
-            <option>$5,000 o más</option>
+            <option value="$5,000+">$5,000+</option>
           </select>
         </div>
         <div class="form-field">
-          <label for="cf-employed">¿Actualmente empleado?</label>
+          <label for="cf-employed" data-i18n="form.employed">¿Actualmente empleado?</label>
           <select id="cf-employed">
-            <option value="">Selecciona una opción</option>
-            <option>Sí, empleado</option>
-            <option>Sí, trabajo por mi cuenta</option>
-            <option>No actualmente</option>
+            <option value="" data-i18n="form.option">Selecciona una opción</option>
+            <option value="Sí, empleado" data-i18n="form.emp1">Sí, empleado</option>
+            <option value="Sí, trabajo por mi cuenta" data-i18n="form.emp2">Sí, trabajo por mi cuenta</option>
+            <option value="No actualmente" data-i18n="form.emp3">No actualmente</option>
           </select>
         </div>
         <div class="form-field form-field-full">
-          <label for="cf-notes">Comentario adicional</label>
-          <textarea id="cf-notes" rows="3" placeholder="Cuéntanos algo más si quieres"></textarea>
+          <label for="cf-notes" data-i18n="form.notes">Comentario adicional</label>
+          <textarea id="cf-notes" rows="3" placeholder="Cuéntanos algo más si quieres" data-i18n-ph="form.notesPh"></textarea>
         </div>
       </div>
 
-      <p class="form-disclaimer">No pedimos número de seguro social, información bancaria ni documentos de identidad en este formulario. Ese paso lo completamos de forma segura por teléfono o en persona.</p>
+      <p class="form-disclaimer" data-i18n="form.disclaimer">No pedimos número de seguro social, información bancaria ni documentos de identidad en este formulario. Ese paso lo completamos de forma segura por teléfono o en persona.</p>
 
-      <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;">Enviar solicitud por WhatsApp</button>
+      <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;" data-i18n="form.submit">Enviar solicitud por WhatsApp</button>
     </form>
   </div>
 </section>
@@ -538,8 +643,8 @@
     <div class="section-head">
       <div>
         <span class="stripe"></span>
-        <h2>Visítanos o escríbenos</h2>
-        <p>Estamos en Hollywood, Florida — te esperamos en el lote o te atendemos por WhatsApp.</p>
+        <h2 data-i18n="contact.title">Visítanos o escríbenos</h2>
+        <p data-i18n="contact.lead">Estamos en Hollywood, Florida — te esperamos en el lote o te atendemos por WhatsApp.</p>
       </div>
     </div>
     <div class="contact-grid">
@@ -547,28 +652,28 @@
         <div class="contact-row">
           <div class="ic">📍</div>
           <div>
-            <h4>Dirección</h4>
-            <p>5647 Funston St, Hollywood, FL</p>
+            <h4 data-i18n="contact.address">Dirección</h4>
+            <p>5647 Funston St, Hollywood, FL 33023</p>
           </div>
         </div>
         <div class="contact-row">
           <div class="ic">📱</div>
           <div>
-            <h4>Teléfono / WhatsApp</h4>
-            <p>+1 (571) 424-6410</p>
+            <h4 data-i18n="contact.phone">Teléfono / WhatsApp</h4>
+            <p><a href="tel:+15714246410">+1 (571) 424-6410</a></p>
           </div>
         </div>
         <div class="contact-row">
           <div class="ic">🕒</div>
           <div>
-            <h4>Horario</h4>
-            <p>Lunes a Domingo — 10:00 AM a 7:00 PM</p>
+            <h4 data-i18n="contact.hours">Horario</h4>
+            <p data-i18n="contact.hoursVal">Lunes a Domingo — 10:00 AM a 7:00 PM</p>
           </div>
         </div>
-        <a href="https://wa.me/15714246410" target="_blank" class="btn btn-red" style="width:100%;justify-content:center;margin-top:10px;">Chatear por WhatsApp</a>
+        <a href="https://wa.me/15714246410" target="_blank" class="btn btn-red" style="width:100%;justify-content:center;margin-top:10px;" data-i18n="contact.chat">Chatear por WhatsApp</a>
       </div>
       <div class="map-frame">
-        <iframe loading="lazy" src="https://www.google.com/maps?q=5647+Funston+St,+Hollywood,+FL&output=embed"></iframe>
+        <iframe loading="lazy" title="Mapa Palm Tree Motors" src="https://www.google.com/maps?q=5647+Funston+St,+Hollywood,+FL&output=embed"></iframe>
       </div>
     </div>
   </div>
@@ -595,10 +700,11 @@
         </svg>
       </div>
       <div class="foot-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#inventario">Inventario</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#inicio" data-i18n="nav.home">Inicio</a>
+        <a href="#inventario" data-i18n="nav.inventory">Inventario</a>
+        <a href="#otros-estados" data-i18n="nav.outofstate">Otros estados</a>
+        <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -612,7 +718,9 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h0a7.94 7.94 0 0 0 5.55-13.58zM12.05 18.4a6.55 6.55 0 0 1-3.35-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.58 3.1zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.37.1-.12.13-.2.2-.35a.4.4 0 0 0 0-.37c-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.34h-.38a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.89.8 2.02s1.37 2.1 3.33 2.94a11 11 0 0 0 1.11.41 2.68 2.68 0 0 0 1.23.08c.38-.06 1.17-.48 1.33-.94s.16-.86.11-.94-.18-.13-.38-.23z"/></svg>
 </a>
 
+<script src="assets/js/site.js"></script>
 <script src="assets/js/vehicles.js"></script>
+<script src="assets/js/reviews.js"></script>
 <script>
   // Menú móvil
   const burger = document.getElementById('burgerBtn');
@@ -620,16 +728,9 @@
   burger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  /* =========================================================
-     INVENTARIO — edita esta lista con tus carros reales.
-     type: "pickup" | "suv" | "sedan" | "minivan"
-     photo: pon aquí el nombre del archivo de la foto (ej: "assets/carros/ram-1500.jpg")
-            si lo dejas en null, se muestra un ícono de silueta con "Foto próximamente".
-     ========================================================= */
-  // vehicles se carga desde assets/js/vehicles.js
-
+  // El inventario se carga desde assets/js/vehicles.js (se actualiza solo todos los días desde DealerNode)
   const icons = {
-    pickup: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M2 26h4l4-10h14v10h4V10h10l8 8v8h4v4H2z" opacity="0"/><path d="M4 27c0-1.5 1-3 3-3h2l3-9c1-2.6 3-4 6-4h9v13h4l3-3h9c2 0 4 1.4 5 3.4l2 4.6h1c1.5 0 3 1.5 3 3v1H4z" /><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
+    pickup: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M4 27c0-1.5 1-3 3-3h2l3-9c1-2.6 3-4 6-4h9v13h4l3-3h9c2 0 4 1.4 5 3.4l2 4.6h1c1.5 0 3 1.5 3 3v1H4z" /><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
     suv: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M6 26c-2 0-3-1.6-3-3.4 0-1.6 1-2.9 2.6-3.3l3-8.6C9.4 8.4 11.6 7 14 7h30c2.6 0 5 1.6 6 4l3 8c2 .3 3.2 1.7 3.2 3.6 0 2-1.6 3.4-3.6 3.4H6z"/><circle cx="17" cy="30" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="30" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
     sedan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M5 27c-2 0-3-1.5-3-3.2 0-1.6 1.1-2.9 2.7-3.2l2.6-6C8.6 11.4 11 9.5 14 9.5h9l5-4h8l4 4h6c3 0 5.6 2 6.6 4.9l2 5.2c1.6.3 2.7 1.6 2.7 3.2 0 1.7-1 3.2-3 3.2H5z"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`,
     minivan: `<svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M4 27c-2 0-3-1.6-3-3.4 0-1.6 1-2.9 2.6-3.3l1-6.6C5.2 10.4 8 8 11.5 8h32c3.6 0 6.7 2.5 7.4 6l1.3 6.3c1.7.3 2.8 1.7 2.8 3.3 0 1.9-1.4 3.4-3.4 3.4H4z"/><rect x="14" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="27" y="12" width="10" height="8" rx="1" fill="var(--charcoal)"/><rect x="40" y="12" width="9" height="8" rx="1" fill="var(--charcoal)"/><circle cx="16" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/><circle cx="46" cy="31" r="5" fill="var(--charcoal)" stroke="#fff" stroke-width="2"/></svg>`
@@ -637,11 +738,14 @@
   icons.hatchback = icons.sedan;
   icons.coupe = icons.sedan;
   icons.convertible = icons.sedan;
-  const typeLabel = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupé", convertible:"Convertible" };
+  const typeLabelEs = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupé", convertible:"Convertible" };
+  const typeLabelEn = { pickup:"Pickup", suv:"SUV", sedan:"Sedan", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupe", convertible:"Convertible" };
+  const typeLabel = k => (LANG === "en" ? typeLabelEn : typeLabelEs)[k] || k;
 
   const grid = document.getElementById('carsGrid');
   let currentTypeFilter = "all";
   const priceNum = v => parseInt(String(v.price).replace(/,/g, ''), 10) || 0;
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   // Poblar el dropdown de marcas con las marcas reales del inventario
   const brandSelect = document.getElementById('filterBrand');
@@ -657,18 +761,25 @@
     const modelQuery = document.getElementById('filterModel').value.trim().toLowerCase();
     const minP = parseFloat(document.getElementById('filterMinPrice').value);
     const maxP = parseFloat(document.getElementById('filterMaxPrice').value);
+    const maxM = parseFloat(document.getElementById('filterMonthly').value);
     const sortBy = document.getElementById('filterSort').value;
 
     let list = vehicles.filter(v => currentTypeFilter === "all" || v.type === currentTypeFilter);
     if (brand !== "all") list = list.filter(v => v.make === brand);
-    if (modelQuery) list = list.filter(v => v.model.toLowerCase().includes(modelQuery));
+    if (modelQuery) list = list.filter(v => (v.make + ' ' + v.model).toLowerCase().includes(modelQuery));
     if (!isNaN(minP)) list = list.filter(v => priceNum(v) >= minP);
     if (!isNaN(maxP)) list = list.filter(v => priceNum(v) <= maxP);
+    if (!isNaN(maxM)) list = list.filter(v => estMonthly(priceNum(v)) <= maxM);
     if (sortBy === "price-asc") list = [...list].sort((a, b) => priceNum(a) - priceNum(b));
     if (sortBy === "price-desc") list = [...list].sort((a, b) => priceNum(b) - priceNum(a));
 
+    const credit = SITE.credit.find(c => c.key === SITE.creditDefault);
+    document.getElementById('invCount').textContent = `${list.length} ${t('inv.count', 'carros disponibles')}`;
+    document.getElementById('invFootnote').textContent = t('card.footnote', '*Cuota estimada a {term} meses, crédito {credit}. Sujeto a aprobación del banco.')
+      .replace('{term}', SITE.termDefault).replace('{credit}', (LANG === 'en' ? credit.en : credit.es).split(' (')[0].toLowerCase());
+
     if (list.length === 0) {
-      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--gray);padding:40px 0;">No hay carros que coincidan con esos filtros.</div>`;
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--gray);padding:40px 0;">${t('inv.none','No hay carros que coincidan con esos filtros.')}</div>`;
       return;
     }
 
@@ -676,38 +787,43 @@
         const card = document.createElement('div');
         card.className = "car-card";
         const vId = encodeURIComponent(v.vin || (v.year+'-'+v.make+'-'+v.model).replace(/\s+/g,'-'));
+        const label = `${v.year} ${v.make} ${v.model}`;
+        const waText = LANG === 'en' ? 'Hi, I am interested in the ' + label : 'Hola, me interesa el ' + label;
         card.innerHTML = `
           <a href="auto.html?id=${vId}" style="display:block;">
             <div class="car-photo">
-              ${!v.photo ? `<span class="car-tag">Foto próximamente</span>` : ``}
-              ${v.photo ? `<img src="${v.photo}" alt="${v.make} ${v.model}" style="width:100%;height:100%;object-fit:cover;">` : icons[v.type]}
+              ${!v.photo ? `<span class="car-tag">${t('card.soon','Foto próximamente')}</span>` : ``}
+              ${v.photo ? `<img src="${v.photo}" alt="${esc(label)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">` : icons[v.type]}
             </div>
             <div class="car-body" style="padding-bottom:0;">
-              <h3>${v.year} ${v.make} ${v.model}</h3>
-              <div class="car-sub">${typeLabel[v.type]} · Título limpio · Garantía 3 años</div>
+              <h3>${esc(label)}</h3>
+              <div class="car-sub">${typeLabel(v.type)} · ${t('card.sub','Título limpio · Garantía 3 años')}</div>
               ${v.vin ? `<div style="font-size:11px;color:var(--gray);margin-top:-10px;margin-bottom:14px;">VIN: ${v.vin}</div>` : ``}
               <div class="car-specs">
                 <span>🛣️ ${v.miles} mi</span>
-                <span>⚙️ ${v.trans}</span>
+                <span>⚙️ ${LANG === 'en' ? v.trans.replace('Gasolina','Gas').replace('Híbrido','Hybrid').replace('Automática','Automatic') : v.trans}</span>
               </div>
               <div class="car-price-row" style="margin-bottom:14px;">
                 <div>
-                  ${v.priceNote ? `<div style="font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;">${v.priceNote}</div>` : ``}
+                  <div style="font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;">${t('price.note', v.priceNote || 'Monto a financiar desde')}</div>
                   <div class="car-price">$${v.price}</div>
+                  <div class="car-monthly">≈ <b>${fmt$(estMonthly(priceNum(v)))}</b>${t('card.permonth','/mes est.*')}</div>
                 </div>
               </div>
             </div>
           </a>
           <div class="car-body" style="padding-top:0;">
             <div style="display:flex;flex-direction:column;gap:8px;">
-              <button type="button" class="btn btn-red" style="width:100%;justify-content:center;padding:11px 14px;font-size:12.5px;" onclick="goToFinancing('${(v.year+' '+v.make+' '+v.model).replace(/'/g,"\\'")}')">Aplicar Financiamiento</button>
-              <a class="car-cta" style="width:100%;justify-content:center;box-sizing:border-box;" target="_blank" href="https://wa.me/15714246410?text=${encodeURIComponent('Hola, me interesa el '+v.year+' '+v.make+' '+v.model)}">Preguntar por WhatsApp</a>
+              <button type="button" class="btn btn-red" style="width:100%;justify-content:center;padding:11px 14px;font-size:12.5px;" data-label="${esc(label)}">${t('card.apply','Aplicar Financiamiento')}</button>
+              <a class="car-cta" style="width:100%;justify-content:center;box-sizing:border-box;" target="_blank" href="https://wa.me/${SITE.phone}?text=${encodeURIComponent(waText)}">${t('card.ask','Preguntar por WhatsApp')}</a>
             </div>
           </div>`;
+        card.querySelector('button[data-label]').addEventListener('click', () => goToFinancing(label));
         grid.appendChild(card);
       });
   }
   render();
+  document.addEventListener('langchange', render);
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -718,15 +834,13 @@
     });
   });
 
-  ['filterBrand','filterModel','filterMinPrice','filterMaxPrice','filterSort'].forEach(id => {
+  ['filterBrand','filterModel','filterMinPrice','filterMaxPrice','filterMonthly','filterSort'].forEach(id => {
     document.getElementById(id).addEventListener('input', render);
   });
 
   document.getElementById('filterReset').addEventListener('click', () => {
     brandSelect.value = "all";
-    document.getElementById('filterModel').value = "";
-    document.getElementById('filterMinPrice').value = "";
-    document.getElementById('filterMaxPrice').value = "";
+    ['filterModel','filterMinPrice','filterMaxPrice','filterMonthly'].forEach(id => document.getElementById(id).value = "");
     document.getElementById('filterSort').value = "default";
     currentTypeFilter = "all";
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -734,18 +848,39 @@
     render();
   });
 
+  /* ---------- Otros estados ---------- */
+  const oosBtn = document.getElementById('oosBtn');
+  const setOos = () => oosBtn.href = `https://wa.me/${SITE.phone}?text=${encodeURIComponent(LANG === 'en' ? "Hi, I'm out of state and I'm interested in buying a car." : "Hola, estoy en otro estado y me interesa comprar un carro.")}`;
+  setOos(); document.addEventListener('langchange', setOos);
+
+  /* ---------- Reseñas ---------- */
+  document.getElementById('ratingBig').textContent = SITE.googleRating;
+  document.getElementById('ratingCount').textContent = SITE.googleReviewCount;
+  document.getElementById('reviewsLink').href = SITE.googleReviewsUrl;
+  const renderReviews = () => {
+    document.getElementById('reviewGrid').innerHTML = REVIEWS.map(r => `
+      <div class="review-card">
+        <div class="stars" aria-hidden="true" style="font-size:16px;">★★★★★</div>
+        <p>“${esc(r.text)}”</p>
+        <div class="src">${t('rev.from','Reseña de Google')}</div>
+      </div>`).join('');
+  };
+  renderReviews(); document.addEventListener('langchange', renderReviews);
+  if (DELIVERIES.length) {
+    document.getElementById('deliveries').style.display = 'block';
+    document.getElementById('deliveryGrid').innerHTML = DELIVERIES.map(d =>
+      `<img src="${d.photo}" alt="${esc(d.caption || 'Cliente de Palm Tree Motors')}" loading="lazy">`).join('');
+  }
+
   /* =========================================================
      FORMULARIO DE FINANCIAMIENTO — arma un mensaje de WhatsApp
      con los datos y abre el chat para que el cliente lo envíe.
      No guarda ni transmite nada a ningún servidor.
      ========================================================= */
-  // Lleva al formulario de financiamiento y preselecciona el carro elegido
   function goToFinancing(carLabel){
     const select = document.getElementById('cf-car');
-    if (select) {
-      for (const opt of select.options) {
-        if (opt.textContent === carLabel) { select.value = opt.value; break; }
-      }
+    for (const opt of select.options) {
+      if (opt.textContent === carLabel) { select.value = opt.value; break; }
     }
     document.getElementById('financiamiento').scrollIntoView({behavior:'smooth'});
   }
@@ -759,24 +894,17 @@
 
   document.getElementById('creditForm').addEventListener('submit', function(e){
     e.preventDefault();
-    const name = document.getElementById('cf-name').value.trim();
-    const phone = document.getElementById('cf-phone').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const car = document.getElementById('cf-car').value;
-    const down = document.getElementById('cf-down').value;
-    const income = document.getElementById('cf-income').value;
-    const employed = document.getElementById('cf-employed').value;
-    const notes = document.getElementById('cf-notes').value.trim();
-
-    let msg = `Hola, quiero aplicar para financiamiento.\n\nNombre: ${name}\nTeléfono: ${phone}`;
-    if (email) msg += `\nCorreo: ${email}`;
-    if (car) msg += `\nCarro de interés: ${car}`;
-    if (down) msg += `\nDown payment aproximado: ${down}`;
-    if (income) msg += `\nIngreso mensual aproximado: ${income}`;
-    if (employed) msg += `\nEmpleo: ${employed}`;
-    if (notes) msg += `\nComentario: ${notes}`;
-
-    window.open(`https://wa.me/15714246410?text=${encodeURIComponent(msg)}`, '_blank');
+    const val = id => document.getElementById(id).value.trim();
+    let msg = `Hola, quiero aplicar para financiamiento.\n\nNombre: ${val('cf-name')}\nTeléfono: ${val('cf-phone')}`;
+    if (val('cf-email')) msg += `\nCorreo: ${val('cf-email')}`;
+    if (val('cf-car')) msg += `\nCarro de interés: ${val('cf-car')}`;
+    if (val('cf-down')) msg += `\nDown payment aproximado: ${val('cf-down')}`;
+    if (val('cf-income')) msg += `\nIngreso mensual aproximado: ${val('cf-income')}`;
+    if (val('cf-employed')) msg += `\nEmpleo: ${val('cf-employed')}`;
+    if (val('cf-notes')) msg += `\nComentario: ${val('cf-notes')}`;
+    if (LANG === 'en') msg += `\n(Cliente escribió desde la web en inglés)`;
+    track('Lead', { content_name: val('cf-car') || 'general' });
+    window.open(`https://wa.me/${SITE.phone}?text=${encodeURIComponent(msg)}`, '_blank');
   });
 </script>
 

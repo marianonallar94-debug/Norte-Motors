@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Palm Tree Motors | Detalle del vehículo</title>
+<meta name="description" content="Carro usado con título limpio y 3 años de garantía en Palm Tree Motors, Hollywood, FL. Financiamiento para todo tipo de crédito.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Palm Tree Motors">
+<meta property="og:title" content="Palm Tree Motors | Carros usados en Hollywood, FL">
+<meta property="og:image" content="https://palmtreemotors.net/assets/og-palmtree.jpg">
+<meta name="theme-color" content="#141414">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -145,21 +151,49 @@
     box-shadow:0 8px 22px rgba(0,0,0,.3);
   }
   .wa-float svg{width:28px;height:28px;}
+
+  /* ---------- NUEVO: calculadora, barra fija, idioma ---------- */
+  .lang-toggle{background:transparent;border:1.5px solid #555;color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;padding:6px 10px;border-radius:3px;cursor:pointer;}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .calc{background:#fff;border:1px solid var(--gray-line);border-radius:4px;padding:20px;margin-bottom:26px;}
+  .calc h2{font-size:18px;margin-bottom:16px;}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  @media(max-width:640px){.calc-grid{grid-template-columns:1fr;}}
+  .calc label{display:block;font-family:'Oswald',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--gray);margin-bottom:6px;}
+  .calc input,.calc select{width:100%;padding:11px 12px;border:1.5px solid var(--gray-line);border-radius:3px;font-family:'Inter',sans-serif;font-size:14.5px;background:#fff;}
+  .calc input:focus,.calc select:focus{outline:none;border-color:var(--red);}
+  .calc-result{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--gray-line);}
+  .calc-result .big{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;color:var(--red);}
+  .calc-result small{color:var(--gray);font-size:13px;}
+  .calc-disc{font-size:12px;color:var(--gray);margin-top:10px;}
+  .oos-note{font-size:13.5px;color:var(--gray);margin:-12px 0 26px;}
+  .oos-note a{color:var(--red);font-weight:600;}
+  .sticky-cta{display:none;}
+  @media(max-width:900px){
+    .sticky-cta{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--gray-line);box-shadow:0 -6px 18px rgba(0,0,0,.08);}
+    .sticky-cta a{flex:1;justify-content:center;padding:13px 10px;font-size:14px;}
+    .sticky-cta .call{flex:0 0 auto;}
+    .wa-float{display:none;}
+    body.has-car{padding-bottom:76px;}
+  }
 </style>
 </head>
 <body>
 
 <header>
   <div class="nav">
-    <a href="index.html#inventario" class="back-link">&larr; Volver al inventario</a>
-    <a href="index.html" class="brand-mini">PALM TREE <span>MOTORS</span></a>
+    <a href="index.html#inventario" class="back-link" data-i18n="car.back">&larr; Volver al inventario</a>
+    <div class="nav-right">
+      <a href="index.html" class="brand-mini">PALM TREE <span>MOTORS</span></a>
+      <button type="button" class="lang-toggle" aria-label="Cambiar idioma / Change language">EN</button>
+    </div>
   </div>
 </header>
 
 <div id="notFound" class="not-found" style="display:none;">
-  <h1 style="font-size:24px;margin-bottom:14px;">No encontramos ese vehículo</h1>
-  <p style="color:var(--gray);margin-bottom:20px;">Puede que ya se haya vendido o el enlace esté incompleto.</p>
-  <a href="index.html#inventario" class="btn btn-red">Ver inventario completo</a>
+  <h1 style="font-size:24px;margin-bottom:14px;" data-i18n="car.nf">No encontramos ese vehículo</h1>
+  <p style="color:var(--gray);margin-bottom:20px;" data-i18n="car.nfd">Puede que ya se haya vendido o el enlace esté incompleto.</p>
+  <a href="index.html#inventario" class="btn btn-red" data-i18n="car.nfBtn">Ver inventario completo</a>
 </div>
 
 <div id="carDetail" class="section" style="display:none;">
@@ -174,10 +208,10 @@
         <div class="car-vin" id="carVin"></div>
 
         <div class="spec-grid">
-          <div class="spec-item"><strong>Millaje</strong><span id="specMiles"></span></div>
-          <div class="spec-item"><strong>Motor / Transmisión</strong><span id="specTrans"></span></div>
-          <div class="spec-item"><strong>Título</strong><span>Limpio, verificado</span></div>
-          <div class="spec-item"><strong>Garantía</strong><span>3 años bumper to bumper</span></div>
+          <div class="spec-item"><strong data-i18n="car.miles">Millaje</strong><span id="specMiles"></span></div>
+          <div class="spec-item"><strong data-i18n="car.trans">Motor / Transmisión</strong><span id="specTrans"></span></div>
+          <div class="spec-item"><strong data-i18n="car.title">Título</strong><span data-i18n="car.titleVal">Limpio, verificado</span></div>
+          <div class="spec-item"><strong data-i18n="car.warranty">Garantía</strong><span data-i18n="car.warrantyVal">3 años bumper to bumper</span></div>
         </div>
 
         <div class="price-box">
@@ -186,73 +220,90 @@
             <div class="price-amount" id="priceAmount"></div>
           </div>
           <div class="action-row">
-            <a id="waBtn" class="btn btn-black" target="_blank">Preguntar por WhatsApp</a>
+            <a id="shareBtn" class="btn" style="background:var(--off);color:var(--black);" href="#" data-i18n="car.share">Compartir</a>
+            <a id="waBtn" class="btn btn-black" target="_blank" data-i18n="car.ask">Preguntar por WhatsApp</a>
           </div>
+        </div>
+
+        <p class="oos-note"><span data-i18n="car.oos">¿Estás en otro estado? Te lo enviamos en grúa hasta tu casa.</span> <a href="index.html#otros-estados">→</a></p>
+
+        <div class="calc" id="calc">
+          <h2 data-i18n="calc.title">Calcula tu pago mensual</h2>
+          <div class="calc-grid">
+            <div><label for="calcAmount" data-i18n="calc.amount">Monto a financiar</label><input type="number" id="calcAmount" inputmode="numeric" min="0" step="100"></div>
+            <div><label for="calcTerm" data-i18n="calc.term">Plazo</label><select id="calcTerm"></select></div>
+            <div><label for="calcCredit" data-i18n="calc.credit">Tu crédito</label><select id="calcCredit"></select></div>
+          </div>
+          <div class="calc-result">
+            <div><small data-i18n="calc.result">Pago estimado</small><div class="big" id="calcOut">$0</div></div>
+            <small><span data-i18n="calc.apr">Tasa estimada (APR)</span>: <b id="calcApr"></b></small>
+          </div>
+          <p class="calc-disc" data-i18n="calc.disc">Solo es un estimado. La tasa, el down y la cuota final dependen de la aprobación del banco.</p>
         </div>
       </div>
 
       <div class="form-col">
         <div class="section-head">
           <span class="stripe"></span>
-          <h2>Aplica para financiamiento de este vehículo</h2>
+          <h2 data-i18n="car.formTitle">Aplica para financiamiento de este vehículo</h2>
         </div>
 
         <form id="creditForm" class="credit-form">
           <div class="form-grid">
             <div class="form-field">
-              <label for="cf-name">Nombre completo *</label>
-              <input type="text" id="cf-name" required placeholder="Ej: Juan Pérez">
+              <label data-i18n="form.name" for="cf-name">Nombre completo *</label>
+              <input type="text" id="cf-name" required placeholder="Ej: Juan Pérez" data-i18n-ph="form.namePh">
             </div>
             <div class="form-field">
-              <label for="cf-phone">Teléfono *</label>
+              <label data-i18n="form.phone" for="cf-phone">Teléfono *</label>
               <input type="tel" id="cf-phone" required placeholder="(305) 000-0000">
             </div>
             <div class="form-field">
-              <label for="cf-email">Correo electrónico</label>
-              <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.com">
+              <label data-i18n="form.email" for="cf-email">Correo electrónico</label>
+              <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.com" data-i18n-ph="form.emailPh">
             </div>
             <div class="form-field">
-              <label>Carro de interés</label>
+              <label data-i18n="form.car">Carro de interés</label>
               <input type="text" id="cf-car" disabled style="background:var(--off);color:var(--black);">
             </div>
             <div class="form-field">
-              <label for="cf-down">Down payment aproximado</label>
+              <label data-i18n="form.down" for="cf-down">Down payment aproximado</label>
               <select id="cf-down">
-                <option value="">Selecciona un rango</option>
+                <option value="" data-i18n="form.range">Selecciona un rango</option>
                 <option>$0 - $999</option>
                 <option>$1,000 - $1,999</option>
                 <option>$2,000 - $3,999</option>
-                <option>$4,000 o más</option>
+                <option value="$4,000+">$4,000+</option>
               </select>
             </div>
             <div class="form-field">
-              <label for="cf-income">Ingreso mensual aproximado</label>
+              <label data-i18n="form.income" for="cf-income">Ingreso mensual aproximado</label>
               <select id="cf-income">
-                <option value="">Selecciona un rango</option>
-                <option>Menos de $2,000</option>
+                <option value="" data-i18n="form.range">Selecciona un rango</option>
+                <option value="< $2,000">&lt; $2,000</option>
                 <option>$2,000 - $3,499</option>
                 <option>$3,500 - $4,999</option>
-                <option>$5,000 o más</option>
+                <option value="$5,000+">$5,000+</option>
               </select>
             </div>
             <div class="form-field">
-              <label for="cf-employed">¿Actualmente empleado?</label>
+              <label data-i18n="form.employed" for="cf-employed">¿Actualmente empleado?</label>
               <select id="cf-employed">
-                <option value="">Selecciona una opción</option>
-                <option>Sí, empleado</option>
-                <option>Sí, trabajo por mi cuenta</option>
-                <option>No actualmente</option>
+                <option value="" data-i18n="form.option">Selecciona una opción</option>
+                <option value="Sí, empleado" data-i18n="form.emp1">Sí, empleado</option>
+                <option value="Sí, trabajo por mi cuenta" data-i18n="form.emp2">Sí, trabajo por mi cuenta</option>
+                <option value="No actualmente" data-i18n="form.emp3">No actualmente</option>
               </select>
             </div>
             <div class="form-field form-field-full">
-              <label for="cf-notes">Comentario adicional</label>
-              <textarea id="cf-notes" rows="3" placeholder="Cuéntanos algo más si quieres"></textarea>
+              <label data-i18n="form.notes" for="cf-notes">Comentario adicional</label>
+              <textarea id="cf-notes" rows="3" placeholder="Cuéntanos algo más si quieres" data-i18n-ph="form.notesPh"></textarea>
             </div>
           </div>
 
-          <p class="form-disclaimer">No pedimos número de seguro social, información bancaria ni documentos de identidad en este formulario. Ese paso lo completamos de forma segura por teléfono o en persona.</p>
+          <p class="form-disclaimer" data-i18n="form.disclaimer">No pedimos número de seguro social, información bancaria ni documentos de identidad en este formulario. Ese paso lo completamos de forma segura por teléfono o en persona.</p>
 
-          <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;">Enviar solicitud por WhatsApp</button>
+          <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;" data-i18n="form.submit">Enviar solicitud por WhatsApp</button>
         </form>
       </div>
 
@@ -264,10 +315,16 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h0a7.94 7.94 0 0 0 5.55-13.58zM12.05 18.4a6.55 6.55 0 0 1-3.35-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 5.58 3.1zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.37.1-.12.13-.2.2-.35a.4.4 0 0 0 0-.37c-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.34h-.38a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.89.8 2.02s1.37 2.1 3.33 2.94a11 11 0 0 0 1.11.41 2.68 2.68 0 0 0 1.23.08c.38-.06 1.17-.48 1.33-.94s.16-.86.11-.94-.18-.13-.38-.23z"/></svg>
 </a>
 
+<div class="sticky-cta" id="stickyCta" style="display:none;">
+  <a class="btn btn-black call" href="tel:+15714246410" data-i18n="car.call">Llamar</a>
+  <a class="btn btn-red" id="stickyWa" target="_blank" data-i18n="car.available">¿Sigue disponible?</a>
+</div>
+
 <footer>
   <div class="wrap">© 2026 Palm Tree Motors — Hollywood, FL · +1 (571) 424-6410</div>
 </footer>
 
+<script src="assets/js/site.js"></script>
 <script src="assets/js/vehicles.js"></script>
 <script>
   const icons = {
@@ -279,7 +336,10 @@
   icons.hatchback = icons.sedan;
   icons.coupe = icons.sedan;
   icons.convertible = icons.sedan;
-  const typeLabel = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupé", convertible:"Convertible" };
+
+  const typeLabelEs = { pickup:"Pickup", suv:"SUV", sedan:"Sedán", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupé", convertible:"Convertible" };
+  const typeLabelEn = { pickup:"Pickup", suv:"SUV", sedan:"Sedan", minivan:"Minivan", hatchback:"Hatchback", coupe:"Coupe", convertible:"Convertible" };
+  const typeName = k => (LANG === "en" ? typeLabelEn : typeLabelEs)[k] || k;
 
   function vehicleId(v){
     return v.vin || (v.year+'-'+v.make+'-'+v.model).replace(/\s+/g,'-');
@@ -293,46 +353,81 @@
     document.getElementById('notFound').style.display = 'block';
   } else {
     document.getElementById('carDetail').style.display = 'block';
-    document.title = `${v.year} ${v.make} ${v.model} | Palm Tree Motors`;
+    document.getElementById('stickyCta').style.display = '';
+    document.body.classList.add('has-car');
+    const carLabel = `${v.year} ${v.make} ${v.model}`;
+    const price = parseInt(String(v.price).replace(/,/g,''),10) || 0;
+    document.title = `${carLabel} | Palm Tree Motors`;
+    track('ViewContent', { content_name: carLabel, content_ids: [v.vin || id], content_type: 'vehicle', value: price, currency: 'USD' });
 
     const photoBox = document.getElementById('carPhotoBox');
-    if (v.photo) {
-      photoBox.innerHTML = `<img src="${v.photo}" alt="${v.make} ${v.model}">`;
-    } else {
-      photoBox.innerHTML = `<span class="car-tag">Foto próximamente</span>${icons[v.type]}`;
-    }
-
-    document.getElementById('carTitle').textContent = `${v.year} ${v.make} ${v.model}`;
-    document.getElementById('carSub').textContent = `${typeLabel[v.type]} · Título limpio · Garantía 3 años`;
+    document.getElementById('carTitle').textContent = carLabel;
     document.getElementById('carVin').textContent = v.vin ? `VIN: ${v.vin}` : '';
     document.getElementById('specMiles').textContent = `${v.miles} mi`;
-    document.getElementById('specTrans').textContent = v.trans;
-    document.getElementById('priceNoteLabel').textContent = v.priceNote || 'Monto a financiar desde';
     document.getElementById('priceAmount').textContent = `$${v.price}`;
-
-    const carLabel = `${v.year} ${v.make} ${v.model}`;
     document.getElementById('cf-car').value = carLabel;
-    document.getElementById('waBtn').href = `https://wa.me/15714246410?text=${encodeURIComponent('Hola, me interesa el '+carLabel)}`;
+
+    // Calculadora
+    const amountEl = document.getElementById('calcAmount');
+    const termEl = document.getElementById('calcTerm');
+    const creditEl = document.getElementById('calcCredit');
+    amountEl.value = price;
+    function fillSelects(){
+      const tv = termEl.value || SITE.termDefault, cv = creditEl.value || SITE.creditDefault;
+      termEl.innerHTML = SITE.terms.map(m => `<option value="${m}">${m} ${t('calc.months','meses')}</option>`).join('');
+      creditEl.innerHTML = SITE.credit.map(c => `<option value="${c.key}">${LANG === 'en' ? c.en : c.es}</option>`).join('');
+      termEl.value = tv; creditEl.value = cv;
+    }
+    function calc(){
+      const c = SITE.credit.find(x => x.key === creditEl.value);
+      const pay = monthlyPayment(parseFloat(amountEl.value) || 0, c.apr, parseInt(termEl.value,10));
+      document.getElementById('calcOut').textContent = fmt$(pay) + (LANG === 'en' ? '/mo' : '/mes');
+      document.getElementById('calcApr').textContent = c.apr + '%';
+    }
+    [amountEl, termEl, creditEl].forEach(el => el.addEventListener('input', calc));
+
+    function paint(){
+      if (v.photo) {
+        photoBox.innerHTML = `<img src="${v.photo}" alt="${carLabel}">`;
+      } else {
+        photoBox.innerHTML = `<span class="car-tag">${t('card.soon','Foto próximamente')}</span>${icons[v.type]}`;
+      }
+      document.getElementById('carSub').textContent = `${typeName(v.type)} · ${t('card.sub','Título limpio · Garantía 3 años')}`;
+      document.getElementById('specTrans').textContent = LANG === 'en' ? v.trans.replace('Gasolina','Gas').replace('Híbrido','Hybrid').replace('Automática','Automatic') : v.trans;
+      document.getElementById('priceNoteLabel').textContent = t('price.note', v.priceNote || 'Monto a financiar desde');
+      const ask = LANG === 'en' ? `Hi, I'm interested in the ${carLabel} (VIN ${v.vin || ''})` : `Hola, me interesa el ${carLabel} (VIN ${v.vin || ''})`;
+      const avail = LANG === 'en' ? `Hi, is the ${carLabel} (VIN ${v.vin || ''}) still available?` : `Hola, ¿sigue disponible el ${carLabel} (VIN ${v.vin || ''})?`;
+      document.getElementById('waBtn').href = `https://wa.me/${SITE.phone}?text=${encodeURIComponent(ask)}`;
+      document.getElementById('stickyWa').href = `https://wa.me/${SITE.phone}?text=${encodeURIComponent(avail)}`;
+      fillSelects(); calc();
+    }
+    paint();
+    document.addEventListener('langchange', paint);
+
+    // Compartir: usa la página del auto con foto y título para WhatsApp/Facebook
+    document.getElementById('shareBtn').addEventListener('click', async e => {
+      e.preventDefault();
+      const url = v.vin ? `https://palmtreemotors.net/autos/${v.vin}.html` : location.href;
+      try {
+        if (navigator.share) { await navigator.share({ title: carLabel, url }); return; }
+        await navigator.clipboard.writeText(url);
+        e.target.textContent = t('car.copied','Enlace copiado');
+      } catch(err) {}
+    });
 
     document.getElementById('creditForm').addEventListener('submit', function(e){
       e.preventDefault();
-      const name = document.getElementById('cf-name').value.trim();
-      const phone = document.getElementById('cf-phone').value.trim();
-      const email = document.getElementById('cf-email').value.trim();
-      const down = document.getElementById('cf-down').value;
-      const income = document.getElementById('cf-income').value;
-      const employed = document.getElementById('cf-employed').value;
-      const notes = document.getElementById('cf-notes').value.trim();
-
-      let msg = `Hola, quiero aplicar para financiamiento.\n\nNombre: ${name}\nTeléfono: ${phone}`;
-      if (email) msg += `\nCorreo: ${email}`;
-      msg += `\nCarro de interés: ${carLabel}`;
-      if (down) msg += `\nDown payment aproximado: ${down}`;
-      if (income) msg += `\nIngreso mensual aproximado: ${income}`;
-      if (employed) msg += `\nEmpleo: ${employed}`;
-      if (notes) msg += `\nComentario: ${notes}`;
-
-      window.open(`https://wa.me/15714246410?text=${encodeURIComponent(msg)}`, '_blank');
+      const val = id => document.getElementById(id).value.trim();
+      let msg = `Hola, quiero aplicar para financiamiento.\n\nNombre: ${val('cf-name')}\nTeléfono: ${val('cf-phone')}`;
+      if (val('cf-email')) msg += `\nCorreo: ${val('cf-email')}`;
+      msg += `\nCarro de interés: ${carLabel}${v.vin ? ' (VIN ' + v.vin + ')' : ''}`;
+      if (val('cf-down')) msg += `\nDown payment aproximado: ${val('cf-down')}`;
+      if (val('cf-income')) msg += `\nIngreso mensual aproximado: ${val('cf-income')}`;
+      if (val('cf-employed')) msg += `\nEmpleo: ${val('cf-employed')}`;
+      if (val('cf-notes')) msg += `\nComentario: ${val('cf-notes')}`;
+      if (LANG === 'en') msg += `\n(Cliente escribió desde la web en inglés)`;
+      track('Lead', { content_name: carLabel });
+      window.open(`https://wa.me/${SITE.phone}?text=${encodeURIComponent(msg)}`, '_blank');
     });
   }
 </script>
