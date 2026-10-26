@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://palmtreemotors.net/assets/og-palmtree.jpg">
 <meta name="theme-color" content="#141414">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
   :root{
     --red:#E2401F;
@@ -176,6 +176,31 @@
     .wa-float{display:none;}
     body.has-car{padding-bottom:76px;}
   }
+
+  /* ---------- Estilo "Parabrisas" (igual que la portada) ---------- */
+  :root{--red:#E2401F;--marker:#FFD43B;--off:#ECEBE7;--gray:#6A6A66;--gray-line:#D9D7D1;}
+  body{font-family:'Figtree',system-ui,sans-serif;background:var(--off);}
+  h1,h2,h3{font-family:'Bricolage Grotesque','Arial Narrow',sans-serif;font-stretch:78%;font-weight:800;text-transform:none;letter-spacing:-.01em;line-height:.95;}
+  .car-title{font-size:clamp(34px,5vw,56px);margin-bottom:10px;}
+  .section-head .stripe{display:none;}
+  .section-head h2{font-size:30px;}
+  .btn{font-family:'Figtree',sans-serif;text-transform:none;letter-spacing:0;font-weight:700;border-radius:999px;font-size:15.5px;}
+  .back-link,.brand-mini{font-family:'Figtree',sans-serif;text-transform:none;letter-spacing:0;font-size:14.5px;}
+  .brand-mini{font-family:'Bricolage Grotesque',sans-serif;font-stretch:78%;font-weight:800;font-size:20px;}
+  header{border-bottom:none;}
+  .car-photo-big{border-radius:22px;}
+  .spec-grid,.price-box,.calc,.credit-form{border-radius:22px;}
+  .spec-item strong,.price-note,.calc label,.form-field label{font-family:'Figtree',sans-serif;text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;}
+  .price-amount,.calc-result .big{font-family:'Bricolage Grotesque',sans-serif;font-stretch:80%;font-weight:800;color:#141414;}
+  .calc-result .big{color:var(--red);}
+  .calc h2{font-size:28px;}
+  .calc input,.calc select,.form-field input,.form-field select,.form-field textarea{border-radius:12px;}
+  .car-tag{font-family:'Figtree',sans-serif;text-transform:none;letter-spacing:0;font-size:12.5px;border-radius:999px;background:rgba(20,20,20,.75);top:auto;bottom:14px;}
+  .ws-photo{position:absolute;top:18px;right:22px;transform:rotate(-7deg);font-family:'Permanent Marker',cursive;color:var(--marker);font-size:clamp(34px,5vw,52px);line-height:1;text-align:right;text-shadow:0 2px 3px rgba(0,0,0,.55),0 0 1px rgba(0,0,0,.8);pointer-events:none;}
+  .ws-photo small{display:block;font-size:.38em;}
+  .lang-toggle{font-family:'Figtree',sans-serif;border-radius:999px;}
+  .brand-mini{white-space:nowrap;}
+  @media(max-width:480px){.brand-mini{display:none;}}
 </style>
 </head>
 <body>
@@ -388,10 +413,11 @@
     [amountEl, termEl, creditEl].forEach(el => el.addEventListener('input', calc));
 
     function paint(){
+      const ws = `<span class="ws-photo" aria-hidden="true">${fmt$(estMonthly(price))}${LANG === 'en' ? '/mo' : '/mes'}*<small>${LANG === 'en' ? 'subject to approval' : 'sujeto a aprobación'}</small></span>`;
       if (v.photo) {
-        photoBox.innerHTML = `<img src="${v.photo}" alt="${carLabel}">`;
+        photoBox.innerHTML = `<img src="${v.photo}" alt="${carLabel}">${ws}`;
       } else {
-        photoBox.innerHTML = `<span class="car-tag">${t('card.soon','Foto próximamente')}</span>${icons[v.type]}`;
+        photoBox.innerHTML = `<span class="car-tag">${t('card.soon','Foto próximamente')}</span>${icons[v.type]}${ws}`;
       }
       document.getElementById('carSub').textContent = `${typeName(v.type)} · ${t('card.sub','Título limpio · Garantía 3 años')}`;
       document.getElementById('specTrans').textContent = LANG === 'en' ? v.trans.replace('Gasolina','Gas').replace('Híbrido','Hybrid').replace('Automática','Automatic') : v.trans;
