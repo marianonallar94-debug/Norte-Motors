@@ -38,7 +38,7 @@ def page(v):
     price = v.get("price", "")
     img = BASE + (v["photo"] or "assets/og-palmtree.jpg")
     title = f"{label} | Palm Tree Motors"
-    desc = (f'{TYPES_ES.get(v["type"], "")} · {v["miles"]} millas · Monto a financiar desde ${price}. '
+    desc = (f'{TYPES_ES.get(v["type"], "")} · {v["miles"]} millas · Monto a financiar desde ${price} (sujeto a aprobación). '
             f'Título limpio y 3 años de garantía. Financiamiento para todo tipo de crédito.')
     target = f'../auto.html?id={v["vin"]}'
     url = f'{BASE}autos/{v["vin"]}.html'
