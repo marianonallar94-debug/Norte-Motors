@@ -15,7 +15,7 @@ const SITE = {
     { key: "exc", es: "Excelente (720+)",       en: "Excellent (720+)",     apr: 4 },
     { key: "good", es: "Bueno (660–719)",       en: "Good (660–719)",       apr: 9 },
     { key: "fair", es: "Regular (600–659)",     en: "Fair (600–659)",       apr: 12 },
-    { key: "build", es: "En construcción / sin crédito", en: "Rebuilding / no credit", apr: 22.9 }
+    { key: "build", es: "En construcción / sin crédito", en: "Rebuilding / no credit", apr: 14 }
   ],
   creditDefault: "fair",           // el que usan las tarjetas y el filtro "hasta $X al mes"
   googleReviewsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJF_YCa7Wp2YgROUH7qLLcmc0",
