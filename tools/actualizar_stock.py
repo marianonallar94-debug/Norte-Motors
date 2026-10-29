@@ -33,11 +33,19 @@ def make_name(m):
     return m if m in UPPER_MAKES else m.title()
 
 
+TRIM_UPPER = {"LE", "XLE", "XSE", "SE", "SEL", "LX", "EX", "EXL", "LT", "LS", "LTZ", "RST", "SR", "SV", "SL",
+              "GT", "XLT", "RS", "ST", "AWD", "FWD", "RWD", "TRD", "SLT", "SLE", "SXT", "GLS", "GL", "SXL", "RTL",
+              "TRX", "LTD", "SRT", "CX", "LXS", "SX", "XL", "HV", "AT4", "SR5", "4WD", "2WD", "4X4", "V6", "V8"}
+
+
 def word(w):
-    # siglas cortas (LE, XLE, SR5, EX-L) en mayúscula; palabras normales en Title
-    if any(ch.isdigit() for ch in w) or len(w) <= 3 or "-" in w:
-        return w.upper()
-    return TRIM_KEEP.get(w, w.title())
+    # siglas de versión (LE, XLE, SR5, EX-L) en mayúscula; palabras normales en Title
+    if "/" in w:
+        return "/".join(word(x) for x in w.split("/"))
+    u = w.upper()
+    if u in TRIM_UPPER or any(ch.isdigit() for ch in w) or "-" in w:
+        return u
+    return TRIM_KEEP.get(u, w.capitalize())
 
 
 def model_name(model, trim):
