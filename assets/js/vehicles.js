@@ -122,9 +122,9 @@
     { year:2024, make:"Toyota", model:"Camry SE", type:"sedan", miles:"109,187", trans:"Gasolina · Automática", price:"17,835", priceNote:"Monto a financiar desde", vin:"4T1G11AKXRU878165", photo:null },
     { year:2022, make:"Chevrolet", model:"Traverse LS", type:"suv", miles:"45,616", trans:"Gasolina · Automática", price:"19,675", priceNote:"Monto a financiar desde", vin:"1GNERFKW6NJ193795", photo:null },
     { year:2018, make:"Hyundai", model:"Tucson SE Pop", type:"suv", miles:"102,698", trans:"Gasolina · Automática", price:"7,835", priceNote:"Monto a financiar desde", vin:"KM8J3CA41JU656938", photo:null },
-    { year:2018, make:"Toyota", model:"RAV4 Adventure/XLE", type:"suv", miles:"109,345", trans:"Gasolina · Automática", price:"15,765", priceNote:"Monto a financiar desde", vin:"JTMRFREV3JJ744136", photo:null },
+    { year:2018, make:"Toyota", model:"RAV4 Adventure/XLE", type:"suv", miles:"109,345", trans:"Gasolina · Automática", price:"15,765", priceNote:"Monto a financiar desde", vin:"JTMRFREV3JJ744136", photo:"assets/carros/toyota-rav4-2018-744136.jpg" },
     { year:2018, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"93,661", trans:"Diesel · Automática", price:"21,464", priceNote:"Monto a financiar desde", vin:"1C6RR6NM4JS256411", photo:null },
     { year:2023, make:"Hyundai", model:"Tucson Limited", type:"suv", miles:"76,092", trans:"Gasolina · Automática", price:"19,810", priceNote:"Monto a financiar desde", vin:"5NMJE3AEXPH203943", photo:null },
     { year:2022, make:"Hyundai", model:"Santa Fe Limited", type:"suv", miles:"90,614", trans:"Gasolina · Automática", price:"18,205", priceNote:"Monto a financiar desde", vin:"5NMS44AL2NH376817", photo:null },
-    { year:2024, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"103,727", trans:"Gasolina · Automática", price:"30,055", priceNote:"Monto a financiar desde", vin:"1FTFW2L54RKE10653", photo:null },
+    { year:2024, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"103,727", trans:"Gasolina · Automática", price:"30,055", priceNote:"Monto a financiar desde", vin:"1FTFW2L54RKE10653", photo:"assets/carros/ford-f-150-2024-e10653.jpg" },
   ];
