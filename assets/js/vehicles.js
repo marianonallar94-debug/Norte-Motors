@@ -122,8 +122,8 @@
     { year:2023, make:"Hyundai", model:"Tucson Limited", type:"suv", miles:"76,092", trans:"Gasolina · Automática", price:"19,810", priceNote:"Monto a financiar desde", vin:"5NMJE3AEXPH203943", photo:null },
     { year:2022, make:"Hyundai", model:"Santa Fe Limited", type:"suv", miles:"90,614", trans:"Gasolina · Automática", price:"18,205", priceNote:"Monto a financiar desde", vin:"5NMS44AL2NH376817", photo:null },
     { year:2024, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"103,727", trans:"Gasolina · Automática", price:"30,055", priceNote:"Monto a financiar desde", vin:"1FTFW2L54RKE10653", photo:"assets/carros/ford-f-150-2024-e10653.jpg" },
-    { year:2026, make:"Toyota", model:"Tacoma", type:"pickup", miles:"37,299", trans:"Gasolina · Automática", price:"29,375", priceNote:"Monto a financiar desde", vin:"3TYKB5FN4TT032460", photo:null },
-    { year:2020, make:"Honda", model:"Pilot Elite", type:"suv", miles:"102,374", trans:"Gasolina · Automática", price:"19,630", priceNote:"Monto a financiar desde", vin:"5FNYF6H05LB056109", photo:null },
-    { year:2019, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"108,762", trans:"Gasolina · Automática", price:"11,640", priceNote:"Monto a financiar desde", vin:"KM8J33AL7KU917112", photo:null },
+    { year:2026, make:"Toyota", model:"Tacoma", type:"pickup", miles:"37,299", trans:"Gasolina · Automática", price:"29,375", priceNote:"Monto a financiar desde", vin:"3TYKB5FN4TT032460", photo:"assets/carros/toyota-tacoma-2026-032460.jpg" },
+    { year:2020, make:"Honda", model:"Pilot Elite", type:"suv", miles:"102,374", trans:"Gasolina · Automática", price:"19,630", priceNote:"Monto a financiar desde", vin:"5FNYF6H05LB056109", photo:"assets/carros/honda-pilot-2020-056109.jpg" },
+    { year:2019, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"108,762", trans:"Gasolina · Automática", price:"11,640", priceNote:"Monto a financiar desde", vin:"KM8J33AL7KU917112", photo:"assets/carros/hyundai-tucson-2019-917112.jpg" },
     { year:2025, make:"Mazda", model:"Cx-5 Select", type:"suv", miles:"48,545", trans:"Gasolina · Automática", price:"21,445", priceNote:"Monto a financiar desde", vin:"JM3KFBBL1S0646698", photo:null },
   ];
