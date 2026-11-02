@@ -1,0 +1,27 @@
+name: tmp-transcribe
+on:
+  push:
+    branches: [tmp-transcribe]
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install faster-whisper==1.1.1
+      - run: |
+          python - <<'PY'
+          import glob,json,os
+          from faster_whisper import WhisperModel
+          m=WhisperModel("medium",device="cpu",compute_type="int8")
+          out={}
+          for f in sorted(glob.glob("tmp-aud/*.mp3")):
+              segs,_=m.transcribe(f,language="es",word_timestamps=True,vad_filter=False,beam_size=5)
+              out[os.path.basename(f)]=[{"s":s.start,"e":s.end,"t":s.text,"w":[[w.start,w.end,w.word] for w in s.words]} for s in segs]
+              print(f, " ".join(x["t"] for x in out[os.path.basename(f)]), flush=True)
+          json.dump(out,open("tmp-aud/transcripts.json","w"),ensure_ascii=False)
+          PY
+      - run: |
+          git config user.name Claude; git config user.email noreply@anthropic.com
+          git add tmp-aud/transcripts.json && git commit -m "transcripts" && git push
