@@ -126,4 +126,7 @@
     { year:2020, make:"Honda", model:"Pilot Elite", type:"suv", miles:"102,374", trans:"Gasolina · Automática", price:"19,630", priceNote:"Monto a financiar desde", vin:"5FNYF6H05LB056109", photo:"assets/carros/honda-pilot-2020-056109.jpg" },
     { year:2019, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"108,762", trans:"Gasolina · Automática", price:"11,640", priceNote:"Monto a financiar desde", vin:"KM8J33AL7KU917112", photo:"assets/carros/hyundai-tucson-2019-917112.jpg" },
     { year:2025, make:"Mazda", model:"Cx-5 Select", type:"suv", miles:"48,545", trans:"Gasolina · Automática", price:"21,445", priceNote:"Monto a financiar desde", vin:"JM3KFBBL1S0646698", photo:null },
+    { year:2019, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"102,170", trans:"Gasolina · Automática", price:"12,165", priceNote:"Monto a financiar desde", vin:"KM8J33ALXKU929187", photo:"assets/carros/hyundai-tucson-2019-929187.jpg" },
+    { year:2017, make:"Hyundai", model:"Tucson SE Popular", type:"suv", miles:"75,429", trans:"Gasolina · Automática", price:"11,090", priceNote:"Monto a financiar desde", vin:"KM8J3CA26HU327449", photo:"assets/carros/hyundai-tucson-2017-327449.jpg" },
+    { year:2023, make:"Toyota", model:"Highlander", type:"suv", miles:"108,543", trans:"Gasolina · Automática", price:"26,275", priceNote:"Monto a financiar desde", vin:"5TDKDRAH5PS029667", photo:null },
   ];
