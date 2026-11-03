@@ -58,7 +58,6 @@
     { year:2025, make:"Toyota", model:"Camry XSE", type:"sedan", miles:"127,864", trans:"Híbrido · Automática", price:"25,000", priceNote:"Monto a financiar desde", vin:"4T1DAACK7SU024420", photo:null },
     { year:2021, make:"Toyota", model:"Highlander Limited", type:"suv", miles:"99,367", trans:"Gasolina · Automática", price:"26,175", priceNote:"Monto a financiar desde", vin:"5TDDZRBH6MS112996", photo:null },
     { year:2021, make:"Honda", model:"Civic Sport", type:"sedan", miles:"118,619", trans:"Gasolina · Automática", price:"10,500", priceNote:"Monto a financiar desde", vin:"2HGFC2F80MH518607", photo:null },
-    { year:2024, make:"Hyundai", model:"Tucson SEL", type:"suv", miles:"60,990", trans:"Gasolina · Automática", price:"19,030", priceNote:"Monto a financiar desde", vin:"5NMJB3DE7RH359915", photo:null },
     { year:2016, make:"Hyundai", model:"Tucson SE Popular", type:"suv", miles:"89,003", trans:"Gasolina · Automática", price:"11,606", priceNote:"Monto a financiar desde", vin:"KM8J33A45GU059641", photo:null },
     { year:2024, make:"Honda", model:"Accord Sport-L Hybrid", type:"sedan", miles:"61,904", trans:"Gasolina · Automática", price:"24,870", priceNote:"Monto a financiar desde", vin:"1HGCY2F77RA036234", photo:null },
     { year:2021, make:"Honda", model:"Pilot EXL", type:"suv", miles:"120,886", trans:"Gasolina · Automática", price:"19,045", priceNote:"Monto a financiar desde", vin:"5FNYF6H56MB081985", photo:null },
@@ -129,4 +128,6 @@
     { year:2019, make:"Hyundai", model:"Tucson Value", type:"suv", miles:"102,170", trans:"Gasolina · Automática", price:"12,165", priceNote:"Monto a financiar desde", vin:"KM8J33ALXKU929187", photo:"assets/carros/hyundai-tucson-2019-929187.jpg" },
     { year:2017, make:"Hyundai", model:"Tucson SE Popular", type:"suv", miles:"75,429", trans:"Gasolina · Automática", price:"11,090", priceNote:"Monto a financiar desde", vin:"KM8J3CA26HU327449", photo:"assets/carros/hyundai-tucson-2017-327449.jpg" },
     { year:2023, make:"Toyota", model:"Highlander", type:"suv", miles:"108,543", trans:"Gasolina · Automática", price:"26,275", priceNote:"Monto a financiar desde", vin:"5TDKDRAH5PS029667", photo:null },
+    { year:2022, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"83,844", trans:"Gasolina · Automática", price:"26,415", priceNote:"Monto a financiar desde", vin:"5TDGZRBH8NS560705", photo:null },
+    { year:2018, make:"Hyundai", model:"Tucson Limited", type:"suv", miles:"81,422", trans:"Gasolina · Automática", price:"18,000", priceNote:"Monto a financiar desde", vin:"KM8J3CA27JU627541", photo:null },
   ];
