@@ -12,22 +12,64 @@
 <style>
   :root{
     --black:#141414; --orange:#E2401F; --orange-dark:#B8300F; --concrete:#ECEBE7; --white:#FFFFFF;
-    --ink:#1E1E1E; --muted:#66645F; --line:#D9D7D1;
+    --ink:#1E1E1E; --muted:#66645F; --line:#D9D7D1; --ok:#1C7A44; --ok-soft:#DCF0E3; --bad:#C21C39; --bad-soft:#F8DCE1;
     --display:'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
     --body:'Figtree', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   }
   *{box-sizing:border-box}
+  [hidden]{display:none!important}
   html,body{margin:0}
   body{background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
-  .top{background:var(--black);color:var(--white);padding:28px max(18px,env(safe-area-inset-left)) 26px max(18px,env(safe-area-inset-right))}
-  .wrap{max-width:860px;margin:0 auto}
+  .num{font-variant-numeric:tabular-nums}
+  .top{background:var(--black);color:var(--white);padding:28px max(16px,env(safe-area-inset-left)) 26px max(16px,env(safe-area-inset-right))}
+  .wrap{max-width:900px;margin:0 auto}
   .brand{display:flex;align-items:center;gap:12px}
   .brand svg{flex:0 0 auto}
   .word{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.2px}
   .word b{color:var(--orange)}
   h1{font-family:var(--display);font-weight:800;font-size:34px;line-height:1.05;margin:18px 0 6px}
   .top p{margin:0;color:#BDBAB4;max-width:56ch}
-  main{padding:22px max(18px,env(safe-area-inset-left)) 40px max(18px,env(safe-area-inset-right))}
+  main{padding:22px max(16px,env(safe-area-inset-left)) 40px max(16px,env(safe-area-inset-right))}
+  h2{font-family:var(--display);font-weight:800;font-size:22px;margin:30px 0 10px}
+  h2:first-child{margin-top:0}
+
+  /* campaign dashboard */
+  .dash{background:var(--black);color:var(--white);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:16px}
+  .dash-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .dash-head h2{margin:0;color:var(--white)}
+  .dash-head .upd{font-size:13px;color:#A9A6A0}
+  .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .kpi{background:#1F1F1F;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+  .kpi .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#A9A6A0;font-weight:700}
+  .kpi .val{font-family:var(--display);font-weight:800;font-size:32px;line-height:1}
+  .kpi .val small{font-family:var(--body);font-size:14px;color:#A9A6A0;font-weight:600;margin-left:4px}
+  .bar{height:6px;border-radius:99px;background:#333;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--orange);border-radius:99px}
+  .kpi .rate{font-size:12px;color:#A9A6A0}
+  .kpi .rate b{color:var(--white)}
+  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .fact{border-top:1px solid #333;padding-top:10px;min-width:0}
+  .fact span{display:block;font-size:12px;color:#A9A6A0}
+  .fact strong{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.15}
+  .fact strong.good{color:#6FD39A}
+  .fact strong.bad{color:#FF8A9C}
+  @media (max-width:700px){.kpis,.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+  .team{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:6px 14px 10px;margin-top:12px}
+  .team h3{font-family:var(--display);font-weight:800;font-size:18px;margin:10px 0 2px}
+  .team .sub{font-size:13px;color:var(--muted);margin:0 0 6px}
+  .tablewrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+  th{text-align:right;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{text-align:right;padding:10px 8px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  tr:last-child td{border-bottom:0}
+  td.who{font-weight:700}
+  td.good{color:var(--ok);font-weight:800}
+  td.bad{color:var(--bad);font-weight:800}
+  .empty{color:var(--muted);font-size:15px;padding:8px 0 4px;margin:0}
+  .err{background:var(--white);border-radius:12px;padding:12px 14px;color:var(--muted);font-size:15px}
+
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
   a.card{display:flex;flex-direction:column;gap:6px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;text-decoration:none;color:var(--ink);min-height:120px}
   a.card:hover{border-color:var(--orange)}
@@ -37,12 +79,11 @@
   .k{font-family:var(--display);font-weight:800;font-size:21px;line-height:1.15}
   .d{color:var(--muted);font-size:15px}
   .go{margin-top:auto;font-weight:700;font-size:14px}
-  h2{font-family:var(--display);font-weight:800;font-size:22px;margin:30px 0 10px}
   ol.rules{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;counter-reset:r}
   ol.rules li{counter-increment:r;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px 12px 52px;position:relative}
   ol.rules li::before{content:counter(r);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--black);color:var(--white);font-weight:800;font-size:14px;display:grid;place-items:center}
   ol.rules strong{display:block}
-  .note{background:var(--white);border-left:4px solid var(--orange);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--muted)}
+  .note{background:var(--white);border-left:4px solid var(--orange);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--muted);margin:0}
   .note strong{color:var(--ink)}
   footer{color:var(--muted);font-size:13px;margin-top:28px}
 </style>
@@ -52,21 +93,38 @@
   <div class="wrap">
     <div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true" width="44" height="44"><g fill="#E2401F"><ellipse cx="50" cy="18" rx="27" ry="6" transform="rotate(-55 50 36)"/><ellipse cx="50" cy="16" rx="29" ry="6" transform="rotate(-28 50 36)"/><ellipse cx="50" cy="14" rx="30" ry="6" transform="rotate(-2 50 36)"/><ellipse cx="50" cy="14" rx="30" ry="6" transform="rotate(24 50 36)"/><ellipse cx="50" cy="16" rx="29" ry="6" transform="rotate(50 50 36)"/><ellipse cx="50" cy="19" rx="24" ry="6" transform="rotate(74 50 36)"/><path d="M50 38 C 47 56 42 70 33 92 L41 92 C 47 74 51 58 55 42 Z"/></g></svg><span class="word"><b>PALM</b> TREE MOTORS</span></div>
     <h1>Portal de vendedores</h1>
-    <p>Todo lo del equipo en un lugar. Esta página no aparece en el menú ni en Google: guárdala en tu celular.</p>
+    <p>La campaña de SUVs en WhatsApp: cómo vamos y cómo se trabaja cada cliente. Esta página no aparece en el menú ni en Google: guárdala en tu celular.</p>
   </div>
 </header>
 <main>
   <div class="wrap">
+    <section class="dash" aria-labelledby="dashTitle">
+      <div class="dash-head">
+        <h2 id="dashTitle">Cómo va la campaña</h2>
+        <span class="upd" id="upd">Cargando números…</span>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div class="facts" id="facts"></div>
+    </section>
+    <p class="err" id="err" hidden>Los números todavía no están publicados. Vuelve a abrir la página en un rato.</p>
+
+    <div class="team">
+      <h3>El equipo</h3>
+      <p class="sub">Clientes que Mariano le derivó a cada uno y lo que salió de ellos.</p>
+      <div class="tablewrap" id="team"><p class="empty">Cargando…</p></div>
+    </div>
+
+    <h2>Herramientas</h2>
     <div class="grid">
-      <a class="card main" href="https://claude.ai/artifact/2h9MWsRmVSdErru7oskfqE" target="_blank" rel="noopener">
-        <span class="k">CRM de clientes</span>
-        <span class="d">Los chats del anuncio. Toma tus clientes, marca cada paso y mira el ranking del equipo.</span>
-        <span class="go">Abrir el CRM →</span>
-      </a>
-      <a class="card" href="https://claude.ai/artifact/1q5jvprsbwYT9d3pJ31RJx" target="_blank" rel="noopener">
+      <a class="card main" href="https://claude.ai/artifact/1q5jvprsbwYT9d3pJ31RJx" target="_blank" rel="noopener">
         <span class="k">Mensajes de seguimiento</span>
-        <span class="d">Qué escribir cuando el cliente no contesta, para cada día.</span>
+        <span class="d">Qué escribir en los primeros 5 minutos, el guion de la llamada y qué mandar si no contesta.</span>
         <span class="go">Ver mensajes →</span>
+      </a>
+      <a class="card" href="https://claude.ai/artifact/2h9MWsRmVSdErru7oskfqE" target="_blank" rel="noopener">
+        <span class="k">CRM de clientes</span>
+        <span class="d">Tus clientes del anuncio y cada paso: le escribiste, cita, vino al lote, vendido.</span>
+        <span class="go">Abrir el CRM →</span>
       </a>
       <a class="card" href="../#inventario">
         <span class="k">Inventario</span>
@@ -75,13 +133,13 @@
       </a>
     </div>
 
-    <h2>Cómo se trabaja un chat del anuncio</h2>
+    <h2>Cómo se trabaja un cliente del anuncio</h2>
     <ol class="rules">
-      <li><strong>Contestar en menos de 5 minutos.</strong>Cárgalo en el CRM con «Nuevo cliente» (queda a tu nombre) o tócalo en «Sin dueño» para tomarlo.</li>
-      <li><strong>Mandar el video del carro que le gustó.</strong>Es lo que promete el anuncio. Usa el mensaje rápido del CRM.</li>
-      <li><strong>Llamar por WhatsApp dentro de los 5 minutos.</strong>Solo para conseguir la cita: qué carro le gustó, con cuánto de inicial cuenta y qué día puede venir.</li>
-      <li><strong>Cita con día y hora.</strong>Márcala en el CRM. Los números los da el financista en la visita, no por teléfono.</li>
-      <li><strong>Si no contesta, seguimiento.</strong>Pon la fecha de seguimiento en el CRM y usa los mensajes de seguimiento.</li>
+      <li><strong>Mariano te lo deriva por WhatsApp.</strong>Te llega un mensaje con el nombre, el teléfono y el carro que le gustó. Desde ese momento el cliente es tuyo y queda a tu nombre.</li>
+      <li><strong>Contestar en menos de 5 minutos.</strong>Primer mensaje y el video del carro que le gustó. Están listos en «Mensajes de seguimiento».</li>
+      <li><strong>Llamar por WhatsApp.</strong>Dos minutos, solo para la cita: qué SUV le gustó, con cuánto cuenta para la inicial y qué día puede venir.</li>
+      <li><strong>Cita con día y hora.</strong>Márcala en el CRM o avísale a Mariano. Los números los da el financista en la visita, no por teléfono.</li>
+      <li><strong>Si no contesta, seguimiento.</strong>Mismo día, día 2, día 4 y día 7. Nunca termines un mensaje sin una pregunta.</li>
     </ol>
 
     <h2>Para entrar al CRM</h2>
@@ -90,5 +148,78 @@
     <footer>Palm Tree Motors · 5647 Funston St, Hollywood, FL</footer>
   </div>
 </main>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function el(tag, cls, text){ var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined && text !== null) n.textContent = text; return n; }
+  function money(v, dec){ if (v === null || v === undefined || isNaN(v)) return "–"; return "$" + Number(v).toLocaleString("en-US",{minimumFractionDigits:dec?2:0,maximumFractionDigits:dec?2:0}); }
+  function dur(m){ if (m === null || m === undefined) return "–"; if (m < 60) return m + " min"; return Math.floor(m/60) + " h " + (m%60) + " min"; }
+  function pct(a,b){ return b ? Math.round(a*100/b) + "%" : "–"; }
+  function ago(iso){
+    var t = Date.parse(iso); if (isNaN(t)) return "";
+    var m = Math.max(0, Math.round((Date.now() - t)/60000));
+    if (m < 1) return "recién"; if (m < 60) return "hace " + m + " min";
+    var h = Math.floor(m/60); if (h < 24) return "hace " + h + " h";
+    var d = Math.floor(h/24); return "hace " + d + (d === 1 ? " día" : " días");
+  }
+  function daysLeft(fin){
+    if (!fin) return null; var p = fin.split("-"); var end = new Date(+p[0], +p[1]-1, +p[2], 23, 59);
+    return Math.max(0, Math.ceil((end - Date.now())/86400000));
+  }
+
+  function render(d){
+    var e = d.embudo || {}, g = d.meta || {chats:100,citas:30,vinieron:18,ventas:5}, c = d.campana || {};
+    $("upd").textContent = d.actualizado ? "Último cambio " + ago(d.actualizado) + " · se revisa cada 2 horas" : "";
+    var k = $("kpis"); k.textContent = "";
+    function kpi(label, val, goal, rate){
+      var box = el("div","kpi");
+      box.appendChild(el("div","lbl",label));
+      var v = el("div","val num", String(val)); v.appendChild(el("small",null,"de " + goal)); box.appendChild(v);
+      var bar = el("div","bar"), i = el("i"); i.style.width = Math.min(100, goal ? Math.round(val*100/goal) : 0) + "%"; bar.appendChild(i); box.appendChild(bar);
+      var r = el("div","rate"); if (rate){ r.appendChild(el("b",null,rate[0])); r.appendChild(document.createTextNode(" " + rate[1])); } else r.textContent = "Clientes derivados"; box.appendChild(r);
+      return box;
+    }
+    var chats = e.chats || 0;
+    k.appendChild(kpi("Clientes", chats, g.chats));
+    k.appendChild(kpi("Citas", e.citas || 0, g.citas, [pct(e.citas||0, chats), "de los clientes · meta 30%"]));
+    k.appendChild(kpi("Vinieron", e.vinieron || 0, g.vinieron, [pct(e.vinieron||0, e.citas||0), "de las citas · meta 60%"]));
+    k.appendChild(kpi("Ventas", e.ventas || 0, g.ventas, [pct(e.ventas||0, e.vinieron||0), "de las visitas · meta 30%"]));
+
+    var f = $("facts"); f.textContent = "";
+    function fact(label, val, cls){ var b = el("div","fact"); b.appendChild(el("span",null,label)); b.appendChild(el("strong",cls ? "num " + cls : "num",val)); return b; }
+    var resp = e.respuestaMin;
+    f.appendChild(fact("Tiempo de respuesta · meta 5 min", dur(resp), resp === null || resp === undefined ? "" : (resp <= 5 ? "good" : "bad")));
+    f.appendChild(fact("Cada chat del anuncio cuesta", c.chatsTotal ? money(c.gastoTotal / c.chatsTotal, 2) : "–"));
+    f.appendChild(fact("Chats que entraron hoy", String(c.chatsHoy || 0)));
+    var dl = daysLeft(c.fin);
+    f.appendChild(fact("Días que quedan", dl === null ? "–" : String(dl)));
+
+    var t = $("team"); t.textContent = "";
+    var rows = Array.isArray(d.equipo) ? d.equipo.slice() : [];
+    if (!rows.length){ t.appendChild(el("p","empty","Todavía no hay clientes derivados.")); return; }
+    rows.sort(function(a,b){ return (b.ventas-a.ventas) || (b.citas-a.citas) || (b.clientes-a.clientes); });
+    var tb = el("table"), th = el("thead"), tr = el("tr");
+    ["Vendedor","Clientes","Citas","Ventas","Respuesta","Sin contestar","Vinieron"].forEach(function(h){ var x = el("th",null,h); x.scope = "col"; tr.appendChild(x); });
+    th.appendChild(tr); tb.appendChild(th);
+    var body = el("tbody");
+    rows.forEach(function(r){
+      var row = el("tr");
+      row.appendChild(el("td","who",r.nombre || "Vendedor"));
+      row.appendChild(el("td",null,String(r.clientes || 0)));
+      row.appendChild(el("td",null,String(r.citas || 0)));
+      row.appendChild(el("td",r.ventas ? "good" : null,String(r.ventas || 0)));
+      row.appendChild(el("td",r.respuestaMin === null || r.respuestaMin === undefined ? null : (r.respuestaMin <= 5 ? "good" : "bad"),dur(r.respuestaMin)));
+      row.appendChild(el("td",r.sinContestar ? "bad" : null,String(r.sinContestar || 0)));
+      row.appendChild(el("td",null,String(r.vinieron || 0)));
+      body.appendChild(row);
+    });
+    tb.appendChild(body); t.appendChild(tb);
+  }
+
+  fetch("kpis.json?t=" + Date.now(), {cache:"no-store"}).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function(){ $("err").hidden = false; $("upd").textContent = ""; $("kpis").textContent = ""; $("team").textContent = ""; });
+})();
+</script>
 </body>
 </html>

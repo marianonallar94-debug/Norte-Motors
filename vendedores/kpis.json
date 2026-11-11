@@ -1,0 +1,33 @@
+{
+ "actualizado": "2026-11-11T23:09:46Z",
+ "campana": {
+  "inicio": "2026-11-11",
+  "fin": "2026-12-13",
+  "gastoTotal": 8.48,
+  "chatsTotal": 1,
+  "gastoHoy": 8.48,
+  "chatsHoy": 1
+ },
+ "embudo": {
+  "activos": 0,
+  "chats": 0,
+  "citas": 0,
+  "respuestaMin": null,
+  "sinContestar": 0,
+  "ventas": 0,
+  "vinieron": 0
+ },
+ "meta": {
+  "chats": 100,
+  "citas": 30,
+  "ventas": 5,
+  "vinieron": 18
+ },
+ "sinAsignar": 0,
+ "hoy": {
+  "cargados": 0,
+  "citas": 0,
+  "fecha": "2026-11-11"
+ },
+ "equipo": []
+}
