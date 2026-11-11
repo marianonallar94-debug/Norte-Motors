@@ -166,6 +166,8 @@
   .car-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   .car-actions .btn{padding:12px 10px;font-size:14px;}
   .car-vin{font-size:11.5px;color:#9a9a95;margin-top:10px;}
+  .incoming{background:#f4f3ef;}
+  .eta-tag{position:absolute;top:12px;left:12px;background:var(--marker,#FFD43B);color:#141414;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.25);}
   .more{display:flex;justify-content:center;margin-top:34px;}
 
   /* ---------- POR QUÉ ---------- */
@@ -271,6 +273,7 @@
   <nav class="subnav" id="subnav" aria-label="Secciones">
     <div class="subnav-track">
       <a href="#inventario" data-i18n="nav.inventory">Inventario</a>
+      <a href="#proximos" id="navProximos" data-i18n="nav.incoming">Próximos ingresos</a>
       <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
       <a href="#otros-estados" data-i18n="nav.outofstate">Otros estados</a>
       <a href="#resenas" data-i18n="nav.reviews">Reseñas</a>
@@ -346,6 +349,19 @@
 
     <div class="grid-cars" id="carsGrid"></div>
     <div class="more"><button type="button" class="btn btn-black" id="moreBtn" data-i18n="inv.more">Ver más carros</button></div>
+  </div>
+</section>
+
+<section class="section incoming" id="proximos" hidden>
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2 data-i18n="inc.title">Próximos ingresos</h2>
+        <p class="lead" data-i18n="inc.lead">Carros que ya compramos y vienen en camino. Escríbenos y te lo reservamos antes de que llegue.</p>
+      </div>
+    </div>
+    <div class="inv-meta"><span id="incCount"></span></div>
+    <div class="grid-cars" id="incGrid"></div>
   </div>
 </section>
 
@@ -546,6 +562,7 @@
 
 <script src="assets/js/site.js"></script>
 <script src="assets/js/vehicles.js"></script>
+<script src="assets/js/transito.js"></script>
 <script src="assets/js/reviews.js"></script>
 <script>
   // Barra de secciones: marca la sección en la que está la persona y la mantiene a la vista
@@ -707,6 +724,53 @@
   render();
   moreBtn.addEventListener('click', () => { shown += PAGE; render(); });
   document.addEventListener('langchange', () => { render(); paintTicker(); });
+
+  /* ---------- Próximos ingresos (autos en tránsito, desde DealerNode) ---------- */
+  const incList = (typeof transito !== 'undefined' ? transito : []).filter(v => !vehicles.some(x => x.vin === v.vin));
+  const incSec = document.getElementById('proximos');
+  const navInc = document.getElementById('navProximos');
+  function etaText(v){
+    const today = new Date(); today.setHours(0,0,0,0);
+    const d = v.eta ? new Date(v.eta + 'T12:00:00') : null;
+    if (!d || d < today) return LANG === 'en' ? 'Arriving in the next few days' : 'Llega en los próximos días';
+    const f = d.toLocaleDateString(LANG === 'en' ? 'en-US' : 'es-ES', { day:'numeric', month:'short' }).replace('.', '');
+    return (LANG === 'en' ? 'Arrives approx. ' : 'Llega aprox. ') + f;
+  }
+  function renderIncoming(){
+    if (!incList.length) { incSec.hidden = true; if (navInc) navInc.style.display = 'none'; return; }
+    incSec.hidden = false;
+    document.getElementById('incCount').textContent = `${incList.length} ${LANG === 'en' ? 'cars on the way' : 'carros en camino'}`;
+    const box = document.getElementById('incGrid'); box.innerHTML = '';
+    incList.forEach(v => {
+      const label = `${v.year} ${v.make} ${v.model}`;
+      const waText = LANG === 'en' ? `Hi, I'd like to reserve the ${label} that is on its way (VIN ${v.vin})` : `Hola, quiero reservar el ${label} que viene en camino (VIN ${v.vin})`;
+      const card = document.createElement('article');
+      card.className = 'car-card';
+      card.innerHTML = `
+        <div class="car-photo" aria-label="${esc(label)}">
+          ${v.photo ? `<img src="${v.photo}" alt="${esc(label)}" loading="lazy">` : icons[v.type] + `<span class="car-tag">${t('card.soon','Foto próximamente')}</span>`}
+          <span class="eta-tag">🚚 ${etaText(v)}</span>
+        </div>
+        <div class="car-body">
+          <h3>${esc(label)}</h3>
+          <div class="car-sub">${typeLabel(v.type)}, ${t('card.sub','título limpio y garantía de 3 años').toLowerCase()}</div>
+          <div class="car-facts"><span>🛣️ ${v.miles} mi</span><span>⚙️ ${transText(v)}</span></div>
+          <div class="car-price-row">
+            <div><div class="price-label">${t('price.note', 'Monto a financiar desde')}</div><div class="car-price">$${v.price}</div></div>
+            <div class="subject">${t('price.subj','Sujeto a aprobación')}</div>
+          </div>
+          <div class="car-actions">
+            <a class="btn btn-red" target="_blank" href="https://wa.me/${SITE.phone}?text=${encodeURIComponent(waText)}">${LANG === 'en' ? 'Reserve' : 'Reservar'}</a>
+            <button type="button" class="btn btn-black" data-label="${esc(label)}">${t('card.applyShort','Aplicar')}</button>
+          </div>
+          <div class="car-vin">VIN ${v.vin}</div>
+        </div>`;
+      card.querySelector('button[data-label]').addEventListener('click', () => goToFinancing(label));
+      box.appendChild(card);
+    });
+  }
+  renderIncoming();
+  document.addEventListener('langchange', renderIncoming);
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {

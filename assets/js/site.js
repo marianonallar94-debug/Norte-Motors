@@ -37,7 +37,7 @@ const fmt$ = n => "$" + Math.round(n).toLocaleString("en-US");
 /* ---------- Idioma (ES / EN) ---------- */
 const I18N = {
   en: {
-    "nav.home":"Home","nav.inventory":"Inventory","nav.financing":"Financing","nav.about":"About","nav.contact":"Contact","nav.outofstate":"Out of state","nav.reviews":"Reviews",
+    "nav.home":"Home","nav.inventory":"Inventory","nav.financing":"Financing","nav.about":"About","nav.contact":"Contact","nav.outofstate":"Out of state","nav.reviews":"Reviews","nav.incoming":"Coming soon","inc.title":"Coming soon","inc.lead":"Cars we already bought that are on their way. Message us and we will hold one for you before it arrives.",
     "hero.eyebrow":"Hollywood, Florida · Clean title guaranteed",
     "hero.title":"Your next car is on this lot.",
     "hero.lead":"Verified clean title and a 3-year bumper to bumper warranty on every car. Financing for all credit types, and we ship anywhere in the U.S.",

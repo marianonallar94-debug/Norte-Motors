@@ -42,6 +42,8 @@ def word(w):
     # siglas de versión (LE, XLE, SR5, EX-L) en mayúscula; palabras normales en Title
     if "/" in w:
         return "/".join(word(x) for x in w.split("/"))
+    if w[:1] == "(" and len(w) > 1:
+        return "(" + word(w[1:])
     u = w.upper()
     if u in TRIM_UPPER or any(ch.isdigit() for ch in w) or "-" in w:
         return u
