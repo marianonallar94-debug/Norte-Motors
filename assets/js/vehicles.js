@@ -123,4 +123,5 @@
     { year:2023, make:"Toyota", model:"Highlander", type:"suv", miles:"83,017", trans:"Gasolina · Automática", price:"27,030", priceNote:"Monto a financiar desde", vin:"5TDKDRBH5PS038058", photo:null },
     { year:2024, make:"Hyundai", model:"Tucson", type:"suv", miles:"78,927", trans:"Gasolina · Automática", price:"17,165", priceNote:"Monto a financiar desde", vin:"5NMJFCDE8RH304992", photo:null },
     { year:2022, make:"Toyota", model:"Highlander XSE", type:"suv", miles:"78,409", trans:"Gasolina · Automática", price:"27,840", priceNote:"Monto a financiar desde", vin:"5TDLZRAH7NS101990", photo:null },
+    { year:2023, make:"Toyota", model:"Highlander", type:"suv", miles:"103,703", trans:"Gasolina · Automática", price:"27,245", priceNote:"Monto a financiar desde", vin:"5TDKDRAH6PS025448", photo:null },
   ];
