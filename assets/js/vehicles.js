@@ -121,4 +121,5 @@
     { year:2019, make:"Chevrolet", model:"Colorado LT", type:"pickup", miles:"119,000", trans:"Gasolina · Automática", price:"10,000", priceNote:"Monto a financiar desde", vin:"1GCGSCEN7K1123497", photo:"assets/carros/chevrolet-colorado-2019-123497.jpg" },
     { year:2021, make:"Hyundai", model:"Palisade Calligraphy", type:"suv", miles:"100,480", trans:"Gasolina · Automática", price:"18,610", priceNote:"Monto a financiar desde", vin:"KM8R7DHE0MU193089", photo:null },
     { year:2018, make:"Toyota", model:"Highlander Limited Platinum", type:"suv", miles:"108,326", trans:"Gasolina · Automática", price:"19,690", priceNote:"Monto a financiar desde", vin:"5TDYZRFHXJS235501", photo:null },
+    { year:2023, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"74,020", trans:"Gasolina · Automática", price:"27,970", priceNote:"Monto a financiar desde", vin:"1FTFW1E89PFC62815", photo:"assets/carros/ford-f-150-2023-c62815.jpg" },
   ];
