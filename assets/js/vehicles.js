@@ -118,7 +118,6 @@
     { year:2024, make:"Hyundai", model:"Tucson", type:"suv", miles:"78,927", trans:"Gasolina · Automática", price:"17,165", priceNote:"Monto a financiar desde", vin:"5NMJFCDE8RH304992", photo:null },
     { year:2022, make:"Toyota", model:"Highlander XSE", type:"suv", miles:"78,409", trans:"Gasolina · Automática", price:"27,840", priceNote:"Monto a financiar desde", vin:"5TDLZRAH7NS101990", photo:null },
     { year:2023, make:"Toyota", model:"Highlander", type:"suv", miles:"103,703", trans:"Gasolina · Automática", price:"27,245", priceNote:"Monto a financiar desde", vin:"5TDKDRAH6PS025448", photo:null },
-    { year:2024, make:"Honda", model:"Civic Sport", type:"sedan", miles:"64,076", trans:"Gasolina · Automática", price:"20,820", priceNote:"Monto a financiar desde", vin:"2HGFE2F53RH582308", photo:null },
     { year:2019, make:"Chevrolet", model:"Colorado LT", type:"pickup", miles:"119,000", trans:"Gasolina · Automática", price:"10,000", priceNote:"Monto a financiar desde", vin:"1GCGSCEN7K1123497", photo:"assets/carros/chevrolet-colorado-2019-123497.jpg" },
     { year:2021, make:"Hyundai", model:"Palisade Calligraphy", type:"suv", miles:"100,480", trans:"Gasolina · Automática", price:"18,610", priceNote:"Monto a financiar desde", vin:"KM8R7DHE0MU193089", photo:null },
     { year:2018, make:"Toyota", model:"Highlander Limited Platinum", type:"suv", miles:"108,326", trans:"Gasolina · Automática", price:"19,690", priceNote:"Monto a financiar desde", vin:"5TDYZRFHXJS235501", photo:null },
