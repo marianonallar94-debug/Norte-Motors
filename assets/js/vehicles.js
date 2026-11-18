@@ -100,7 +100,6 @@
     { year:2022, make:"Chevrolet", model:"Traverse LS", type:"suv", miles:"45,616", trans:"Gasolina · Automática", price:"19,675", priceNote:"Monto a financiar desde", vin:"1GNERFKW6NJ193795", photo:null },
     { year:2018, make:"Hyundai", model:"Tucson SE Pop", type:"suv", miles:"102,698", trans:"Gasolina · Automática", price:"7,865", priceNote:"Monto a financiar desde", vin:"KM8J3CA41JU656938", photo:null },
     { year:2018, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"93,661", trans:"Diesel · Automática", price:"21,464", priceNote:"Monto a financiar desde", vin:"1C6RR6NM4JS256411", photo:null },
-    { year:2022, make:"Hyundai", model:"Santa Fe Limited", type:"suv", miles:"90,614", trans:"Gasolina · Automática", price:"18,205", priceNote:"Monto a financiar desde", vin:"5NMS44AL2NH376817", photo:"assets/carros/hyundai-santa-2022-376817.jpg" },
     { year:2024, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"103,727", trans:"Gasolina · Automática", price:"30,055", priceNote:"Monto a financiar desde", vin:"1FTFW2L54RKE10653", photo:"assets/carros/ford-f-150-2024-e10653.jpg" },
     { year:2020, make:"Honda", model:"Pilot Elite", type:"suv", miles:"102,374", trans:"Gasolina · Automática", price:"19,630", priceNote:"Monto a financiar desde", vin:"5FNYF6H05LB056109", photo:"assets/carros/honda-pilot-2020-056109.jpg" },
     { year:2025, make:"Mazda", model:"Cx-5 Select", type:"suv", miles:"48,545", trans:"Gasolina · Automática", price:"21,445", priceNote:"Monto a financiar desde", vin:"JM3KFBBL1S0646698", photo:"assets/carros/mazda-cx-5-2025-646698.jpg" },
@@ -122,4 +121,5 @@
     { year:2021, make:"Hyundai", model:"Palisade Calligraphy", type:"suv", miles:"100,480", trans:"Gasolina · Automática", price:"18,610", priceNote:"Monto a financiar desde", vin:"KM8R7DHE0MU193089", photo:null },
     { year:2018, make:"Toyota", model:"Highlander Limited Platinum", type:"suv", miles:"108,326", trans:"Gasolina · Automática", price:"19,690", priceNote:"Monto a financiar desde", vin:"5TDYZRFHXJS235501", photo:null },
     { year:2023, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"74,020", trans:"Gasolina · Automática", price:"27,970", priceNote:"Monto a financiar desde", vin:"1FTFW1E89PFC62815", photo:"assets/carros/ford-f-150-2023-c62815.jpg" },
+    { year:2023, make:"Honda", model:"CR-V Sport", type:"suv", miles:"86,161", trans:"Gasolina · Automática", price:"22,065", priceNote:"Monto a financiar desde", vin:"7FARS6H50PE019801", photo:null },
   ];
