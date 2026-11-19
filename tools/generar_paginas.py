@@ -36,7 +36,7 @@ def load_vehicles():
 def page(v):
     label = f'{v["year"]} {v["make"]} {v["model"]}'
     price = v.get("price", "")
-    img = BASE + (v["photo"] or "assets/og-palmtree.jpg")
+    img = BASE + (v["photo"] or "assets/og-palmtree-2.jpg")
     title = f"{label} | Palm Tree Motors"
     desc = (f'{TYPES_ES.get(v["type"], "")} · {v["miles"]} millas · Monto a financiar desde ${price} (sujeto a aprobación). '
             f'Título limpio y 3 años de garantía. Financiamiento para todo tipo de crédito.')
@@ -71,6 +71,9 @@ def page(v):
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{e(img)}">
+<meta property="og:image:secure_url" content="{e(img)}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="{e(label)}">
 <meta property="og:locale" content="es_US">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
