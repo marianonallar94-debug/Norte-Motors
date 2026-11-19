@@ -9,7 +9,7 @@
 <meta property="og:site_name" content="Palm Tree Motors">
 <meta property="og:title" content="Palm Tree Motors | Carros usados en Hollywood, FL">
 <meta property="og:image" content="https://palmtreemotors.net/assets/og-palmtree.jpg">
-<meta name="theme-color" content="#141414">
+<meta name="theme-color" content="#150928">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
@@ -201,6 +201,40 @@
   .lang-toggle{font-family:'Figtree',sans-serif;border-radius:999px;}
   .brand-mini{white-space:nowrap;}
   @media(max-width:480px){.brand-mini{display:none;}}
+
+  /* ---------- Estilo "Miami de noche" (igual que la portada) ---------- */
+  :root{--red:#FF2E88;--red-dark:#E01F74;--black:#0E0620;--off:#150928;--gray:#B9A5DA;--gray-line:#3A2266;--marker:#FFC24D;
+        --night-2:#1F0F3A;--night-3:#2A1550;--teal:#22E4D0;--text:#F7F0FF;
+        --sunset:linear-gradient(120deg,#FF2E88 0%,#FF5A4E 45%,#FF8A3D 75%,#FFC24D 100%);}
+  html{background:var(--off);}
+  body{background:var(--off);color:var(--text);}
+  h1,h2,h3{color:#fff;text-transform:uppercase;}
+  .car-title{background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  header{background:rgba(14,6,32,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid transparent;border-image:var(--sunset) 1;}
+  .brand-mini span{color:#FF6B35;}
+  .back-link:hover{color:var(--teal);}
+  .lang-toggle{border-color:var(--gray-line);}
+  .btn{text-transform:uppercase;letter-spacing:.02em;font-weight:800;border-radius:12px;}
+  .btn-red{background:var(--sunset);color:#fff;box-shadow:0 6px 22px rgba(255,46,136,.35);}
+  .btn-red:hover{background:var(--sunset);box-shadow:0 8px 30px rgba(255,46,136,.6);}
+  .btn-black{background:var(--night-3);border-color:var(--gray-line);color:#fff;}
+  .btn-black:hover{background:var(--night-3);border-color:var(--teal);}
+  .car-photo-big{background:radial-gradient(120% 90% at 50% 110%,#FF5A4E 0%,#7A1F6E 38%,#2A1550 70%,#1A0B30 100%);border:1px solid var(--gray-line);}
+  .spec-grid,.price-box,.calc,.credit-form{background:var(--night-2);border-color:var(--gray-line);color:var(--text);}
+  .price-amount{background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .calc-result .big{color:#fff;text-shadow:0 0 6px rgba(255,46,136,.85),0 0 18px rgba(255,46,136,.5);}
+  .calc input,.calc select,.form-field input,.form-field select,.form-field textarea{background:var(--off);color:var(--text);border-color:var(--gray-line);}
+  .calc input:focus,.calc select:focus,.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--teal);}
+  select option{background:var(--night-2);color:var(--text);}
+  .form-field label,.calc label,.spec-item strong{color:var(--gray);}
+  .form-disclaimer{background:var(--night-3);}
+  .oos-note a{color:var(--teal);}
+  .car-tag{background:rgba(14,6,32,.8);}
+  .ws-photo{color:#fff;text-shadow:0 0 6px rgba(255,46,136,.85),0 0 18px rgba(255,46,136,.55),0 2px 3px rgba(0,0,0,.6);}
+  .btn-ghost-n{background:transparent;border-color:#fff;color:#fff;}
+  .btn-ghost-n:hover{border-color:var(--teal);color:var(--teal);}
+  footer{background:var(--black);color:var(--gray);border-top:2px solid transparent;border-image:var(--sunset) 1;}
+  @media(max-width:900px){.sticky-cta{background:rgba(14,6,32,.96);border-top-color:var(--gray-line);}}
 </style>
 </head>
 <body>
@@ -246,7 +280,7 @@
             <div class="price-note" style="margin-top:4px;" data-i18n="price.subj">Sujeto a aprobación</div>
           </div>
           <div class="action-row">
-            <a id="shareBtn" class="btn" style="background:var(--off);color:var(--black);" href="#" data-i18n="car.share">Compartir</a>
+            <a id="shareBtn" class="btn btn-ghost-n" href="#" data-i18n="car.share">Compartir</a>
             <a id="waBtn" class="btn btn-black" target="_blank" data-i18n="car.ask">Preguntar por WhatsApp</a>
           </div>
         </div>
