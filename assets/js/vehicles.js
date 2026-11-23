@@ -110,5 +110,5 @@
     { year:2023, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"74,020", trans:"Gasolina · Automática", price:"27,970", priceNote:"Monto a financiar desde", vin:"1FTFW1E89PFC62815", photo:"assets/carros/ford-f-150-2023-c62815.jpg" },
     { year:2023, make:"Honda", model:"CR-V Sport", type:"suv", miles:"86,161", trans:"Gasolina · Automática", price:"22,065", priceNote:"Monto a financiar desde", vin:"7FARS6H50PE019801", photo:null },
     { year:2023, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"118,687", trans:"Gasolina · Automática", price:"28,910", priceNote:"Monto a financiar desde", vin:"1FTFW1E82PFA32341", photo:null },
-    { year:2022, make:"Chevrolet", model:"Tahoe LT", type:"suv", miles:"111,546", trans:"Gasolina · Automática", price:"28,140", priceNote:"Monto a financiar desde", vin:"1GNSKNKD4NR161123", photo:null },
+    { year:2021, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"114148", trans:"Gasolina · Automática", price:"23,790", priceNote:"Monto a financiar desde", vin:"1C6SRFJT1MN637666", photo:null },
   ];
