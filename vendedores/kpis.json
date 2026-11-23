@@ -1,12 +1,12 @@
 {
- "actualizado": "2026-11-23T19:26:30Z",
+ "actualizado": "2026-11-23T21:25:14Z",
  "campana": {
   "inicio": "2026-11-11",
   "fin": "2026-12-13",
-  "gastoTotal": 399.12,
-  "chatsTotal": 66,
-  "gastoHoy": 14.6,
-  "chatsHoy": 5
+  "gastoTotal": 406.38,
+  "chatsTotal": 67,
+  "gastoHoy": 21.84,
+  "chatsHoy": 6
  },
  "embudo": {
   "activos": 0,
