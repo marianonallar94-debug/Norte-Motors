@@ -11,7 +11,6 @@
     { year:2022, make:"Chevrolet", model:"Silverado High Country", type:"pickup", miles:"74,993", trans:"Gasolina · Automática", price:"31,345", priceNote:"Monto a financiar desde", vin:"3GCPAFED5NG574820", photo:"assets/carros/silverado-2022-2.jpg" },
     { year:2016, make:"GMC", model:"Sierra SLT", type:"pickup", miles:"102,524", trans:"Gasolina · Automática", price:"24,496", priceNote:"Monto a financiar desde", vin:"3GTU2NECXGG323232", photo:"assets/carros/sierra-2016-1.jpg" },
     { year:2022, make:"Ford", model:"F-150 LARIAT", type:"pickup", miles:"119,759", trans:"Gasolina · Automática", price:"29,415", priceNote:"Monto a financiar desde", vin:"1FTEW1EP4NKD52753", photo:"assets/carros/ford-f-150-2022-1.jpg" },
-    { year:2023, make:"Toyota", model:"RAV4 LE", type:"suv", miles:"107,082", trans:"Híbrido · Automática", price:"21,515", priceNote:"Monto a financiar desde", vin:"JTMMWRFV5PD577729", photo:"assets/carros/toyota-rav4-2023-1.jpg" },
     { year:2020, make:"Honda", model:"CR-V Touring", type:"suv", miles:"79,941", trans:"Híbrido · Automática", price:"23,735", priceNote:"Monto a financiar desde", vin:"7FART6H98LE022732", photo:"assets/carros/honda-cr-v-2020-1.jpg" },
     { year:2021, make:"Chevrolet", model:"Silverado RST", type:"pickup", miles:"109,129", trans:"Gasolina · Automática", price:"31,124", priceNote:"Monto a financiar desde", vin:"1GCUYEED8MZ161409", photo:"assets/carros/chevrolet-silverado-2021-1.jpg" },
     { year:2022, make:"Honda", model:"Accord EX-L", type:"sedan", miles:"99,913", trans:"Gasolina · Automática", price:"22,165", priceNote:"Monto a financiar desde", vin:"1HGCV1F54NA029608", photo:"assets/carros/honda-accord-2022-1.jpg" },
@@ -48,7 +47,6 @@
     { year:2025, make:"Toyota", model:"Camry XSE", type:"sedan", miles:"127,864", trans:"Híbrido · Automática", price:"25,000", priceNote:"Monto a financiar desde", vin:"4T1DAACK7SU024420", photo:null },
     { year:2021, make:"Toyota", model:"Highlander Limited", type:"suv", miles:"99,367", trans:"Gasolina · Automática", price:"26,175", priceNote:"Monto a financiar desde", vin:"5TDDZRBH6MS112996", photo:"assets/carros/toyota-highlander-2021-112996.jpg" },
     { year:2021, make:"Honda", model:"Civic Sport", type:"sedan", miles:"118,619", trans:"Gasolina · Automática", price:"10,500", priceNote:"Monto a financiar desde", vin:"2HGFC2F80MH518607", photo:null },
-    { year:2016, make:"Hyundai", model:"Tucson SE Popular", type:"suv", miles:"89,003", trans:"Gasolina · Automática", price:"11,606", priceNote:"Monto a financiar desde", vin:"KM8J33A45GU059641", photo:null },
     { year:2024, make:"Honda", model:"Accord Sport-L Hybrid", type:"sedan", miles:"61,904", trans:"Gasolina · Automática", price:"24,870", priceNote:"Monto a financiar desde", vin:"1HGCY2F77RA036234", photo:null },
     { year:2021, make:"Honda", model:"Pilot EXL", type:"suv", miles:"120,886", trans:"Gasolina · Automática", price:"19,145", priceNote:"Monto a financiar desde", vin:"5FNYF6H56MB081985", photo:null },
     { year:2020, make:"Honda", model:"Odyssey Elite", type:"minivan", miles:"113,259", trans:"Gasolina · Automática", price:"26,326", priceNote:"Monto a financiar desde", vin:"5FNRL6H91LB031011", photo:null },
@@ -112,4 +110,5 @@
     { year:2023, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"118,687", trans:"Gasolina · Automática", price:"28,910", priceNote:"Monto a financiar desde", vin:"1FTFW1E82PFA32341", photo:null },
     { year:2021, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"114148", trans:"Gasolina · Automática", price:"23,790", priceNote:"Monto a financiar desde", vin:"1C6SRFJT1MN637666", photo:null },
     { year:2024, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"97,688", trans:"Gasolina · Automática", price:"31,000", priceNote:"Monto a financiar desde", vin:"5TDKDRAHXRS528032", photo:null },
+    { year:2024, make:"Honda", model:"CR-V EX-L", type:"suv", miles:"60,342", trans:"Gasolina · Automática", price:"28,650", priceNote:"Monto a financiar desde", vin:"2HKRS4H74RH471885", photo:null },
   ];
