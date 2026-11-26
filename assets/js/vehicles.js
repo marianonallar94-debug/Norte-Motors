@@ -81,7 +81,6 @@
     { year:2023, make:"Toyota", model:"Corolla LE", type:"sedan", miles:"84,894", trans:"Gasolina · Automática", price:"16,925", priceNote:"Monto a financiar desde", vin:"JTDB4MEE3P3008773", photo:null },
     { year:2024, make:"Toyota", model:"Corolla Cross L", type:"suv", miles:"43,905", trans:"Gasolina · Automática", price:"21,740", priceNote:"Monto a financiar desde", vin:"7MUAAABG1RV079762", photo:null },
     { year:2021, make:"Honda", model:"Civic Sport", type:"sedan", miles:"84,356", trans:"Gasolina · Automática", price:"13,000", priceNote:"Monto a financiar desde", vin:"2HGFC2F82MH545193", photo:null },
-    { year:2023, make:"Hyundai", model:"Tucson SEL", type:"suv", miles:"24,223", trans:"Gasolina · Automática", price:"20,940", priceNote:"Monto a financiar desde", vin:"5NMJB3AEXPH251466", photo:"assets/carros/hyundai-tucson-2023-251466.jpg" },
     { year:2023, make:"Toyota", model:"Camry LE", type:"sedan", miles:"91,096", trans:"Gasolina · Automática", price:"18,710", priceNote:"Monto a financiar desde", vin:"4T1C11AK1PU088104", photo:"assets/carros/toyota-camry-2023-088104.jpg" },
     { year:2021, make:"Toyota", model:"Camry XLE", type:"sedan", miles:"109,830", trans:"Gasolina · Automática", price:"18,190", priceNote:"Monto a financiar desde", vin:"4T1F11AK6MU608421", photo:"assets/carros/toyota-camry-2021-608421.jpg" },
     { year:2017, make:"Hyundai", model:"Tucson SE (Popular Equipment Pkg.)", type:"suv", miles:"105,324", trans:"Gasolina · Automática", price:"9,865", priceNote:"Monto a financiar desde", vin:"KM8J33A27HU533539", photo:"assets/carros/hyundai-tucson-2017-533539.jpg" },
@@ -99,7 +98,6 @@
     { year:2022, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"59,620", trans:"Diesel · Automática", price:"28,385", priceNote:"Monto a financiar desde", vin:"1C6RREJMXNN364598", photo:null },
     { year:2022, make:"RAM", model:"1500 Rebel", type:"pickup", miles:"91,380", trans:"Gasolina · Automática", price:"28,890", priceNote:"Monto a financiar desde", vin:"1C6SRFLT4NN444006", photo:null },
     { year:2024, make:"Toyota", model:"Tundra SR5", type:"pickup", miles:"64,872", trans:"Gasolina · Automática", price:"31,125", priceNote:"Monto a financiar desde", vin:"5TFLA5DB5RX150905", photo:null },
-    { year:2024, make:"Hyundai", model:"Tucson SEL", type:"suv", miles:"60,990", trans:"Gasolina · Automática", price:"19,230", priceNote:"Monto a financiar desde", vin:"5NMJB3DE7RH359915", photo:"assets/carros/hyundai-tucson-2024-359915.jpg" },
     { year:2023, make:"Toyota", model:"Highlander", type:"suv", miles:"83,017", trans:"Gasolina · Automática", price:"27,030", priceNote:"Monto a financiar desde", vin:"5TDKDRBH5PS038058", photo:null },
     { year:2023, make:"Ford", model:"F-150 Supercrew", type:"pickup", miles:"74,020", trans:"Gasolina · Automática", price:"27,970", priceNote:"Monto a financiar desde", vin:"1FTFW1E89PFC62815", photo:"assets/carros/ford-f-150-2023-c62815.jpg" },
     { year:2023, make:"Honda", model:"CR-V Sport", type:"suv", miles:"86,161", trans:"Gasolina · Automática", price:"22,065", priceNote:"Monto a financiar desde", vin:"7FARS6H50PE019801", photo:null },
@@ -107,6 +105,6 @@
     { year:2021, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"114,148", trans:"Gasolina · Automática", price:"23,790", priceNote:"Monto a financiar desde", vin:"1C6SRFJT1MN637666", photo:null },
     { year:2024, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"97,688", trans:"Gasolina · Automática", price:"32,500", priceNote:"Monto a financiar desde", vin:"5TDKDRAHXRS528032", photo:null },
     { year:2024, make:"Honda", model:"CR-V EX-L", type:"suv", miles:"60,342", trans:"Gasolina · Automática", price:"28,650", priceNote:"Monto a financiar desde", vin:"2HKRS4H74RH471885", photo:null },
-    { year:2021, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"125719", trans:"Gasolina · Automática", price:"18,245", priceNote:"Monto a financiar desde", vin:"2T3W1RFV8MC087776", photo:null },
+    { year:2021, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"125719", trans:"Gasolina · Automática", price:"21,850", priceNote:"Monto a financiar desde", vin:"2T3W1RFV8MC087776", photo:null },
     { year:2021, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"140872", trans:"Gasolina · Automática", price:"21,085", priceNote:"Monto a financiar desde", vin:"5TDGZRAH8MS039774", photo:null },
   ];
