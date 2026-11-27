@@ -46,7 +46,6 @@
     { year:2020, make:"Honda", model:"Odyssey EX", type:"minivan", miles:"122,681", trans:"Gasolina · Automática", price:"20,215", priceNote:"Monto a financiar desde", vin:"5FNRL6H59LB072645", photo:null },
     { year:2025, make:"Toyota", model:"Camry XSE", type:"sedan", miles:"127,864", trans:"Híbrido · Automática", price:"25,000", priceNote:"Monto a financiar desde", vin:"4T1DAACK7SU024420", photo:null },
     { year:2021, make:"Toyota", model:"Highlander Limited", type:"suv", miles:"99,367", trans:"Gasolina · Automática", price:"26,175", priceNote:"Monto a financiar desde", vin:"5TDDZRBH6MS112996", photo:"assets/carros/toyota-highlander-2021-112996.jpg" },
-    { year:2021, make:"Honda", model:"Civic Sport", type:"sedan", miles:"118,634", trans:"Gasolina · Automática", price:"8,000", priceNote:"Monto a financiar desde", vin:"2HGFC2F80MH518607", photo:null },
     { year:2024, make:"Honda", model:"Accord Sport-L Hybrid", type:"sedan", miles:"61,904", trans:"Gasolina · Automática", price:"24,870", priceNote:"Monto a financiar desde", vin:"1HGCY2F77RA036234", photo:null },
     { year:2021, make:"Honda", model:"Pilot EXL", type:"suv", miles:"120,886", trans:"Gasolina · Automática", price:"19,145", priceNote:"Monto a financiar desde", vin:"5FNYF6H56MB081985", photo:null },
     { year:2020, make:"Honda", model:"Odyssey Elite", type:"minivan", miles:"113,259", trans:"Gasolina · Automática", price:"18,500", priceNote:"Monto a financiar desde", vin:"5FNRL6H91LB031011", photo:null },
@@ -105,6 +104,6 @@
     { year:2021, make:"RAM", model:"1500 Laramie", type:"pickup", miles:"114,148", trans:"Gasolina · Automática", price:"23,790", priceNote:"Monto a financiar desde", vin:"1C6SRFJT1MN637666", photo:null },
     { year:2024, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"97,688", trans:"Gasolina · Automática", price:"32,500", priceNote:"Monto a financiar desde", vin:"5TDKDRAHXRS528032", photo:null },
     { year:2024, make:"Honda", model:"CR-V EX-L", type:"suv", miles:"60,342", trans:"Gasolina · Automática", price:"28,650", priceNote:"Monto a financiar desde", vin:"2HKRS4H74RH471885", photo:null },
-    { year:2021, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"125719", trans:"Gasolina · Automática", price:"21,850", priceNote:"Monto a financiar desde", vin:"2T3W1RFV8MC087776", photo:null },
-    { year:2021, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"140872", trans:"Gasolina · Automática", price:"21,085", priceNote:"Monto a financiar desde", vin:"5TDGZRAH8MS039774", photo:null },
+    { year:2021, make:"Toyota", model:"RAV4 XLE", type:"suv", miles:"125,719", trans:"Gasolina · Automática", price:"21,850", priceNote:"Monto a financiar desde", vin:"2T3W1RFV8MC087776", photo:"assets/carros/toyota-rav4-2021-087776.jpg" },
+    { year:2021, make:"Toyota", model:"Highlander XLE", type:"suv", miles:"140,872", trans:"Gasolina · Automática", price:"21,085", priceNote:"Monto a financiar desde", vin:"5TDGZRAH8MS039774", photo:"assets/carros/toyota-highlander-2021-039774.jpg" },
   ];
